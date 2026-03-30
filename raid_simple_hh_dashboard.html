@@ -917,14 +917,14 @@
 
     .champ-row-body {
       min-width: 0;
-      display: grid;
-      gap: 8px;
+      display: contents;
     }
 
     .champ-row-top {
+      grid-column: 2;
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
-      gap: 6px;
+      gap: 8px;
       align-items: flex-start;
     }
 
@@ -996,6 +996,7 @@
     }
 
     .champ-summary-grid {
+      grid-column: 1 / -1;
       display: grid;
       grid-template-columns: 1fr;
       gap: 8px;
@@ -1305,7 +1306,10 @@
       .champion-grid.hh-list { grid-template-columns: 1fr; }
       .champ-row { grid-template-columns: 1fr; }
       .champ-portrait { width: 96px; height: 96px; }
-      .champ-row-top { grid-template-columns: 1fr; }
+      .champ-row-top {
+        grid-column: 1;
+        grid-template-columns: 1fr;
+      }
       .champ-role-pill { justify-self: start; }
       .champ-stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
@@ -1445,7 +1449,7 @@
       mustIncludeChampion2: "none",
       champSearch: "",
       champRarity: "all",
-      selectedRarities: new Set(DATA.champions.map((champ) => champ.rarity).filter(Boolean)),
+      selectedRarities: new Set(["Mythical", "Legendary", "Epic", "Rare"]),
       filterBooks: new Set(["full", "not_full"]),
       filterMasteries: new Set(["full", "not_full"]),
       activeSetId: null,
@@ -1461,9 +1465,16 @@
     ];
 
     const bossLookup = new Map(DATA.bosses.map((boss) => [boss.id, boss]));
-    const rarityOrder = ["all", ...new Set(DATA.champions.map((c) => c.rarity).filter(Boolean))];
+    const preferredChampionRarities = ["Mythical", "Legendary", "Epic", "Rare"];
+    const availableChampionRarities = preferredChampionRarities.filter((rarity) =>
+      DATA.champions.some((champion) => champion.rarity === rarity)
+    );
+    const rarityOrder = ["all", ...availableChampionRarities];
     const teamStorageKey = "raid-dashboard-team-selections";
+    const rarityRank = Object.fromEntries(preferredChampionRarities.map((rarity, index) => [rarity, index]));
     const sortedChampions = [...DATA.champions].sort((a, b) => {
+      const rarityDiff = (rarityRank[a.rarity] ?? 999) - (rarityRank[b.rarity] ?? 999);
+      if (rarityDiff) return rarityDiff;
       const levelDiff = Number(b.level || 0) - Number(a.level || 0);
       if (levelDiff) return levelDiff;
       const gradeDiff = Number(b.grade || 0) - Number(a.grade || 0);
@@ -2200,7 +2211,7 @@
       });
 
       const term = state.champSearch.trim().toLowerCase();
-      const filtered = DATA.champions.filter((champ) => {
+      const filtered = sortedChampions.filter((champ) => {
         const searchable = [champ.name, champ.shortName].filter(Boolean).join(" ").toLowerCase();
         const matchesSearch = !term || searchable.includes(term);
         const matchesRarity = state.champRarity === "all" || champ.rarity === state.champRarity;
