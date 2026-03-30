@@ -1,0 +1,12 @@
+1. Crie um repositorio PRIVATE no GitHub.
+
+2. Depois rode estes comandos dentro desta pasta:
+
+git remote add origin https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
+git push -u origin main
+
+Depois disso, os proximos envios normalmente serao:
+
+git add .
+git commit -m "Sua mensagem"
+git push
