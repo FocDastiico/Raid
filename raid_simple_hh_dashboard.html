@@ -849,18 +849,18 @@
     }
 
     .champion-grid.hh-list {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
       align-items: start;
     }
 
     .champ-row {
       display: grid;
-      grid-template-columns: 116px minmax(0, 1fr);
-      gap: 16px;
+      grid-template-columns: 76px minmax(0, 1fr);
+      gap: 10px;
       border: 1px solid #46382d;
-      border-radius: 20px;
-      padding: 16px;
+      border-radius: 16px;
+      padding: 10px;
       background:
         radial-gradient(circle at top right, rgba(241, 166, 27, 0.1), transparent 34%),
         linear-gradient(180deg, rgba(44, 40, 37, 0.98), rgba(24, 22, 22, 0.99));
@@ -869,10 +869,10 @@
     }
 
     .champ-portrait {
-      width: 116px;
-      height: 116px;
+      width: 76px;
+      height: 76px;
       border: 1px solid #8d6831;
-      border-radius: 18px;
+      border-radius: 12px;
       background: #171313;
       position: relative;
       overflow: hidden;
@@ -903,41 +903,41 @@
 
     .champ-level-badge {
       position: absolute;
-      right: 8px;
-      bottom: 8px;
-      min-width: 30px;
-      padding: 3px 6px;
+      right: 4px;
+      bottom: 4px;
+      min-width: 22px;
+      padding: 1px 4px;
       border: 1px solid #b78932;
       background: rgba(10, 10, 10, 0.86);
       color: #ffffff;
       text-align: center;
       font-weight: 700;
-      font-size: 0.88rem;
+      font-size: 0.72rem;
     }
 
     .champ-row-body {
       min-width: 0;
       display: grid;
-      gap: 14px;
+      gap: 8px;
     }
 
     .champ-row-top {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
-      gap: 12px;
+      gap: 6px;
       align-items: flex-start;
     }
 
     .champ-name-block {
       min-width: 0;
       display: grid;
-      gap: 8px;
+      gap: 5px;
     }
 
     .champ-kicker {
       color: #c9b79f;
-      font-size: 0.82rem;
-      letter-spacing: 0.12em;
+      font-size: 0.64rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
@@ -950,16 +950,16 @@
     .champ-name {
       margin: 0;
       font-family: "Rajdhani", sans-serif;
-      font-size: clamp(1.5rem, 2.4vw, 1.95rem);
-      line-height: 0.98;
-      letter-spacing: 0.04em;
+      font-size: clamp(1rem, 1.2vw, 1.25rem);
+      line-height: 0.95;
+      letter-spacing: 0.03em;
       text-transform: uppercase;
       color: #f1a61b;
     }
 
     .champ-name-secondary {
       color: #d9c8b3;
-      font-size: 0.74rem;
+      font-size: 0.6rem;
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
@@ -969,8 +969,8 @@
       background: linear-gradient(180deg, #f7bb49 0%, #f1a61b 100%);
       border: 1px solid #f0ac24;
       border-radius: 999px;
-      padding: 8px 12px;
-      font-size: 0.9rem;
+      padding: 5px 9px;
+      font-size: 0.68rem;
       font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
@@ -981,35 +981,35 @@
     .champ-tag-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
     }
 
     .champ-tag {
       border: 1px solid #55463a;
       border-radius: 999px;
-      padding: 5px 10px;
-      font-size: 0.78rem;
+      padding: 3px 7px;
+      font-size: 0.62rem;
       color: #eadbc8;
       background: rgba(0, 0, 0, 0.2);
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
       text-transform: uppercase;
     }
 
     .champ-summary-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 14px;
+      gap: 8px;
       align-items: start;
     }
 
     .champ-panel {
       border: 1px solid #3f342b;
-      border-radius: 16px;
-      padding: 14px;
+      border-radius: 12px;
+      padding: 9px;
       background:
         linear-gradient(180deg, rgba(20, 19, 19, 0.7), rgba(12, 11, 11, 0.82));
       display: grid;
-      gap: 12px;
+      gap: 8px;
       min-width: 0;
     }
 
@@ -1024,7 +1024,7 @@
     .champ-panel-title {
       color: #fff1dc;
       font-family: "Rajdhani", sans-serif;
-      font-size: 1.08rem;
+      font-size: 0.84rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
@@ -1067,30 +1067,31 @@
     .champ-stats-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
+      gap: 6px;
     }
 
     .champ-stat {
       display: grid;
       gap: 4px;
-      padding: 10px 11px;
+      padding: 7px 8px;
       border: 1px solid #4a3c30;
-      border-radius: 14px;
+      border-radius: 10px;
       background: rgba(255, 255, 255, 0.02);
+      min-width: 0;
     }
 
     .champ-stat-label {
       color: #ddd0be;
-      font-size: 0.76rem;
+      font-size: 0.58rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
 
     .champ-stat-value {
       color: #ffffff;
-      font-size: 1.05rem;
+      font-size: 0.78rem;
       font-weight: 700;
-      line-height: 1.15;
+      line-height: 1.1;
       display: block;
       word-break: break-word;
     }
@@ -1102,13 +1103,13 @@
 
     .champ-stat-value-lines span {
       display: block;
-      white-space: nowrap;
+      white-space: normal;
     }
 
     .champ-fact-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
     }
 
     .champ-fact {
@@ -1117,10 +1118,10 @@
       gap: 6px;
       border: 1px solid #594837;
       border-radius: 999px;
-      padding: 6px 10px;
+      padding: 4px 7px;
       background: rgba(0, 0, 0, 0.18);
       color: #efe3d1;
-      font-size: 0.8rem;
+      font-size: 0.64rem;
     }
 
     .champ-fact b {
@@ -1130,25 +1131,25 @@
 
     .champ-set-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 10px;
+      grid-template-columns: 1fr;
+      gap: 6px;
     }
 
     .champ-set-card {
       display: grid;
-      grid-template-columns: 44px minmax(0, 1fr) auto;
-      gap: 10px;
+      grid-template-columns: 38px minmax(0, 1fr) auto;
+      gap: 7px;
       align-items: center;
       border: 1px solid #48392e;
-      border-radius: 14px;
-      padding: 10px 12px;
+      border-radius: 12px;
+      padding: 7px 9px;
       background: rgba(255, 255, 255, 0.02);
     }
 
     .champ-set-icon-wrap {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
       border: 1px solid #6c5438;
       background: radial-gradient(circle at top, rgba(241, 166, 27, 0.16), rgba(15, 14, 14, 0.95));
       display: grid;
@@ -1157,8 +1158,8 @@
     }
 
     .champ-set-icon {
-      width: 26px;
-      height: 26px;
+      width: 22px;
+      height: 22px;
       object-fit: contain;
       filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
     }
@@ -1171,24 +1172,24 @@
 
     .champ-set-name {
       color: #f4eadc;
-      font-size: 0.94rem;
+      font-size: 0.76rem;
       font-weight: 700;
       line-height: 1.1;
     }
 
     .champ-set-sub {
       color: #bcae9d;
-      font-size: 0.76rem;
+      font-size: 0.62rem;
       line-height: 1.2;
     }
 
     .champ-set-count {
       border: 1px solid #6a5a46;
       border-radius: 999px;
-      padding: 5px 8px;
+      padding: 4px 7px;
       color: #ffcf76;
       font-weight: 700;
-      font-size: 0.82rem;
+      font-size: 0.68rem;
       background: rgba(0, 0, 0, 0.2);
     }
 
@@ -1285,9 +1286,13 @@
       .tabs { justify-content: flex-start; }
       .boss-stage { grid-template-columns: 1fr; }
       .team-slots { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
-      .champion-grid.hh-list { grid-template-columns: 1fr; }
+      .champion-grid.hh-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .toolbar { grid-template-columns: 1fr; }
       .filter-pair { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 1500px) {
+      .champ-stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 720px) {
@@ -1299,7 +1304,7 @@
       .stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .champion-grid.hh-list { grid-template-columns: 1fr; }
       .champ-row { grid-template-columns: 1fr; }
-      .champ-portrait { width: 104px; height: 104px; }
+      .champ-portrait { width: 96px; height: 96px; }
       .champ-row-top { grid-template-columns: 1fr; }
       .champ-role-pill { justify-self: start; }
       .champ-stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
