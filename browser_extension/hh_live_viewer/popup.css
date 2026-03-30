@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  min-width: 280px;
+  background: #151515;
+  color: #f5f5f5;
+  font: 14px/1.4 Arial, sans-serif;
+}
+
+.card {
+  padding: 16px;
+}
+
+h1 {
+  margin: 0 0 12px;
+  font-size: 18px;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+button {
+  width: 100%;
+  border: 0;
+  border-radius: 6px;
+  padding: 10px 12px;
+  background: #f0a41d;
+  color: #111;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#status {
+  margin: 12px 0 0;
+  color: #d0d0d0;
+}

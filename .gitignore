@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+
+# Local runtime/output
+hh_live_feed/
+
+# Personal account exports and generated data
+raid_simple_dashboard_data.js
+arbiter_dashboard_data.js
+roster_data.js
+
+HH_account_champions.csv
+HH_account_summary.md
+HH_shared_snapshot.json
+HH_shared_snapshot_fresh.json
+HH_shared_accountData_fresh.json
+HH_shared_artifacts.csv
+HH_shared_gear_accessories_only.csv
+HH_shared_gear_artifacts_only.csv
+HH_shared_items_summary.md
+HH_share_new_raw.json
+HH_share_new_sharedkey.json
+HH_share_new_try2.json
+HH_share_new_try3.json
+HH_items_ranked_*.csv
+HH_item_planner_report.md
+
+# Generated analysis/output files
+Arbiter_*.csv
+Arbiter_*.json
+Arbiter_*.md
+arbiter_dashboard_data.js
+
+# Reverse-engineering/reference dumps
+_hh_team_optimizer.html
+hh_main.js
+hh_main_live.js
+hh_styles_live.css
+in-champion-list.min.js
+in-datatables-secure-js.min.js
+inteleria_champion_list.html
+
+# Large local image/reference assets
+champ_profiles/
+tiles/
+tiles2/
+tiles_match/
+*.png

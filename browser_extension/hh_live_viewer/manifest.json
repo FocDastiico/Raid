@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "HH Live Viewer Bridge",
+  "version": "0.1.0",
+  "description": "Captura o estado das paginas do HellHades Team Optimizer e envia para um servidor local.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://raidoptimiser.hellhades.com/*",
+    "https://*.hellhades.com/*",
+    "http://127.0.0.1:8765/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://raidoptimiser.hellhades.com/*",
+        "https://*.hellhades.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "HH Live Viewer",
+    "default_popup": "popup.html"
+  }
+}

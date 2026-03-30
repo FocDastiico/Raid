@@ -1,0 +1,569 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arbiter Speed Dashboard</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap");
+
+    :root {
+      --bg: #f6f3ea;
+      --bg-2: #fffaf0;
+      --ink: #1d2433;
+      --ink-soft: #4a5568;
+      --card: #ffffff;
+      --line: #e8dcc6;
+      --accent: #cc5f00;
+      --accent-2: #00838f;
+      --ok: #0d7a36;
+      --warn: #b54708;
+      --shadow: 0 10px 30px rgba(26, 36, 51, 0.08);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: "Sora", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 500px at 0% 0%, #ffe4c4 0%, rgba(255, 228, 196, 0) 55%),
+        radial-gradient(1000px 500px at 100% 10%, #d2f6f8 0%, rgba(210, 246, 248, 0) 50%),
+        linear-gradient(180deg, var(--bg), var(--bg-2));
+      min-height: 100vh;
+    }
+
+    .wrap {
+      width: min(1080px, 94vw);
+      margin: 28px auto 44px;
+    }
+
+    .hero {
+      background: linear-gradient(120deg, #fff 0%, #fff8ec 50%, #eefbfc 100%);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 20px 22px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -90px auto;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(204, 95, 0, 0.18) 0%, rgba(204, 95, 0, 0) 70%);
+      pointer-events: none;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.35rem, 3.3vw, 2rem);
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+    }
+
+    .sub {
+      margin-top: 8px;
+      color: var(--ink-soft);
+      font-size: .95rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+    }
+
+    .label {
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink-soft);
+      margin-bottom: 6px;
+    }
+
+    .value {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 1.28rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .value.gain { color: var(--ok); }
+
+    .panel {
+      margin-top: 16px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 14px;
+      background: linear-gradient(180deg, #fff, #fff9f2);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .panel-head h2 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .btn {
+      border: 1px solid #dcb78d;
+      background: #fff;
+      color: var(--ink);
+      padding: 8px 10px;
+      font-family: "Sora", sans-serif;
+      font-size: .82rem;
+      font-weight: 600;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    .list {
+      display: grid;
+      gap: 10px;
+      padding: 12px;
+    }
+
+    .list-title {
+      margin: 0;
+      padding: 12px 14px 0;
+      font-size: .9rem;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-weight: 700;
+    }
+
+    .row {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 11px 12px;
+      display: grid;
+      grid-template-columns: 64px 92px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      background: #fff;
+      animation: rise .36s ease both;
+    }
+
+    .thumb {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      border: 1px solid #d6c5ac;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.35);
+      object-fit: cover;
+      background: #f5efe4;
+    }
+
+    .slot {
+      font-weight: 700;
+      color: var(--accent-2);
+      font-size: .9rem;
+    }
+
+    .meta {
+      min-width: 0;
+      font-size: .88rem;
+    }
+
+    .meta .id {
+      font-family: "JetBrains Mono", monospace;
+      font-size: .86rem;
+      margin-right: 8px;
+      color: #23324a;
+    }
+
+    .desc {
+      margin-top: 4px;
+      color: var(--ink-soft);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .badge {
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: .75rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .swap {
+      background: #fff4e8;
+      border: 1px solid #ffd7ae;
+      color: var(--warn);
+    }
+
+    .keep {
+      background: #eaf9ee;
+      border: 1px solid #bde8c9;
+      color: var(--ok);
+    }
+
+    .hint {
+      padding: 12px 14px;
+      color: var(--ink-soft);
+      font-size: .85rem;
+      border-top: 1px dashed var(--line);
+      background: #fffdf8;
+    }
+
+    .muted {
+      color: var(--ink-soft);
+      font-size: .84rem;
+    }
+
+    @keyframes rise {
+      from { transform: translateY(6px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 900px) {
+      .cards { grid-template-columns: 1fr; }
+      .row {
+        grid-template-columns: 56px 1fr;
+        gap: 8px;
+      }
+      .slot { grid-column: 2; }
+      .meta { grid-column: 2; }
+      .badge { grid-column: 2; width: fit-content; }
+      .desc { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <h1>Arbiter: Build de Velocidade MÃ¡xima</h1>
+      <div class="sub">Resultados baseados em <code>Arbiter_max_speed_all_items.csv</code>.</div>
+      <div class="muted" id="snapshotInfo" style="margin-top:6px;">Snapshot: --</div>
+      <div class="cards">
+        <article class="card">
+          <div class="label">Velocidade Atual (modelo)</div>
+          <div class="value" id="currentSpeed">--</div>
+        </article>
+        <article class="card">
+          <div class="label">Velocidade MÃ¡xima (modelo)</div>
+          <div class="value" id="bestSpeed">--</div>
+        </article>
+        <article class="card">
+          <div class="label">Ganho Estimado</div>
+          <div class="value gain" id="deltaSpeed">--</div>
+        </article>
+      </div>
+      <div class="muted" id="setSummary" style="margin-top:8px; font-weight:700;">Set final: --</div>
+      <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
+        <label for="realCurrentInput" class="muted" style="font-weight:700;">Sua velocidade real atual:</label>
+        <input id="realCurrentInput" type="number" step="1" value="364" style="width:110px; padding:8px 10px; border:1px solid var(--line); border-radius:10px; font-family:'JetBrains Mono', monospace;">
+        <button class="btn" id="applyRealBtn" type="button">Ajustar</button>
+        <span class="muted" id="realProjectionText">ProjeÃ§Ã£o real: --</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Resumo de Equipados e Trocas</h2>
+        <button class="btn" id="copyPlanBtn" type="button">Copiar Plano</button>
+      </div>
+      <h3 class="list-title">Itens equipados agora</h3>
+      <div class="list" id="equippedList"></div>
+      <h3 class="list-title">Itens que voce precisa trocar</h3>
+      <div class="list" id="swapList"></div>
+      <div class="hint" id="statusText">Carregando dados...</div>
+    </section>
+  </main>
+  <script src="./arbiter_dashboard_data.js"></script>
+  <script>
+    const slotNames = {
+      "1": "Elmo",
+      "2": "Luva",
+      "3": "Peitoral",
+      "4": "Bota",
+      "5": "Arma",
+      "6": "Escudo",
+      "7": "Anel",
+      "8": "Amuleto",
+      "9": "Bandeira"
+    };
+
+    const fallbackRows = (window.ARBITER_DASHBOARD_DATA && window.ARBITER_DASHBOARD_DATA.rows) || [];
+    const fallbackSummary = (window.ARBITER_DASHBOARD_DATA && window.ARBITER_DASHBOARD_DATA.summary) || {
+      current: 0,
+      best: 0,
+      delta: 0,
+      snapshot: "desconhecido"
+    };
+
+    function parseCsv(text) {
+      const rows = [];
+      let i = 0, field = "", row = [], inQuotes = false;
+      while (i < text.length) {
+        const ch = text[i];
+        const next = text[i + 1];
+        if (ch === '"' && inQuotes && next === '"') {
+          field += '"';
+          i += 2;
+          continue;
+        }
+        if (ch === '"') {
+          inQuotes = !inQuotes;
+          i++;
+          continue;
+        }
+        if (ch === "," && !inQuotes) {
+          row.push(field);
+          field = "";
+          i++;
+          continue;
+        }
+        if ((ch === "\n" || ch === "\r") && !inQuotes) {
+          if (ch === "\r" && next === "\n") i++;
+          row.push(field);
+          field = "";
+          if (row.some(v => v.trim() !== "")) rows.push(row);
+          row = [];
+          i++;
+          continue;
+        }
+        field += ch;
+        i++;
+      }
+      if (field.length || row.length) {
+        row.push(field);
+        if (row.some(v => v.trim() !== "")) rows.push(row);
+      }
+      if (!rows.length) return [];
+      const headers = rows[0].map(h => h.trim());
+      return rows.slice(1).map(cols => {
+        const obj = {};
+        headers.forEach((h, idx) => obj[h] = (cols[idx] || "").trim());
+        return obj;
+      });
+    }
+
+    function parseItemDetails(desc) {
+      const text = (desc || "").trim();
+      const m = text.match(/^(.*?)\s+do\s+Set\s+([^|]+)(?:\s*\|\s*(.*))?$/i);
+      if (!m) {
+        return { name: text || "Item", set: "Set desconhecido", extra: "" };
+      }
+      return {
+        name: m[1].trim(),
+        set: m[2].trim(),
+        extra: (m[3] || "").trim()
+      };
+    }
+
+    function summarizeSets(rows) {
+      const map = new Map();
+      for (const r of rows) {
+        const info = parseItemDetails(r.item_desc);
+        if (!info.set || info.set.toLowerCase().includes("desconhecido")) continue;
+        map.set(info.set, (map.get(info.set) || 0) + 1);
+      }
+      const arr = [...map.entries()].sort((a, b) => b[1] - a[1]);
+      if (!arr.length) return "Set final: nÃ£o identificado";
+      return "Set final: " + arr.map(([name, count]) => `${name} x${count}`).join(" | ");
+    }
+
+    function updateRealProjection(summary) {
+      const input = document.getElementById("realCurrentInput");
+      const now = Number(input.value || 0);
+      const projected = now + Number(summary.delta || 0);
+      document.getElementById("realProjectionText").textContent =
+        `ProjeÃ§Ã£o real: ${projected.toFixed(0)} (ganho +${summary.delta.toFixed(0)})`;
+    }
+
+    function escapeXml(s) {
+      return String(s)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll("\"", "&quot;")
+        .replaceAll("'", "&apos;");
+    }
+
+    function makeItemThumb(slotLabel, setLabel, spdText) {
+      const a = ["#d66a00", "#0e8a93", "#2f3b52", "#7d5b2f", "#3f6f42", "#6f3f6b"];
+      const seed = (slotLabel + "|" + setLabel).split("").reduce((n, c) => n + c.charCodeAt(0), 0);
+      const c1 = a[seed % a.length];
+      const c2 = a[(seed + 3) % a.length];
+      const setShort = setLabel.length > 9 ? setLabel.slice(0, 9) + "..." : setLabel;
+      const svg = `
+<svg xmlns="http://www.w3.org/2000/svg" width="112" height="112" viewBox="0 0 112 112">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="${c1}"/>
+      <stop offset="100%" stop-color="${c2}"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="112" height="112" rx="16" fill="url(#g)"/>
+  <rect x="6" y="6" width="100" height="100" rx="12" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.35)"/>
+  <text x="10" y="24" font-size="13" font-family="Sora,Arial" fill="#fff" font-weight="700">${escapeXml(slotLabel)}</text>
+  <text x="10" y="44" font-size="11" font-family="Sora,Arial" fill="#fff" opacity="0.95">${escapeXml(setShort)}</text>
+  <text x="10" y="98" font-size="18" font-family="JetBrains Mono,monospace" fill="#fff" font-weight="700">SPD +${escapeXml(spdText)}</text>
+</svg>`;
+      return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+    }
+
+    function render(dataRows, summary, sourceText) {
+      document.getElementById("currentSpeed").textContent = summary.current.toFixed(2);
+      document.getElementById("bestSpeed").textContent = summary.best.toFixed(2);
+      document.getElementById("deltaSpeed").textContent = "+" + summary.delta.toFixed(2);
+      document.getElementById("snapshotInfo").textContent = `Snapshot: ${summary.snapshot || "desconhecido"}`;
+      document.getElementById("statusText").textContent = sourceText;
+      document.getElementById("setSummary").textContent = summarizeSets(dataRows);
+      updateRealProjection(summary);
+
+      const equippedList = document.getElementById("equippedList");
+      const swapList = document.getElementById("swapList");
+      equippedList.innerHTML = "";
+      swapList.innerHTML = "";
+
+      const sorted = [...dataRows].sort((a, b) => Number(a.slot) - Number(b.slot));
+      const equipped = sorted.filter(item => (item.currently_equipped || "").toLowerCase() === "yes");
+      const swaps = sorted.filter(item => (item.currently_equipped || "").toLowerCase() !== "yes");
+
+      function appendRows(items, target, startDelay) {
+        for (let idx = 0; idx < items.length; idx++) {
+          const item = items[idx];
+          const info = parseItemDetails(item.item_desc);
+          const isSwap = (item.currently_equipped || "").toLowerCase() !== "yes";
+          const thumb = makeItemThumb(slotNames[item.slot] || `Slot ${item.slot}`, info.set, item.spd);
+          const row = document.createElement("div");
+          row.className = "row";
+          row.style.animationDelay = `${(startDelay + idx) * 0.04}s`;
+          row.innerHTML = `
+          <img class="thumb" src="${thumb}" alt="Item ${item.item_id}">
+          <div class="slot">${slotNames[item.slot] || `Slot ${item.slot}`}</div>
+          <div class="meta">
+            <div><strong>${info.name}</strong> <span class="muted">| Set ${info.set} | SPD +${item.spd}</span></div>
+            <div class="desc">${info.extra || item.item_desc}</div>
+            <div class="muted" style="margin-top:4px;">ID tecnico: ${item.item_id}</div>
+          </div>
+          <div class="badge ${isSwap ? "swap" : "keep"}">${isSwap ? "Trocar" : "Manter"}</div>
+        `;
+          target.appendChild(row);
+        }
+      }
+
+      appendRows(equipped, equippedList, 0);
+      appendRows(swaps, swapList, equipped.length);
+
+      if (!equipped.length) {
+        const empty = document.createElement("div");
+        empty.className = "muted";
+        empty.style.padding = "0 14px 8px";
+        empty.textContent = "Nenhum item marcado como equipado no arquivo atual.";
+        equippedList.appendChild(empty);
+      }
+
+      if (!swaps.length) {
+        const ok = document.createElement("div");
+        ok.className = "muted";
+        ok.style.padding = "0 14px 8px";
+        ok.textContent = "Nenhuma troca necessaria. O melhor build ja esta equipado.";
+        swapList.appendChild(ok);
+      }
+
+      document.getElementById("statusText").textContent =
+        `${equipped.length} item(ns) equipados | ${swaps.length} troca(s) necessaria(s). ${sourceText}`;
+
+      document.getElementById("copyPlanBtn").onclick = async () => {
+        const lines = sorted.map(item => {
+          const action = (item.currently_equipped || "").toLowerCase() === "yes" ? "MANTER" : "TROCAR";
+          return `${slotNames[item.slot] || "Slot " + item.slot}: ${action} -> ID ${item.item_id} (SPD +${item.spd})`;
+        });
+        const text = [
+          "Plano Arbiter - Velocidade Maxima",
+          `Atual: ${summary.current.toFixed(2)} | Max: ${summary.best.toFixed(2)} | Ganho: +${summary.delta.toFixed(2)}`,
+          "",
+          ...lines
+        ].join("\n");
+        await navigator.clipboard.writeText(text);
+        document.getElementById("statusText").textContent = "Plano copiado para a area de transferencia.";
+      };
+
+      document.getElementById("applyRealBtn").onclick = () => updateRealProjection(summary);
+    }
+
+    async function loadSummaryFromMd() {
+      try {
+        const res = await fetch("./Arbiter_max_speed_all_items.md", { cache: "no-store" });
+        if (!res.ok) throw new Error("md_not_found");
+        const text = await res.text();
+        const cur = text.match(/Velocidade atual estimada:\s*([0-9]+(?:\.[0-9]+)?)/i);
+        const best = text.match(/Velocidade maxima estimada:\s*([0-9]+(?:\.[0-9]+)?)/i);
+        const delta = text.match(/Ganho estimado:\s*\+?([0-9]+(?:\.[0-9]+)?)/i);
+        const snap = text.match(/Snapshot updatedOn:\s*([^\n\r]+)/i);
+        if (!cur || !best || !delta) throw new Error("md_parse_failed");
+        return {
+          current: Number(cur[1]),
+          best: Number(best[1]),
+          delta: Number(delta[1]),
+          snapshot: snap ? snap[1].trim() : "desconhecido"
+        };
+      } catch {
+        return fallbackSummary;
+      }
+    }
+
+    async function init() {
+      // In file:// mode, some browsers block fetch to local files.
+      // Render generated fallback data from local JS (last optimizer run).
+      if (location.protocol === "file:") {
+        if (!fallbackRows.length) {
+          document.getElementById("statusText").textContent = "Sem dados locais gerados. Rode: python arbiter_max_speed.py";
+          return;
+        }
+        render(fallbackRows, fallbackSummary, "Modo local (file://): usando dados locais do ultimo calculo.");
+        return;
+      }
+
+      const summary = await loadSummaryFromMd();
+      try {
+        const res = await fetch("./Arbiter_max_speed_all_items.csv", { cache: "no-store" });
+        if (!res.ok) throw new Error("csv_not_found");
+        const csv = await res.text();
+        const rows = parseCsv(csv);
+        if (!rows.length) throw new Error("csv_empty");
+        render(rows, summary, "Dados carregados automaticamente dos arquivos locais.");
+      } catch {
+        if (!fallbackRows.length) {
+          document.getElementById("statusText").textContent = "Falha ao carregar CSV e sem fallback local.";
+          return;
+        }
+        render(fallbackRows, fallbackSummary, "Sem acesso ao CSV. Exibindo ultimo resultado local gerado.");
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>
+

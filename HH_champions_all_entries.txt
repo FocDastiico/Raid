@@ -1,0 +1,686 @@
+Lady Mikage | lvl 60 | rank 6 | Mythical
+Ash’nar Dragonsoul | lvl 60 | rank 6 | Mythical
+Yumeko | lvl 60 | rank 6 | Legendary
+Yannica | lvl 60 | rank 6 | Legendary
+Xenomorph | lvl 60 | rank 6 | Legendary
+Wurlim Frostking | lvl 60 | rank 6 | Legendary
+Visix the Unbowed | lvl 60 | rank 6 | Legendary
+Vault Keeper Wixwell | lvl 60 | rank 6 | Legendary
+Underpriest Brogni | lvl 60 | rank 6 | Legendary
+Ultimate Deathknight | lvl 60 | rank 6 | Legendary
+Trunda Giltmallet | lvl 60 | rank 6 | Legendary
+Tormin the Cold | lvl 60 | rank 6 | Legendary
+Tomb Lord | lvl 60 | rank 6 | Legendary
+Thor Faehammer | lvl 60 | rank 6 | Legendary
+Supreme Galek | lvl 60 | rank 6 | Legendary
+Sun Wukong | lvl 60 | rank 6 | Legendary
+Stokk the Broken | lvl 60 | rank 6 | Legendary
+Sir Nicholas | lvl 60 | rank 6 | Legendary
+Scyl of the Drakes | lvl 60 | rank 6 | Legendary
+Roshcard the Tower | lvl 60 | rank 6 | Legendary
+Ronda | lvl 60 | rank 6 | Legendary
+Razelvarg | lvl 60 | rank 6 | Legendary
+Rathalos Blademaster | lvl 60 | rank 6 | Legendary
+Ragash | lvl 60 | rank 6 | Legendary
+R. Nergigante Archer | lvl 60 | rank 6 | Legendary
+Queen of Hearts | lvl 60 | rank 6 | Legendary
+Pythion | lvl 60 | rank 6 | Legendary
+Pythion | lvl 60 | rank 6 | Legendary
+Prince Kymar | lvl 60 | rank 6 | Legendary
+Oella | lvl 60 | rank 6 | Legendary
+Ninja | lvl 60 | rank 6 | Legendary
+Mountain King | lvl 60 | rank 6 | Legendary
+Mortu-Macaab | lvl 60 | rank 6 | Legendary
+Morrigaine | lvl 60 | rank 6 | Legendary
+Mithrala Lifebane | lvl 60 | rank 6 | Legendary
+Michinaki | lvl 60 | rank 6 | Legendary
+Michelangelo | lvl 60 | rank 6 | Legendary
+Maulie Tankard | lvl 60 | rank 6 | Legendary
+Martyr | lvl 60 | rank 6 | Legendary
+Mad Hatter | lvl 60 | rank 6 | Legendary
+Ma'Shalled | lvl 60 | rank 6 | Legendary
+Lydia the Deathsiren | lvl 60 | rank 6 | Legendary
+Lord Shazar | lvl 60 | rank 6 | Legendary
+Lord Entertainer Fabian | lvl 60 | rank 6 | Legendary
+Leminisi the Gold-wing | lvl 60 | rank 6 | Legendary
+Lady Noelle | lvl 60 | rank 6 | Legendary
+Jintoro | lvl 60 | rank 6 | Legendary
+Firrol the Barkhorn | lvl 60 | rank 6 | Legendary
+Emic Trunkheart | lvl 60 | rank 6 | Legendary
+Dune Herald Zaharis | lvl 60 | rank 6 | Legendary
+Chronicler Adelyn | lvl 60 | rank 6 | Legendary
+Big 'Un | lvl 60 | rank 6 | Legendary
+Belz the Reckoner | lvl 60 | rank 6 | Legendary
+Authoratrix Lamasu | lvl 60 | rank 6 | Legendary
+Astralith | lvl 60 | rank 6 | Legendary
+Artak | lvl 60 | rank 6 | Legendary
+Armanz the Magnificent | lvl 60 | rank 6 | Legendary
+Arix | lvl 60 | rank 6 | Legendary
+Arbiter | lvl 60 | rank 6 | Legendary
+Alice the Wanderer | lvl 60 | rank 6 | Legendary
+Vogoth | lvl 60 | rank 6 | Epic
+Vergis | lvl 60 | rank 6 | Epic
+Venomage | lvl 60 | rank 6 | Epic
+Uugo | lvl 60 | rank 6 | Epic
+Tagoar | lvl 60 | rank 6 | Epic
+Stag Knight | lvl 60 | rank 6 | Epic
+Skullcrusher | lvl 60 | rank 6 | Epic
+Skraank | lvl 60 | rank 6 | Epic
+Seer | lvl 60 | rank 6 | Epic
+Seeker | lvl 60 | rank 6 | Epic
+Sandlashed Survivor | lvl 60 | rank 6 | Epic
+Royal Guard | lvl 60 | rank 6 | Epic
+Occult Brawler | lvl 60 | rank 6 | Epic
+Maneater | lvl 60 | rank 6 | Epic
+Maneater | lvl 60 | rank 6 | Epic
+Magnarr | lvl 60 | rank 6 | Epic
+Lady Annabelle | lvl 60 | rank 6 | Epic
+Kellan the Shrike | lvl 60 | rank 6 | Epic
+Husk | lvl 60 | rank 6 | Epic
+High Khatun | lvl 60 | rank 6 | Epic
+Gorgorab | lvl 60 | rank 6 | Epic
+Godseeker Aniri | lvl 60 | rank 6 | Epic
+Geomancer | lvl 60 | rank 6 | Epic
+Genbo the Dishonored | lvl 60 | rank 6 | Epic
+Fenax | lvl 60 | rank 6 | Epic
+Fayne | lvl 60 | rank 6 | Epic
+Fahrakin the Fat | lvl 60 | rank 6 | Epic
+Dhukk the Pierced | lvl 60 | rank 6 | Epic
+Demytha | lvl 60 | rank 6 | Epic
+Deacon Armstrong | lvl 60 | rank 6 | Epic
+Alure | lvl 60 | rank 6 | Epic
+Akemtum | lvl 60 | rank 6 | Epic
+Kael | lvl 60 | rank 6 | Rare
+Fellhound | lvl 60 | rank 6 | Rare
+Coldheart | lvl 60 | rank 6 | Rare
+Coldheart | lvl 60 | rank 6 | Rare
+Apothecary | lvl 60 | rank 6 | Rare
+Hephraak | lvl 59 | rank 6 | Legendary
+Scabrius | lvl 58 | rank 6 | Epic
+Walking Tomb Dreng | lvl 56 | rank 6 | Legendary
+Tyrant Ixlimor | lvl 54 | rank 6 | Legendary
+Uugo | lvl 54 | rank 6 | Epic
+Kantra the Cyclone | lvl 51 | rank 6 | Legendary
+Deliana | lvl 42 | rank 6 | Legendary
+Lanakis the Chosen | lvl 8 | rank 6 | Legendary
+Zavia | lvl 50 | rank 5 | Legendary
+Yakarl the Scourge | lvl 50 | rank 5 | Legendary
+Versulf the Grim | lvl 50 | rank 5 | Legendary
+Truath | lvl 50 | rank 5 | Legendary
+Suzerain Katonn | lvl 50 | rank 5 | Legendary
+Skeletor | lvl 50 | rank 5 | Legendary
+Sigmund the Highshield | lvl 50 | rank 5 | Legendary
+Shamrock | lvl 50 | rank 5 | Legendary
+Saito | lvl 50 | rank 5 | Legendary
+Roxam | lvl 50 | rank 5 | Legendary
+Richtoff the Bold | lvl 50 | rank 5 | Legendary
+Rhazin Scarhide | lvl 50 | rank 5 | Legendary
+Raglin | lvl 50 | rank 5 | Legendary
+Opardin Clanfather | lvl 50 | rank 5 | Legendary
+Opardin Clanfather | lvl 50 | rank 5 | Legendary
+Norog | lvl 50 | rank 5 | Legendary
+Narma the Returned | lvl 50 | rank 5 | Legendary
+Nari the Lucky | lvl 50 | rank 5 | Legendary
+Minaya | lvl 50 | rank 5 | Legendary
+Lonatharil | lvl 50 | rank 5 | Legendary
+Loki the Deceiver | lvl 50 | rank 5 | Legendary
+Keeyra the Watcher | lvl 50 | rank 5 | Legendary
+Keeyra the Watcher | lvl 50 | rank 5 | Legendary
+Iudex Artor | lvl 50 | rank 5 | Legendary
+Holsring | lvl 50 | rank 5 | Legendary
+Hephraak | lvl 50 | rank 5 | Legendary
+Harvest Jack | lvl 50 | rank 5 | Legendary
+Hansel Witchhunter | lvl 50 | rank 5 | Legendary
+Guurda Bogbrew | lvl 50 | rank 5 | Legendary
+Greathoof Loriaca | lvl 50 | rank 5 | Legendary
+Gliseah Soulguide | lvl 50 | rank 5 | Legendary
+Ghostborn | lvl 50 | rank 5 | Legendary
+Gamuran | lvl 50 | rank 5 | Legendary
+Ezio Auditore | lvl 50 | rank 5 | Legendary
+Elder Skarg | lvl 50 | rank 5 | Legendary
+Cleopterix | lvl 50 | rank 5 | Legendary
+Bloodgorged | lvl 50 | rank 5 | Legendary
+Basileus Roanas | lvl 50 | rank 5 | Legendary
+Aleksandr the Sharpshooter | lvl 50 | rank 5 | Legendary
+White Dryad Nia | lvl 50 | rank 5 | Epic
+Ursala the Mourner | lvl 50 | rank 5 | Epic
+Sir Artimage | lvl 50 | rank 5 | Epic
+Sinesha | lvl 50 | rank 5 | Epic
+Sepulcher Sentinel | lvl 50 | rank 5 | Epic
+Rugnor Goldgleam | lvl 50 | rank 5 | Epic
+Royal Guard | lvl 50 | rank 5 | Epic
+Rector Drath | lvl 50 | rank 5 | Epic
+Mordecai | lvl 50 | rank 5 | Epic
+Mistrider Daithi | lvl 50 | rank 5 | Epic
+Miscreated Monster | lvl 50 | rank 5 | Epic
+Madame Serris | lvl 50 | rank 5 | Epic
+Baerdal Fellhammer | lvl 50 | rank 5 | Epic
+Paragon | lvl 50 | rank 5 | Rare
+Pain Keeper | lvl 50 | rank 5 | Rare
+Pain Keeper | lvl 50 | rank 5 | Rare
+Mountain King | lvl 29 | rank 5 | Legendary
+Astralith | lvl 29 | rank 5 | Legendary
+Chronicler Adelyn | lvl 28 | rank 5 | Legendary
+Abbess | lvl 28 | rank 5 | Legendary
+Ma'Shalled | lvl 27 | rank 5 | Legendary
+Tayrel | lvl 26 | rank 5 | Epic
+Yannica | lvl 1 | rank 5 | Legendary
+Versulf the Grim | lvl 1 | rank 5 | Legendary
+Skartorsis | lvl 1 | rank 5 | Legendary
+Shemnath | lvl 1 | rank 5 | Legendary
+Rhazin Scarhide | lvl 1 | rank 5 | Legendary
+Norog | lvl 1 | rank 5 | Legendary
+Hakkorhn Smashlord | lvl 1 | rank 5 | Legendary
+Anax | lvl 1 | rank 5 | Epic
+Hound Spawn | lvl 1 | rank 5 | Rare
+Wyrennon the Silken | lvl 40 | rank 4 | Epic
+Wuzgar | lvl 40 | rank 4 | Epic
+Wuzgar | lvl 40 | rank 4 | Epic
+Weregren Suncursed | lvl 40 | rank 4 | Epic
+Vrask | lvl 40 | rank 4 | Epic
+Vildrax | lvl 40 | rank 4 | Epic
+Vildrax | lvl 40 | rank 4 | Epic
+Tomoe | lvl 40 | rank 4 | Epic
+Tayrel | lvl 40 | rank 4 | Epic
+Stag Knight | lvl 40 | rank 4 | Epic
+Skullcrusher | lvl 40 | rank 4 | Epic
+Rector Drath | lvl 40 | rank 4 | Epic
+Melga Steelgirdle | lvl 40 | rank 4 | Epic
+Magnarr | lvl 40 | rank 4 | Epic
+Luthiea | lvl 40 | rank 4 | Epic
+Hope | lvl 40 | rank 4 | Epic
+Hexia | lvl 40 | rank 4 | Epic
+Fylja | lvl 40 | rank 4 | Epic
+Fahrakin the Fat | lvl 40 | rank 4 | Epic
+Duedan the Runic | lvl 40 | rank 4 | Epic
+Dirandil | lvl 40 | rank 4 | Epic
+Dark Athel | lvl 40 | rank 4 | Epic
+Conellia | lvl 40 | rank 4 | Epic
+Burangiri | lvl 40 | rank 4 | Epic
+Broodlord | lvl 40 | rank 4 | Epic
+Akemtum | lvl 40 | rank 4 | Epic
+Gala Longbraids | lvl 39 | rank 4 | Epic
+Deacon Armstrong | lvl 28 | rank 4 | Epic
+Silvain the Paramour | lvl 26 | rank 4 | Rare
+Scrapper | lvl 26 | rank 4 | Rare
+Dagger | lvl 26 | rank 4 | Rare
+Dagger | lvl 26 | rank 4 | Rare
+Lady Quilen | lvl 25 | rank 4 | Epic
+Conellia | lvl 25 | rank 4 | Epic
+Dagger | lvl 25 | rank 4 | Rare
+Skytouched Shaman | lvl 23 | rank 4 | Epic
+Gorlos Hellmaw | lvl 23 | rank 4 | Epic
+Chonoru | lvl 23 | rank 4 | Epic
+Ursine Ironhide | lvl 22 | rank 4 | Epic
+Ultimate Galek | lvl 22 | rank 4 | Epic
+Skeuramis | lvl 22 | rank 4 | Epic
+Rearguard Sergeant | lvl 22 | rank 4 | Epic
+Mistrider Daithi | lvl 22 | rank 4 | Epic
+Zargala | lvl 21 | rank 4 | Epic
+Yelagirna | lvl 21 | rank 4 | Epic
+Wyrennon the Silken | lvl 21 | rank 4 | Epic
+Woad-Painted | lvl 21 | rank 4 | Epic
+Woad-Painted | lvl 21 | rank 4 | Epic
+Weregren Suncursed | lvl 21 | rank 4 | Epic
+Warcaster | lvl 21 | rank 4 | Epic
+Vrask | lvl 21 | rank 4 | Epic
+Visionary | lvl 21 | rank 4 | Epic
+Venomage | lvl 21 | rank 4 | Epic
+Valla | lvl 21 | rank 4 | Epic
+Valla | lvl 21 | rank 4 | Epic
+Urticata | lvl 21 | rank 4 | Epic
+Ursine Ironhide | lvl 21 | rank 4 | Epic
+Ursine Ironhide | lvl 21 | rank 4 | Epic
+Umetogi | lvl 21 | rank 4 | Epic
+Umetogi | lvl 21 | rank 4 | Epic
+Umetogi | lvl 21 | rank 4 | Epic
+Trumborr | lvl 21 | rank 4 | Epic
+Torturehelm | lvl 21 | rank 4 | Epic
+Tomoe | lvl 21 | rank 4 | Epic
+Thenasil | lvl 21 | rank 4 | Epic
+Tayrel | lvl 21 | rank 4 | Epic
+Tarshon | lvl 21 | rank 4 | Epic
+Tarshon | lvl 21 | rank 4 | Epic
+Tarshon | lvl 21 | rank 4 | Epic
+Suwai Firstborn | lvl 21 | rank 4 | Epic
+Spider | lvl 21 | rank 4 | Epic
+Skytouched Shaman | lvl 21 | rank 4 | Epic
+Skullcrusher | lvl 21 | rank 4 | Epic
+Skullcrusher | lvl 21 | rank 4 | Epic
+Skeuramis | lvl 21 | rank 4 | Epic
+Skeuramis | lvl 21 | rank 4 | Epic
+Sikara | lvl 21 | rank 4 | Epic
+Sikara | lvl 21 | rank 4 | Epic
+Siegehulk | lvl 21 | rank 4 | Epic
+Siegehulk | lvl 21 | rank 4 | Epic
+Siegehulk | lvl 21 | rank 4 | Epic
+Siegehulk | lvl 21 | rank 4 | Epic
+Shatterbones | lvl 21 | rank 4 | Epic
+Sepulcher Sentinel | lvl 21 | rank 4 | Epic
+Seneschal | lvl 21 | rank 4 | Epic
+Seneschal | lvl 21 | rank 4 | Epic
+Sandlashed Survivor | lvl 21 | rank 4 | Epic
+Ruella | lvl 21 | rank 4 | Epic
+Ripper | lvl 21 | rank 4 | Epic
+Rector Drath | lvl 21 | rank 4 | Epic
+Rearguard Sergeant | lvl 21 | rank 4 | Epic
+Pitiless One | lvl 21 | rank 4 | Epic
+Phranox | lvl 21 | rank 4 | Epic
+Phranox | lvl 21 | rank 4 | Epic
+Pharsalas Gravedirt | lvl 21 | rank 4 | Epic
+Pestilus | lvl 21 | rank 4 | Epic
+Occult Brawler | lvl 21 | rank 4 | Epic
+Oathbound | lvl 21 | rank 4 | Epic
+Myciliac Priest Orn | lvl 21 | rank 4 | Epic
+Morag Bronzelock | lvl 21 | rank 4 | Epic
+Missionary | lvl 21 | rank 4 | Epic
+Miscreated Monster | lvl 21 | rank 4 | Epic
+Miscreated Monster | lvl 21 | rank 4 | Epic
+Merouka | lvl 21 | rank 4 | Epic
+Melga Steelgirdle | lvl 21 | rank 4 | Epic
+Masamoto | lvl 21 | rank 4 | Epic
+Masamoto | lvl 21 | rank 4 | Epic
+Maneater | lvl 21 | rank 4 | Epic
+Luthiea | lvl 21 | rank 4 | Epic
+Kunoichi | lvl 21 | rank 4 | Epic
+Kunoichi | lvl 21 | rank 4 | Epic
+Kallia | lvl 21 | rank 4 | Epic
+Juliana | lvl 21 | rank 4 | Epic
+Jinglehunter | lvl 21 | rank 4 | Epic
+Jareg | lvl 21 | rank 4 | Epic
+Jareg | lvl 21 | rank 4 | Epic
+Hotatsu | lvl 21 | rank 4 | Epic
+Hoskarul | lvl 21 | rank 4 | Epic
+Hope | lvl 21 | rank 4 | Epic
+Hexia | lvl 21 | rank 4 | Epic
+Gory | lvl 21 | rank 4 | Epic
+Gorlos Hellmaw | lvl 21 | rank 4 | Epic
+Golden Reaper | lvl 21 | rank 4 | Epic
+Giscard the Sigiled | lvl 21 | rank 4 | Epic
+Giscard the Sigiled | lvl 21 | rank 4 | Epic
+Frostbringer | lvl 21 | rank 4 | Epic
+Flesh-Tearer | lvl 21 | rank 4 | Epic
+Flesh-Tearer | lvl 21 | rank 4 | Epic
+Flesh-Tearer | lvl 21 | rank 4 | Epic
+Fang Cleric | lvl 21 | rank 4 | Epic
+Fang Cleric | lvl 21 | rank 4 | Epic
+Erinyes | lvl 21 | rank 4 | Epic
+Eolfrig | lvl 21 | rank 4 | Epic
+Enda Moonbeam | lvl 21 | rank 4 | Epic
+Enda Moonbeam | lvl 21 | rank 4 | Epic
+Enda Moonbeam | lvl 21 | rank 4 | Epic
+Duedan the Runic | lvl 21 | rank 4 | Epic
+Doompriest | lvl 21 | rank 4 | Epic
+Dirandil | lvl 21 | rank 4 | Epic
+Deathless | lvl 21 | rank 4 | Epic
+Dark Elhain | lvl 21 | rank 4 | Epic
+Dark Elhain | lvl 21 | rank 4 | Epic
+Crimson Helm | lvl 21 | rank 4 | Epic
+Crimson Helm | lvl 21 | rank 4 | Epic
+Crimson Helm | lvl 21 | rank 4 | Epic
+Chonoru | lvl 21 | rank 4 | Epic
+Catacomb Councilor | lvl 21 | rank 4 | Epic
+Captain Temila | lvl 21 | rank 4 | Epic
+Captain Temila | lvl 21 | rank 4 | Epic
+Cagebreaker | lvl 21 | rank 4 | Epic
+Bushi | lvl 21 | rank 4 | Epic
+Burangiri | lvl 21 | rank 4 | Epic
+Broodlord | lvl 21 | rank 4 | Epic
+Bowf the Rancid | lvl 21 | rank 4 | Epic
+Bonekeeper | lvl 21 | rank 4 | Epic
+Bonekeeper | lvl 21 | rank 4 | Epic
+Bergoth the Malformed | lvl 21 | rank 4 | Epic
+Balthus Drauglord | lvl 21 | rank 4 | Epic
+Atur | lvl 21 | rank 4 | Epic
+Atur | lvl 21 | rank 4 | Epic
+Aothar | lvl 21 | rank 4 | Epic
+Aothar | lvl 21 | rank 4 | Epic
+Anchorite | lvl 21 | rank 4 | Epic
+Anax | lvl 21 | rank 4 | Epic
+Anax | lvl 21 | rank 4 | Epic
+Pain Keeper | lvl 21 | rank 4 | Rare
+Zelotah | lvl 20 | rank 4 | Epic
+Zelotah | lvl 20 | rank 4 | Epic
+Vogoth | lvl 20 | rank 4 | Epic
+Vergis | lvl 20 | rank 4 | Epic
+Ursine Ironhide | lvl 20 | rank 4 | Epic
+Rian the Conjurer | lvl 20 | rank 4 | Epic
+Neldor Rimeblade | lvl 20 | rank 4 | Epic
+Mordecai | lvl 20 | rank 4 | Epic
+Lorn the Cutter | lvl 20 | rank 4 | Epic
+Locwain | lvl 20 | rank 4 | Epic
+Lady Quilen | lvl 20 | rank 4 | Epic
+Jotunn | lvl 20 | rank 4 | Epic
+Golden Reaper | lvl 20 | rank 4 | Epic
+Fylja | lvl 20 | rank 4 | Epic
+Fayne | lvl 20 | rank 4 | Epic
+Demytha | lvl 20 | rank 4 | Epic
+Chani | lvl 20 | rank 4 | Epic
+Baroth the Bloodsoaked | lvl 20 | rank 4 | Epic
+Alure | lvl 20 | rank 4 | Epic
+Achak the Wendarin | lvl 20 | rank 4 | Epic
+Achak the Wendarin | lvl 20 | rank 4 | Epic
+Dark Kael | lvl 14 | rank 4 | Epic
+Captain Temila | lvl 14 | rank 4 | Epic
+Commander | lvl 14 | rank 4 | Uncommon
+Signy of Highshield | lvl 9 | rank 4 | Epic
+Royal Guard | lvl 9 | rank 4 | Epic
+Zelotah | lvl 1 | rank 4 | Epic
+Yaga the Insatiable | lvl 1 | rank 4 | Epic
+Vrask | lvl 1 | rank 4 | Epic
+Vrask | lvl 1 | rank 4 | Epic
+Vogoth | lvl 1 | rank 4 | Epic
+Vogoth | lvl 1 | rank 4 | Epic
+Vildrax | lvl 1 | rank 4 | Epic
+Urogrim | lvl 1 | rank 4 | Epic
+Ultimate Galek | lvl 1 | rank 4 | Epic
+Toragi the Frog | lvl 1 | rank 4 | Epic
+Tolf the Maimed | lvl 1 | rank 4 | Epic
+Thorn Golem | lvl 1 | rank 4 | Epic
+Tagoar | lvl 1 | rank 4 | Epic
+Stag Knight | lvl 1 | rank 4 | Epic
+Skraank | lvl 1 | rank 4 | Epic
+Sir Artimage | lvl 1 | rank 4 | Epic
+Seeker | lvl 1 | rank 4 | Epic
+Sandlashed Survivor | lvl 1 | rank 4 | Epic
+Ruella | lvl 1 | rank 4 | Epic
+Royal Guard | lvl 1 | rank 4 | Epic
+Romero | lvl 1 | rank 4 | Epic
+Quargan the Crowned | lvl 1 | rank 4 | Epic
+Pharsalas Gravedirt | lvl 1 | rank 4 | Epic
+Ostrox Boneglaive | lvl 1 | rank 4 | Epic
+Old Ghrukkus | lvl 1 | rank 4 | Epic
+Old Ghrukkus | lvl 1 | rank 4 | Epic
+Nogoryo | lvl 1 | rank 4 | Epic
+Myciliac Priest Orn | lvl 1 | rank 4 | Epic
+Mordecai | lvl 1 | rank 4 | Epic
+Mordecai | lvl 1 | rank 4 | Epic
+Missionary | lvl 1 | rank 4 | Epic
+Miscreated Monster | lvl 1 | rank 4 | Epic
+Masked Fearmonger | lvl 1 | rank 4 | Epic
+Magnarr | lvl 1 | rank 4 | Epic
+Lady Quilen | lvl 1 | rank 4 | Epic
+Jareg | lvl 1 | rank 4 | Epic
+Hotatsu | lvl 1 | rank 4 | Epic
+Hoskarul | lvl 1 | rank 4 | Epic
+Hoforees the Tusked | lvl 1 | rank 4 | Epic
+High Khatun | lvl 1 | rank 4 | Epic
+Hexia | lvl 1 | rank 4 | Epic
+Gorgorab | lvl 1 | rank 4 | Epic
+Giscard the Sigiled | lvl 1 | rank 4 | Epic
+Gerhard the Stone | lvl 1 | rank 4 | Epic
+Geomancer | lvl 1 | rank 4 | Epic
+Galkut | lvl 1 | rank 4 | Epic
+Fylja | lvl 1 | rank 4 | Epic
+Frostbringer | lvl 1 | rank 4 | Epic
+Frostbringer | lvl 1 | rank 4 | Epic
+Fayne | lvl 1 | rank 4 | Epic
+Enda Moonbeam | lvl 1 | rank 4 | Epic
+Dhukk the Pierced | lvl 1 | rank 4 | Epic
+Deathless | lvl 1 | rank 4 | Epic
+Dark Elhain | lvl 1 | rank 4 | Epic
+Crimson Helm | lvl 1 | rank 4 | Epic
+Corpse Collector | lvl 1 | rank 4 | Epic
+Conellia | lvl 1 | rank 4 | Epic
+Captain Temila | lvl 1 | rank 4 | Epic
+Canoness | lvl 1 | rank 4 | Epic
+Bushi | lvl 1 | rank 4 | Epic
+Bovos Sharphorn | lvl 1 | rank 4 | Epic
+Basher | lvl 1 | rank 4 | Epic
+Baroth the Bloodsoaked | lvl 1 | rank 4 | Epic
+Arwydd Quivergrass | lvl 1 | rank 4 | Epic
+Arwydd Quivergrass | lvl 1 | rank 4 | Epic
+Andryssia | lvl 1 | rank 4 | Epic
+Anchorite | lvl 1 | rank 4 | Epic
+Anax | lvl 1 | rank 4 | Epic
+Alika | lvl 1 | rank 4 | Epic
+Alaric the Hooded | lvl 1 | rank 4 | Epic
+Veteran | lvl 1 | rank 4 | Rare
+Veteran | lvl 1 | rank 4 | Rare
+Teryx the Restless | lvl 1 | rank 4 | Rare
+Stitched Beast | lvl 1 | rank 4 | Rare
+Steel Bowyer | lvl 1 | rank 4 | Rare
+Selinia Nightcloak | lvl 1 | rank 4 | Rare
+Ruffstone | lvl 1 | rank 4 | Rare
+Rockbeast | lvl 1 | rank 4 | Rare
+Renouncer | lvl 1 | rank 4 | Rare
+Renouncer | lvl 1 | rank 4 | Rare
+Renegade | lvl 1 | rank 4 | Rare
+Renegade | lvl 1 | rank 4 | Rare
+Renegade | lvl 1 | rank 4 | Rare
+Ragemonger | lvl 1 | rank 4 | Rare
+Paragon | lvl 1 | rank 4 | Rare
+Paragon | lvl 1 | rank 4 | Rare
+Ordinator | lvl 1 | rank 4 | Rare
+Magister | lvl 1 | rank 4 | Rare
+Justiciar | lvl 1 | rank 4 | Rare
+Justiciar | lvl 1 | rank 4 | Rare
+Justiciar | lvl 1 | rank 4 | Rare
+Honor Guard | lvl 1 | rank 4 | Rare
+Harvester | lvl 1 | rank 4 | Rare
+Harvester | lvl 1 | rank 4 | Rare
+Fencer | lvl 1 | rank 4 | Rare
+Doomscreech | lvl 1 | rank 4 | Rare
+Denid the Tusk Knight | lvl 1 | rank 4 | Rare
+Dagger | lvl 1 | rank 4 | Rare
+Dagger | lvl 1 | rank 4 | Rare
+Chaplain | lvl 1 | rank 4 | Rare
+Banshee | lvl 1 | rank 4 | Rare
+Arbalester | lvl 1 | rank 4 | Rare
+Ragemonger | lvl 22 | rank 3 | Rare
+Ox | lvl 17 | rank 3 | Rare
+Bulwark | lvl 17 | rank 3 | Rare
+Valerie | lvl 15 | rank 3 | Rare
+Valerie | lvl 15 | rank 3 | Rare
+Loneblade Riab | lvl 8 | rank 3 | Rare
+Medicus | lvl 6 | rank 3 | Rare
+Warmaiden | lvl 1 | rank 3 | Rare
+Warmaiden | lvl 1 | rank 3 | Rare
+Warmaiden | lvl 1 | rank 3 | Rare
+Warmaiden | lvl 1 | rank 3 | Rare
+Wagonbane | lvl 1 | rank 3 | Rare
+Wagonbane | lvl 1 | rank 3 | Rare
+Veteran | lvl 1 | rank 3 | Rare
+Veteran | lvl 1 | rank 3 | Rare
+Vanguard | lvl 1 | rank 3 | Rare
+Valerie | lvl 1 | rank 3 | Rare
+Valerie | lvl 1 | rank 3 | Rare
+Valerie | lvl 1 | rank 3 | Rare
+Treeshield Knott | lvl 1 | rank 3 | Rare
+Treeshield Knott | lvl 1 | rank 3 | Rare
+Tormentor | lvl 1 | rank 3 | Rare
+Tormentor | lvl 1 | rank 3 | Rare
+Steel Bowyer | lvl 1 | rank 3 | Rare
+Steel Bowyer | lvl 1 | rank 3 | Rare
+Steadfast Marshal | lvl 1 | rank 3 | Rare
+Steadfast Marshal | lvl 1 | rank 3 | Rare
+Spikehead | lvl 1 | rank 3 | Rare
+Spikehead | lvl 1 | rank 3 | Rare
+Spikehead | lvl 1 | rank 3 | Rare
+Slayer | lvl 1 | rank 3 | Rare
+Slayer | lvl 1 | rank 3 | Rare
+Skirmisher | lvl 1 | rank 3 | Rare
+Skirmisher | lvl 1 | rank 3 | Rare
+Skink | lvl 1 | rank 3 | Rare
+Skink | lvl 1 | rank 3 | Rare
+Shadowbow Tirlac | lvl 1 | rank 3 | Rare
+Shadowbow Tirlac | lvl 1 | rank 3 | Rare
+Shadowbow Tirlac | lvl 1 | rank 3 | Rare
+Selinia Nightcloak | lvl 1 | rank 3 | Rare
+Selinia Nightcloak | lvl 1 | rank 3 | Rare
+Sanctum Protector | lvl 1 | rank 3 | Rare
+Sanctum Protector | lvl 1 | rank 3 | Rare
+Ruffstone | lvl 1 | rank 3 | Rare
+Ruffstone | lvl 1 | rank 3 | Rare
+Rotting Mage | lvl 1 | rank 3 | Rare
+Rotting Mage | lvl 1 | rank 3 | Rare
+Rocktooth | lvl 1 | rank 3 | Rare
+Rocktooth | lvl 1 | rank 3 | Rare
+Rocktooth | lvl 1 | rank 3 | Rare
+Retainer | lvl 1 | rank 3 | Rare
+Reliquary Tender | lvl 1 | rank 3 | Rare
+Reliquary Tender | lvl 1 | rank 3 | Rare
+Reliquary Tender | lvl 1 | rank 3 | Rare
+Reliquary Tender | lvl 1 | rank 3 | Rare
+Redcloak Taneko | lvl 1 | rank 3 | Rare
+Redcloak Taneko | lvl 1 | rank 3 | Rare
+Redcloak Taneko | lvl 1 | rank 3 | Rare
+Redcloak Taneko | lvl 1 | rank 3 | Rare
+Purgator | lvl 1 | rank 3 | Rare
+Purgator | lvl 1 | rank 3 | Rare
+Purgator | lvl 1 | rank 3 | Rare
+Purgator | lvl 1 | rank 3 | Rare
+Petrifya Rockroot | lvl 1 | rank 3 | Rare
+Petrifya Rockroot | lvl 1 | rank 3 | Rare
+Petrifya Rockroot | lvl 1 | rank 3 | Rare
+Petrifya Rockroot | lvl 1 | rank 3 | Rare
+Pain Keeper | lvl 1 | rank 3 | Rare
+Ogryn Jailer | lvl 1 | rank 3 | Rare
+Ogryn Jailer | lvl 1 | rank 3 | Rare
+Odachi | lvl 1 | rank 3 | Rare
+Odachi | lvl 1 | rank 3 | Rare
+Mystic Hand | lvl 1 | rank 3 | Rare
+Myrmidon | lvl 1 | rank 3 | Rare
+Myrmidon | lvl 1 | rank 3 | Rare
+Muckstalker | lvl 1 | rank 3 | Rare
+Muckstalker | lvl 1 | rank 3 | Rare
+Muckstalker | lvl 1 | rank 3 | Rare
+Medicus | lvl 1 | rank 3 | Rare
+Meatcarver Tolog | lvl 1 | rank 3 | Rare
+Meatcarver Tolog | lvl 1 | rank 3 | Rare
+Meatcarver Tolog | lvl 1 | rank 3 | Rare
+Meatcarver Tolog | lvl 1 | rank 3 | Rare
+Marquis | lvl 1 | rank 3 | Rare
+Marquis | lvl 1 | rank 3 | Rare
+Marked | lvl 1 | rank 3 | Rare
+Marked | lvl 1 | rank 3 | Rare
+Magus | lvl 1 | rank 3 | Rare
+Lumberer | lvl 1 | rank 3 | Rare
+Lumberer | lvl 1 | rank 3 | Rare
+Longsword Torrux | lvl 1 | rank 3 | Rare
+Longsword Torrux | lvl 1 | rank 3 | Rare
+Longsword Torrux | lvl 1 | rank 3 | Rare
+Loneblade Riab | lvl 1 | rank 3 | Rare
+Lamibur | lvl 1 | rank 3 | Rare
+Kurzad Deepheart | lvl 1 | rank 3 | Rare
+Kurzad Deepheart | lvl 1 | rank 3 | Rare
+Kael | lvl 1 | rank 3 | Rare
+Judicator | lvl 1 | rank 3 | Rare
+Judge | lvl 1 | rank 3 | Rare
+Ironclad | lvl 1 | rank 3 | Rare
+Ironclad | lvl 1 | rank 3 | Rare
+Ironclad | lvl 1 | rank 3 | Rare
+Ingid Twyst-staff | lvl 1 | rank 3 | Rare
+Hurler | lvl 1 | rank 3 | Rare
+Hurler | lvl 1 | rank 3 | Rare
+Huntress | lvl 1 | rank 3 | Rare
+Huntress | lvl 1 | rank 3 | Rare
+Huntress | lvl 1 | rank 3 | Rare
+Huntress | lvl 1 | rank 3 | Rare
+Hill Nomad | lvl 1 | rank 3 | Rare
+Hellfreak | lvl 1 | rank 3 | Rare
+Hellfreak | lvl 1 | rank 3 | Rare
+Hellfreak | lvl 1 | rank 3 | Rare
+Haruspex | lvl 1 | rank 3 | Rare
+Haruspex | lvl 1 | rank 3 | Rare
+Harrier | lvl 1 | rank 3 | Rare
+Harrier | lvl 1 | rank 3 | Rare
+Graybeard | lvl 1 | rank 3 | Rare
+Graybeard | lvl 1 | rank 3 | Rare
+Gravechill Killer | lvl 1 | rank 3 | Rare
+Gravechill Killer | lvl 1 | rank 3 | Rare
+Grappler | lvl 1 | rank 3 | Rare
+Grandmaster | lvl 1 | rank 3 | Rare
+Gloril Brutebane | lvl 1 | rank 3 | Rare
+Glensage Cithrel | lvl 1 | rank 3 | Rare
+Glensage Cithrel | lvl 1 | rank 3 | Rare
+Gladiator | lvl 1 | rank 3 | Rare
+Gladiator | lvl 1 | rank 3 | Rare
+Geargrinder | lvl 1 | rank 3 | Rare
+Geargrinder | lvl 1 | rank 3 | Rare
+Galek | lvl 1 | rank 3 | Rare
+Frozen Banshee | lvl 1 | rank 3 | Rare
+Frozen Banshee | lvl 1 | rank 3 | Rare
+Fleshmonger | lvl 1 | rank 3 | Rare
+Fellhound | lvl 1 | rank 3 | Rare
+Executioner | lvl 1 | rank 3 | Rare
+Eviscerator | lvl 1 | rank 3 | Rare
+Eviscerator | lvl 1 | rank 3 | Rare
+Elhain | lvl 1 | rank 3 | Rare
+Elhain | lvl 1 | rank 3 | Rare
+Elhain | lvl 1 | rank 3 | Rare
+Elhain | lvl 1 | rank 3 | Rare
+Elhain | lvl 1 | rank 3 | Rare
+Elder | lvl 1 | rank 3 | Rare
+Doomscreech | lvl 1 | rank 3 | Rare
+Doomscreech | lvl 1 | rank 3 | Rare
+Dilgol | lvl 1 | rank 3 | Rare
+Diabolist | lvl 1 | rank 3 | Rare
+Diabolist | lvl 1 | rank 3 | Rare
+Denid the Tusk Knight | lvl 1 | rank 3 | Rare
+Denid the Tusk Knight | lvl 1 | rank 3 | Rare
+Deathchanter | lvl 1 | rank 3 | Rare
+Deathchanter | lvl 1 | rank 3 | Rare
+Deathchanter | lvl 1 | rank 3 | Rare
+Daywalker | lvl 1 | rank 3 | Rare
+Cudgeler | lvl 1 | rank 3 | Rare
+Cudgeler | lvl 1 | rank 3 | Rare
+Crossbowman | lvl 1 | rank 3 | Rare
+Courtier | lvl 1 | rank 3 | Rare
+Courtier | lvl 1 | rank 3 | Rare
+Chopper | lvl 1 | rank 3 | Rare
+Chevalier | lvl 1 | rank 3 | Rare
+Centurion | lvl 1 | rank 3 | Rare
+Centurion | lvl 1 | rank 3 | Rare
+Castigator | lvl 1 | rank 3 | Rare
+Castigator | lvl 1 | rank 3 | Rare
+Candleguard | lvl 1 | rank 3 | Rare
+Candleguard | lvl 1 | rank 3 | Rare
+Candleguard | lvl 1 | rank 3 | Rare
+Candleguard | lvl 1 | rank 3 | Rare
+Cagebound | lvl 1 | rank 3 | Rare
+Cagebound | lvl 1 | rank 3 | Rare
+Cagebound | lvl 1 | rank 3 | Rare
+Bulwark | lvl 1 | rank 3 | Rare
+Branch-arm Lasair | lvl 1 | rank 3 | Rare
+Branch-arm Lasair | lvl 1 | rank 3 | Rare
+Boughsmith Flannan | lvl 1 | rank 3 | Rare
+Boughsmith Flannan | lvl 1 | rank 3 | Rare
+Bloodpainter | lvl 1 | rank 3 | Rare
+Bloodpainter | lvl 1 | rank 3 | Rare
+Banshee | lvl 1 | rank 3 | Rare
+Banshee | lvl 1 | rank 3 | Rare
+Banshee | lvl 1 | rank 3 | Rare
+Avir the Alchemage | lvl 1 | rank 3 | Rare
+Avir the Alchemage | lvl 1 | rank 3 | Rare
+Avenger | lvl 1 | rank 3 | Rare
+Athel | lvl 1 | rank 3 | Rare
+Athel | lvl 1 | rank 3 | Rare
+Athel | lvl 1 | rank 3 | Rare
+Assassin | lvl 1 | rank 3 | Rare
+Assassin | lvl 1 | rank 3 | Rare
+Assassin | lvl 1 | rank 3 | Rare
+Assassin | lvl 1 | rank 3 | Rare
+Ashwalker | lvl 1 | rank 3 | Rare
+Ashwalker | lvl 1 | rank 3 | Rare
+Anointed | lvl 1 | rank 3 | Rare
+Anointed | lvl 1 | rank 3 | Rare
+Anointed | lvl 1 | rank 3 | Rare
+Acolyte | lvl 1 | rank 3 | Rare
+Acolyte | lvl 1 | rank 3 | Rare
+Incubus | lvl 16 | rank 2 | Uncommon
+Squire | lvl 1 | rank 2 | Uncommon
+Sniper | lvl 1 | rank 2 | Uncommon
+Skinner | lvl 1 | rank 2 | Uncommon
+Pit Fighter | lvl 1 | rank 2 | Uncommon
+Lemure | lvl 1 | rank 2 | Uncommon
+Duelist | lvl 1 | rank 2 | Uncommon
+Duelist | lvl 1 | rank 2 | Uncommon
+Commander | lvl 1 | rank 2 | Uncommon
+Commander | lvl 1 | rank 2 | Uncommon
+Swordsman | lvl 1 | rank 1 | Common
+Ranger | lvl 1 | rank 1 | Common
+Novitiate | lvl 1 | rank 1 | Common
+Lurker | lvl 1 | rank 1 | Common
+Hellhound | lvl 1 | rank 1 | Common
+Axeman | lvl 1 | rank 1 | Common

@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Set da Arbitra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1119;
+      --panel: #162334;
+      --text: #edf4ff;
+      --muted: #98adc9;
+      --accent: #53d3a8;
+      --line: #29415f;
+      --shadow: 0 14px 36px rgba(0, 0, 0, 0.33);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 500px at 8% -10%, #19314a 0%, transparent 60%),
+        radial-gradient(900px 420px at 95% 0%, #3f2f15 0%, transparent 55%),
+        linear-gradient(145deg, #0b1119 0%, #101a28 44%, #0b121e 100%);
+      min-height: 100vh;
+      padding: 28px;
+    }
+    .wrap { max-width: 1200px; margin: 0 auto; display: grid; gap: 16px; }
+    .card {
+      background: linear-gradient(165deg, rgba(28, 45, 67, 0.92), rgba(17, 27, 39, 0.92));
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: var(--shadow);
+    }
+    .hero {
+      background: linear-gradient(160deg, rgba(83, 211, 168, 0.17), rgba(255, 199, 107, 0.12) 50%, rgba(22, 35, 52, 0.75));
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px;
+    }
+    .hero h1 { margin: 0; font-family: "Manrope", sans-serif; font-size: clamp(1.4rem, 2.5vw, 2rem); }
+    .hero p { margin: 6px 0 0; color: var(--muted); }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .metric-label { color: var(--muted); font-size: 0.82rem; margin-bottom: 4px; }
+    .metric-value { font-family: "Manrope", sans-serif; font-size: 1.8rem; font-weight: 800; line-height: 1; }
+    .metric-sub { margin-top: 6px; color: var(--muted); font-size: 0.8rem; }
+    .layout { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 12px; }
+    .bars { display: grid; gap: 10px; }
+    .bar-row { display: grid; grid-template-columns: 86px 1fr 50px; gap: 10px; align-items: center; font-size: 0.86rem; }
+    .bar-label { color: var(--muted); font-weight: 600; }
+    .bar-track { height: 12px; background: #0e1824; border-radius: 999px; overflow: hidden; border: 1px solid #203249; }
+    .bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent), #84dfc0); border-radius: inherit; }
+    .bar-value { text-align: right; color: var(--text); font-weight: 700; font-family: "Manrope", sans-serif; }
+    .set-list { display: grid; gap: 9px; }
+    .set-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #132134;
+      border: 1px solid #24405f;
+      border-radius: 10px;
+      padding: 9px 11px;
+      font-size: 0.86rem;
+    }
+    .set-item strong { font-family: "Manrope", sans-serif; font-size: 1rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.84rem; border: 1px solid var(--line); }
+    thead th { background: #122032; color: #bcd0eb; text-align: left; font-weight: 700; padding: 10px 9px; border-bottom: 1px solid #27415e; }
+    tbody td { padding: 9px; border-bottom: 1px solid #20374f; color: #dce8f8; }
+    tbody tr:nth-child(odd) { background: #132132; }
+    tbody tr:nth-child(even) { background: #101c2b; }
+    .tag { display: inline-block; font-size: 0.72rem; font-weight: 700; border-radius: 999px; padding: 3px 8px; border: 1px solid transparent; }
+    .tag-high { background: rgba(83, 211, 168, 0.16); color: #84e4c4; border-color: rgba(83, 211, 168, 0.4); }
+    .tag-mid { background: rgba(255, 199, 107, 0.16); color: #ffd995; border-color: rgba(255, 199, 107, 0.4); }
+    .tag-low { background: rgba(255, 125, 125, 0.16); color: #ffaaaa; border-color: rgba(255, 125, 125, 0.36); }
+    .foot { color: var(--muted); font-size: 0.78rem; text-align: right; }
+    @media (max-width: 980px) { .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .layout { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) {
+      body { padding: 14px; }
+      .grid-4 { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 70px 1fr 44px; }
+      table { font-size: 0.78rem; }
+      thead th, tbody td { padding: 8px 6px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <h1>Dashboard de Itens - Arbitra</h1>
+      <p>Visual profissional com foco no que esta equipado e no que precisa trocar.</p>
+    </section>
+
+    <section class="grid-4">
+      <article class="card">
+        <div class="metric-label">Velocidade Total (build alvo)</div>
+        <div class="metric-value" id="spdTotal">-</div>
+        <div class="metric-sub">Soma da velocidade dos 9 slots</div>
+      </article>
+      <article class="card">
+        <div class="metric-label">Media por Item</div>
+        <div class="metric-value" id="spdAvg">-</div>
+        <div class="metric-sub">Distribuicao media de SPD</div>
+      </article>
+      <article class="card">
+        <div class="metric-label">Maior SPD em Item</div>
+        <div class="metric-value" id="spdMax">-</div>
+        <div class="metric-sub" id="spdMaxItem">-</div>
+      </article>
+      <article class="card">
+        <div class="metric-label">Trocas Necessarias</div>
+        <div class="metric-value" id="swapCount">-</div>
+        <div class="metric-sub">Itens do build alvo que ainda nao estao equipados</div>
+      </article>
+    </section>
+
+    <section class="layout">
+      <article class="card">
+        <div class="metric-label">Velocidade por Slot</div>
+        <div class="bars" id="bars"></div>
+      </article>
+      <article class="card">
+        <div class="metric-label">Distribuicao por Set</div>
+        <div class="set-list" id="setList"></div>
+      </article>
+    </section>
+
+    <section class="card">
+      <div class="metric-label">Itens Equipados Agora</div>
+      <div style="overflow-x:auto; margin-top: 8px;">
+        <table>
+          <thead>
+            <tr>
+              <th>Slot</th>
+              <th>ID</th>
+              <th>Descricao</th>
+              <th>Set</th>
+              <th>SPD</th>
+              <th>Nivel</th>
+              <th>Rank</th>
+              <th>Raridade</th>
+            </tr>
+          </thead>
+          <tbody id="equippedBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="metric-label">Itens Que Voce Precisa Trocar</div>
+      <div style="overflow-x:auto; margin-top: 8px;">
+        <table>
+          <thead>
+            <tr>
+              <th>Slot</th>
+              <th>ID</th>
+              <th>Descricao</th>
+              <th>Set</th>
+              <th>SPD</th>
+              <th>Nivel</th>
+              <th>Rank</th>
+              <th>Raridade</th>
+            </tr>
+          </thead>
+          <tbody id="swapBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="foot">Fonte principal: arbiter_dashboard_data.js</div>
+  </main>
+
+  <script src="./arbiter_dashboard_data.js"></script>
+  <script>
+    const fallbackData = [
+      { id: 13585, item_desc: "Elmo do Set Velocidade Divina | Velocidade +18", slot: 1, set: 34, spd: 24, level: 16, rank: 6, rarity: 4, currently_equipped: "unknown" },
+      { id: 7894, item_desc: "Luva do Set Velocidade | Precisao +0.06 | Velocidade +22", slot: 2, set: 4, spd: 27, level: 16, rank: 6, rarity: 5, currently_equipped: "unknown" },
+      { id: 4707, item_desc: "Peitoral do Set Velocidade | Precisao +0.05 | Velocidade +18", slot: 3, set: 4, spd: 23, level: 16, rank: 5, rarity: 5, currently_equipped: "unknown" },
+      { id: 13523, item_desc: "Bota do Set Velocidade Divina | Velocidade +45", slot: 4, set: 34, spd: 57, level: 16, rank: 6, rarity: 4, currently_equipped: "unknown" },
+      { id: 40698, item_desc: "Arma do Set Velocidade | Velocidade +17", slot: 5, set: 4, spd: 25, level: 16, rank: 6, rarity: 4, currently_equipped: "unknown" },
+      { id: 43206, item_desc: "Escudo do Set Velocidade | Velocidade +17", slot: 6, set: 4, spd: 21, level: 16, rank: 6, rarity: 4, currently_equipped: "unknown" },
+      { id: 40146, item_desc: "Anel do Set Protecao", slot: 7, set: 47, spd: 0, level: 4, rank: 6, rarity: 6, currently_equipped: "unknown" },
+      { id: 51247, item_desc: "Amuleto do Set Protecao | Precisao +0.05", slot: 8, set: 47, spd: 0, level: null, rank: 5, rarity: 5, currently_equipped: "unknown" },
+      { id: 26212, item_desc: "Bandeira do Set Quebrado | Velocidade +18", slot: 9, set: 0, spd: 22, level: 16, rank: 6, rarity: 4, currently_equipped: "unknown" }
+    ];
+
+    const externalRows = (window.ARBITER_DASHBOARD_DATA && Array.isArray(window.ARBITER_DASHBOARD_DATA.rows))
+      ? window.ARBITER_DASHBOARD_DATA.rows.map(r => ({
+          id: Number(r.item_id),
+          item_desc: r.item_desc,
+          slot: Number(r.slot),
+          set: Number(r.set_id),
+          spd: Number(r.spd || 0),
+          level: null,
+          rank: null,
+          rarity: null,
+          currently_equipped: (r.currently_equipped || "").toLowerCase()
+        }))
+      : [];
+
+    const data = externalRows.length ? externalRows : fallbackData;
+
+    const slotNames = {
+      1: "Elmo", 2: "Luva", 3: "Peitoral", 4: "Bota", 5: "Arma", 6: "Escudo", 7: "Anel", 8: "Amuleto", 9: "Bandeira"
+    };
+
+    const setNames = {
+      0: "Quebrado", 4: "Velocidade", 30: "Imortal", 34: "Velocidade Divina", 47: "Protecao", 58: "Supersonico"
+    };
+
+    const spdTotal = data.reduce((sum, it) => sum + (it.spd || 0), 0);
+    const spdAvg = spdTotal / data.length;
+    const maxItem = data.reduce((a, b) => (a.spd > b.spd ? a : b));
+    const maxSpd = maxItem.spd || 1;
+    const swapCount = data.filter(it => (it.currently_equipped || "") !== "yes").length;
+
+    document.getElementById("spdTotal").textContent = spdTotal.toString();
+    document.getElementById("spdAvg").textContent = spdAvg.toFixed(1);
+    document.getElementById("spdMax").textContent = maxItem.spd.toString();
+    document.getElementById("spdMaxItem").textContent = `${slotNames[maxItem.slot]} (ID ${maxItem.id})`;
+    document.getElementById("swapCount").textContent = swapCount.toString();
+
+    const bars = document.getElementById("bars");
+    data.forEach(it => {
+      const row = document.createElement("div");
+      row.className = "bar-row";
+      row.innerHTML = `
+        <div class="bar-label">${slotNames[it.slot]}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:${((it.spd || 0) / maxSpd) * 100}%"></div></div>
+        <div class="bar-value">${it.spd || 0}</div>
+      `;
+      bars.appendChild(row);
+    });
+
+    const setMap = new Map();
+    data.forEach(it => {
+      const key = it.set;
+      const prev = setMap.get(key) || { count: 0, spd: 0 };
+      setMap.set(key, { count: prev.count + 1, spd: prev.spd + (it.spd || 0) });
+    });
+
+    const setList = document.getElementById("setList");
+    [...setMap.entries()]
+      .sort((a, b) => b[1].spd - a[1].spd)
+      .forEach(([setId, info]) => {
+        const el = document.createElement("div");
+        el.className = "set-item";
+        el.innerHTML = `
+          <span>${setNames[setId] || `Set ${setId}`}</span>
+          <span><strong>${info.spd}</strong> SPD - ${info.count} itens</span>
+        `;
+        setList.appendChild(el);
+      });
+
+    function makeRow(it) {
+      const tr = document.createElement("tr");
+      const spdClass = it.spd >= 25 ? "tag-high" : it.spd >= 15 ? "tag-mid" : "tag-low";
+      tr.innerHTML = `
+        <td>${slotNames[it.slot]}</td>
+        <td>${it.id}</td>
+        <td>${it.item_desc}</td>
+        <td>${setNames[it.set] || it.set}</td>
+        <td><span class="tag ${spdClass}">${it.spd || 0}</span></td>
+        <td>${it.level ?? "-"}</td>
+        <td>${it.rank ?? "-"}</td>
+        <td>${it.rarity ?? "-"}</td>
+      `;
+      return tr;
+    }
+
+    const equippedBody = document.getElementById("equippedBody");
+    const swapBody = document.getElementById("swapBody");
+    const sorted = data.slice().sort((a, b) => Number(a.slot) - Number(b.slot));
+    sorted.filter(it => (it.currently_equipped || "") === "yes").forEach(it => equippedBody.appendChild(makeRow(it)));
+    sorted.filter(it => (it.currently_equipped || "") !== "yes").forEach(it => swapBody.appendChild(makeRow(it)));
+  </script>
+</body>
+</html>

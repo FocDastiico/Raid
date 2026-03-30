@@ -1,0 +1,1742 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raid Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090909;
+      --panel: #232120;
+      --panel-2: #171616;
+      --panel-3: #2b2827;
+      --line: #52463b;
+      --line-soft: #3f3934;
+      --text: #f3f0ea;
+      --muted: #aa9e90;
+      --accent: #f1a61b;
+      --accent-2: #b30a28;
+      --gold-soft: rgba(241, 166, 27, 0.18);
+      --shadow: 0 22px 48px rgba(0, 0, 0, 0.34);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: "Barlow", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(113, 40, 20, 0.22), transparent 28%),
+        radial-gradient(circle at right center, rgba(100, 20, 24, 0.16), transparent 24%),
+        linear-gradient(180deg, #0c0c0c 0%, #090909 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 120px 120px;
+      mask-image: radial-gradient(circle at center, black 40%, transparent 95%);
+      opacity: 0.18;
+    }
+
+    .app-shell {
+      max-width: 1520px;
+      margin: 0 auto;
+      padding: 26px;
+      display: grid;
+      grid-template-columns: 88px minmax(0, 1fr);
+      gap: 22px;
+    }
+
+    .sidebar {
+      background: rgba(8, 8, 8, 0.85);
+      border: 1px solid #1f1a17;
+      border-radius: 22px;
+      min-height: calc(100vh - 52px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 18px 12px;
+      gap: 18px;
+      position: sticky;
+      top: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background:
+        linear-gradient(135deg, rgba(179, 10, 40, 0.28), rgba(241, 166, 27, 0.14)),
+        #120d0d;
+      border: 1px solid #4b1d1f;
+      position: relative;
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      inset: 9px 15px;
+      border-left: 4px solid #e53d43;
+      border-right: 4px solid #e53d43;
+      transform: skewY(-14deg);
+    }
+
+    .brand-mark::after {
+      inset: 16px 9px 9px 9px;
+      border: 0;
+      border-top: 4px solid #e53d43;
+      transform: none;
+    }
+
+    .side-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      border: 1px solid #2d2723;
+      background: #110f0f;
+      color: #d0c4b5;
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+    }
+
+    .main {
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+
+    .hero {
+      border: 1px solid #2c2622;
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(40, 34, 32, 0.96), rgba(22, 20, 20, 0.98));
+      padding: 22px 24px 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: "Rajdhani", sans-serif;
+      font-size: 2.1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .hero p {
+      margin: 8px 0 16px;
+      color: var(--muted);
+      max-width: 900px;
+      font-size: 1rem;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .meta-chip {
+      border: 1px solid #3f352d;
+      background: rgba(12, 12, 12, 0.42);
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: #ece0d1;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      border: 1px solid #4d4034;
+      background: #171514;
+      color: #cfbfab;
+      border-radius: 12px;
+      padding: 11px 16px;
+      font-family: "Rajdhani", sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 1.02rem;
+      cursor: pointer;
+    }
+
+    .tab.active {
+      color: #120d09;
+      background: linear-gradient(180deg, #ffbe41 0%, #f1a61b 100%);
+      border-color: #f1a61b;
+      font-weight: 700;
+    }
+
+    .view {
+      display: none;
+      border: 1px solid #2c2622;
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(39, 36, 35, 0.97), rgba(19, 18, 18, 0.98));
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .view.active { display: block; }
+
+    .boss-workbench {
+      display: grid;
+      gap: 18px;
+    }
+
+    .boss-topbar {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .boss-selectors {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .field {
+      min-width: 230px;
+    }
+
+    .field-label,
+    .section-heading {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-family: "Rajdhani", sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid #726355;
+      background: transparent;
+      color: var(--text);
+      padding: 8px 2px 10px;
+      font: inherit;
+      outline: none;
+    }
+
+    .hh-select {
+      position: relative;
+      min-width: 230px;
+    }
+
+    .hh-select-button {
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid #726355;
+      background: transparent;
+      color: var(--text);
+      padding: 8px 28px 10px 2px;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .hh-select-button::after {
+      content: "";
+      position: absolute;
+      right: 6px;
+      top: 50%;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid #b9984d;
+      transform: translateY(-20%);
+      transition: transform 140ms ease;
+    }
+
+    .hh-select.open .hh-select-button::after {
+      transform: translateY(-20%) rotate(180deg);
+    }
+
+    .hh-select-menu {
+      position: absolute;
+      top: calc(100% + 2px);
+      left: 0;
+      min-width: 132px;
+      width: 100%;
+      max-height: 420px;
+      background: #454545;
+      border: 1px solid #68615d;
+      border-radius: 0 0 6px 6px;
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
+      overflow-x: hidden;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      z-index: 30;
+      display: none;
+    }
+
+    .hh-select-menu::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+      display: none;
+    }
+
+    .hh-select.open .hh-select-menu {
+      display: block;
+    }
+
+    .hh-select-option {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: #f4efe6;
+      padding: 13px 16px;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .hh-select-option:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .hh-select-option.active {
+      background: rgba(255, 183, 43, 0.14);
+      color: var(--accent);
+    }
+
+    .hh-select-check {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1rem;
+      visibility: hidden;
+    }
+
+    .hh-select-option.active .hh-select-check {
+      visibility: visible;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .action-btn {
+      border-radius: 8px;
+      padding: 12px 16px;
+      border: 1px solid #6b5423;
+      background: #171514;
+      color: #fff8ef;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .action-btn.primary {
+      border-color: #f1a61b;
+      box-shadow: inset 0 0 0 1px rgba(241, 166, 27, 0.18);
+    }
+
+    .action-btn.gold {
+      background: linear-gradient(180deg, #f7b126 0%, #e39406 100%);
+      color: #211504;
+      border-color: #f1a61b;
+    }
+
+    .action-btn.danger {
+      background: linear-gradient(180deg, #d1173e 0%, #a10927 100%);
+      border-color: #ce3958;
+    }
+
+    .boss-stage {
+      display: grid;
+      grid-template-columns: minmax(320px, 520px) minmax(520px, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .boss-panel,
+    .team-panel,
+    .content-card {
+      border: 1px solid #37302b;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(30, 28, 27, 0.98), rgba(22, 21, 21, 0.98));
+      padding: 18px;
+    }
+
+    .boss-title {
+      font-family: "Rajdhani", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 2rem;
+      margin: 0 0 14px;
+      color: var(--accent);
+    }
+
+    .boss-card {
+      display: grid;
+      grid-template-columns: 116px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .boss-portrait {
+      width: 116px;
+      aspect-ratio: 0.74;
+      border-radius: 10px;
+      border: 1px solid #8f6f2d;
+      background: linear-gradient(160deg, #1a1614 0%, #120d0d 100%);
+      box-shadow: inset 0 0 0 1px rgba(255, 208, 132, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #bossPortraitArt {
+      width: 100%;
+      height: 100%;
+    }
+
+    .boss-portrait img,
+    .boss-portrait svg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .boss-level {
+      position: absolute;
+      right: 6px;
+      bottom: 6px;
+      background: rgba(15, 15, 15, 0.82);
+      border: 1px solid #8f6f2d;
+      border-radius: 6px;
+      padding: 2px 6px;
+      font-weight: 700;
+      font-size: 0.96rem;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      align-content: start;
+    }
+
+    .stat-line {
+      display: grid;
+      gap: 6px;
+      align-items: start;
+      font-size: 1.08rem;
+      padding: 10px 12px;
+      border: 1px solid rgba(143, 111, 45, 0.18);
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.12));
+    }
+
+    .stat-line b {
+      color: #c9b28b;
+      font-family: "Rajdhani", sans-serif;
+      letter-spacing: 0.08em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+    }
+
+    .stat-line span {
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1.2rem;
+      line-height: 1.05;
+    }
+
+    .boss-tips {
+      margin-top: 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .boss-tips-title {
+      margin: 0;
+      color: var(--accent);
+      font-family: "Rajdhani", sans-serif;
+      font-size: 1.55rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .boss-notes {
+      display: grid;
+      gap: 8px;
+    }
+
+    .boss-note {
+      border-left: 3px solid var(--accent);
+      padding: 10px 12px;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.14), rgba(255, 255, 255, 0.015));
+      color: #ddd2c3;
+      border-radius: 0 10px 10px 0;
+      line-height: 1.35;
+    }
+
+    .team-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+
+    .leader-note {
+      color: #81776d;
+      font-family: "Rajdhani", sans-serif;
+      font-size: 1.45rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .team-slots {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+      align-items: start;
+    }
+
+    .team-slots.compact {
+      gap: 10px;
+    }
+
+    .team-slots.compact .slot-label {
+      font-size: 1.22rem;
+    }
+
+    .team-slots.compact .slot-frame {
+      max-width: 96px;
+      font-size: 2.7rem;
+    }
+
+    .team-slots.compact .optimise-check {
+      font-size: 0.96rem;
+      gap: 6px;
+    }
+
+    .slot-card {
+      display: grid;
+      gap: 8px;
+      justify-items: center;
+      align-content: start;
+    }
+
+    .slot-label {
+      color: var(--accent);
+      font-family: "Rajdhani", sans-serif;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .slot-frame {
+      width: 100%;
+      max-width: 120px;
+      aspect-ratio: 0.74;
+      border: 2px solid #a17a2c;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #2d332e 0%, #1f241e 100%);
+      box-shadow: inset 0 0 0 1px rgba(255, 222, 155, 0.1);
+      position: relative;
+      display: grid;
+      place-items: center;
+      color: #9f9043;
+      font-size: 3.2rem;
+      font-weight: 600;
+      overflow: hidden;
+    }
+
+    .slot-frame::before,
+    .slot-frame::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #725821;
+    }
+
+    .slot-frame::before {
+      top: 6px;
+      left: 6px;
+      border-right: 0;
+      border-bottom: 0;
+      border-radius: 8px 0 0 0;
+    }
+
+    .slot-frame::after {
+      right: 6px;
+      bottom: 6px;
+      border-left: 0;
+      border-top: 0;
+      border-radius: 0 0 8px 0;
+    }
+
+    .slot-frame.filled {
+      background: linear-gradient(180deg, #31261a 0%, #171311 100%);
+      border-color: #d6a33f;
+      color: #f9d98f;
+    }
+
+    .slot-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .slot-empty-mark {
+      position: relative;
+      z-index: 1;
+    }
+
+    .slot-avatar-fallback {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 12px;
+      text-align: center;
+      font-family: "Rajdhani", sans-serif;
+      font-size: 1.45rem;
+      line-height: 1;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background:
+        radial-gradient(circle at top, rgba(241, 166, 27, 0.28), transparent 55%),
+        linear-gradient(180deg, rgba(82, 53, 20, 0.65), rgba(18, 14, 12, 0.95));
+    }
+
+    .slot-name {
+      min-height: 2.8em;
+      text-align: center;
+      color: #f7efe2;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .slot-actions {
+      width: 100%;
+      display: grid;
+      gap: 8px;
+    }
+
+    .slot-picker {
+      width: 100%;
+      border: 1px solid #564739;
+      border-radius: 10px;
+      background: #161313;
+      color: var(--text);
+      padding: 10px 12px;
+      font: inherit;
+      outline: none;
+    }
+
+    .slot-picker:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(241, 166, 27, 0.18);
+    }
+
+    .slot-clear {
+      width: 100%;
+      border: 1px solid #47352e;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.18);
+      color: #dcccbc;
+      padding: 9px 12px;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .slot-clear:hover {
+      border-color: #71513c;
+      color: #fff1de;
+    }
+
+    .slot-clear:disabled {
+      opacity: 0.48;
+      cursor: default;
+    }
+
+    .optimise-check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #f2eee7;
+      font-size: 1.05rem;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+      align-items: center;
+    }
+
+    .set-card.active {
+      background: linear-gradient(180deg, rgba(241, 166, 27, 0.2), rgba(241, 166, 27, 0.06));
+      border-color: var(--accent);
+      color: #fff4dd;
+    }
+
+    .champion-grid,
+    .set-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .champ-card,
+    .set-card {
+      border: 1px solid #3c342e;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(34, 31, 30, 0.96), rgba(20, 19, 19, 0.98));
+      padding: 14px;
+    }
+
+    .champion-grid.hh-list {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .champ-row {
+      display: grid;
+      grid-template-columns: 88px minmax(0, 1fr);
+      gap: 14px;
+      border: 1px solid #3a332d;
+      border-radius: 0;
+      padding: 8px;
+      background: linear-gradient(180deg, rgba(50, 48, 47, 0.94), rgba(37, 35, 35, 0.98));
+    }
+
+    .champ-portrait {
+      width: 88px;
+      height: 88px;
+      border: 1px solid #6d5530;
+      background: #171313;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+    }
+
+    .champ-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .champ-portrait-fallback {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      font-family: "Rajdhani", sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.06em;
+      color: #ffcf73;
+      background:
+        radial-gradient(circle at top, rgba(241, 166, 27, 0.28), transparent 55%),
+        linear-gradient(180deg, rgba(71, 30, 17, 0.88), rgba(18, 14, 12, 0.98));
+    }
+
+    .champ-level-badge {
+      position: absolute;
+      right: 4px;
+      bottom: 4px;
+      min-width: 28px;
+      padding: 2px 6px;
+      border: 1px solid #a67f2e;
+      background: rgba(10, 10, 10, 0.86);
+      color: #ffffff;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .champ-row-body {
+      min-width: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .champ-row-top {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .champ-name-block {
+      min-width: 0;
+      display: grid;
+      gap: 4px;
+    }
+
+    .champ-name-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: baseline;
+    }
+
+    .champ-name {
+      margin: 0;
+      font-family: "Rajdhani", sans-serif;
+      font-size: 1.85rem;
+      line-height: 1;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #f1a61b;
+    }
+
+    .champ-role {
+      color: #f0ece4;
+      font-size: 1.2rem;
+      white-space: nowrap;
+    }
+
+    .champ-subline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: #c3b5a4;
+      font-size: 0.95rem;
+    }
+
+    .set-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .set-chip {
+      border: 1px solid #5f4d36;
+      background: rgba(0, 0, 0, 0.18);
+      color: #efe2cf;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.88rem;
+      white-space: nowrap;
+    }
+
+    .champ-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px 18px;
+    }
+
+    .champ-stat {
+      display: grid;
+      gap: 2px;
+    }
+
+    .champ-stat-label {
+      color: #ddd0be;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+    }
+
+    .champ-stat-value {
+      color: #ffffff;
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.05;
+    }
+
+    .champ-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .set-name {
+      margin: 0 0 6px;
+      color: #fff4dd;
+      font-family: "Rajdhani", sans-serif;
+      font-size: 1.45rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .library-sub,
+    .set-sub,
+    .mini-note {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .champ-card h3 {
+      margin: 0 0 6px;
+      font-family: "Rajdhani", sans-serif;
+      font-size: 1.45rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .champ-meta,
+    .set-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 0;
+    }
+
+    .mini-pill {
+      border: 1px solid #4a4038;
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 0.9rem;
+      color: #e5dbcf;
+      background: rgba(0, 0, 0, 0.16);
+    }
+
+    .table-wrap {
+      overflow: auto;
+      margin-top: 14px;
+      border: 1px solid #3a332d;
+      border-radius: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 780px;
+    }
+
+    th, td {
+      padding: 11px 12px;
+      border-bottom: 1px solid #2e2824;
+      text-align: left;
+    }
+
+    th {
+      background: #1a1817;
+      color: #dec7a6;
+      font-family: "Rajdhani", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 1rem;
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    @media (max-width: 1200px) {
+      .app-shell { grid-template-columns: 1fr; }
+      .sidebar {
+        min-height: auto;
+        position: static;
+        flex-direction: row;
+        justify-content: center;
+      }
+      .boss-stage { grid-template-columns: 1fr; }
+      .team-slots { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+    }
+
+    @media (max-width: 720px) {
+      .app-shell { padding: 14px; }
+      .hero, .view { padding: 14px; }
+      .boss-topbar { grid-template-columns: 1fr; }
+      .boss-card { grid-template-columns: 1fr; }
+      .boss-portrait { width: 100px; }
+      .stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .champ-row { grid-template-columns: 1fr; }
+      .champ-portrait { width: 104px; height: 104px; }
+      .champ-stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-mark" title="Raid"></div>
+      <div class="side-icon">H</div>
+      <div class="side-icon">B</div>
+      <div class="side-icon">C</div>
+      <div class="side-icon">I</div>
+    </aside>
+
+    <main class="main">
+      <section class="hero">
+        <h1>Raid Team Dashboard</h1>
+        <p>Baseado no visual do Team Optimizer do HellHades, mas simplificado para focar no que importa agora: bosses, seu roster e seus itens por conjunto.</p>
+        <div class="meta-row" id="metaRow"></div>
+      </section>
+
+      <nav class="tabs">
+        <button class="tab" data-view="bosses">Bosses</button>
+        <button class="tab active" data-view="champions">Campeoes</button>
+        <button class="tab" data-view="items">Itens</button>
+      </nav>
+
+      <section class="view" data-view="bosses">
+        <div class="boss-workbench">
+          <div class="boss-topbar">
+            <div class="boss-selectors">
+              <label class="field">
+                <span class="field-label">Dungeon</span>
+                <div class="hh-select" id="bossSelectWrap"></div>
+              </label>
+              <label class="field" id="bossDifficultyField">
+                <span class="field-label">Difficulty</span>
+                <div class="hh-select" id="bossDifficultySelectWrap"></div>
+              </label>
+              <label class="field">
+                <span class="field-label">Stage</span>
+                <div class="hh-select" id="bossStageSelectWrap"></div>
+              </label>
+            </div>
+            <div class="actions">
+              <button class="action-btn primary" type="button">Find Team</button>
+              <button class="action-btn gold" type="button">Past Builds</button>
+              <button class="action-btn danger" type="button" id="bossResetBtn">Reset</button>
+            </div>
+          </div>
+
+          <div class="boss-stage">
+            <section class="boss-panel">
+              <h2 class="boss-title" id="bossTitle">Boss</h2>
+              <div class="boss-card">
+                <div class="boss-portrait">
+                  <div id="bossPortraitArt"></div>
+                  <div class="boss-level" id="bossLevelBadge">200</div>
+                </div>
+                <div>
+                  <div class="stat-grid" id="bossStatsGrid"></div>
+                </div>
+              </div>
+              <div class="boss-tips">
+                <h3 class="boss-tips-title">Dicas</h3>
+                <div class="boss-notes" id="bossNotes"></div>
+              </div>
+            </section>
+
+            <section class="team-panel">
+              <div class="team-header">
+                <div class="leader-note" id="leaderNote">Nenhum lider selecionado</div>
+              </div>
+              <div class="team-slots" id="teamSlots"></div>
+            </section>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="view active" data-view="champions">
+        <div class="content-card">
+          <div class="toolbar">
+            <label class="field" style="min-width: 260px;">
+              <span class="field-label">Buscar campeao</span>
+              <input id="champSearch" type="search" placeholder="Nome do campeao" />
+            </label>
+            <label class="field" style="min-width: 220px;">
+              <span class="field-label">Raridade</span>
+              <select id="champRarityFilter"></select>
+            </label>
+          </div>
+          <div class="champion-grid" id="championGrid"></div>
+        </div>
+      </section>
+
+      <section class="view" data-view="items">
+        <div class="content-card">
+          <div class="set-grid" id="setGrid"></div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Set</th>
+                  <th>Slot</th>
+                  <th>Rank</th>
+                  <th>Rarity</th>
+                  <th>Level</th>
+                  <th>Equipped</th>
+                  <th>Descricao</th>
+                </tr>
+              </thead>
+              <tbody id="setItemTable"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./raid_simple_dashboard_data.js"></script>
+  <script>
+    const DATA = window.RAID_SIMPLE_DASHBOARD_DATA;
+    const state = {
+      bossFamily: "all",
+      selectedBossId: "",
+      selectedDifficulty: "",
+      selectedDungeon: "",
+      openSelect: "",
+      auraType: "speed",
+      optimiserMode: "balanced",
+      mustIncludeChampion: "none",
+      mustIncludeChampion2: "none",
+      champSearch: "",
+      champRarity: "all",
+      activeSetId: null,
+      activeEffects: new Set(["shield", "ignore_def", "freeze"]),
+      teamSelections: {}
+    };
+
+    const effectLabels = [
+      "shield", "block_damage", "ignore_def", "ignore_res", "increase_atk",
+      "increase_def", "strengthen", "ally_protect", "decrease_spd", "decrease_turn_meter",
+      "increase_spd", "debuff_spread", "poison", "hp_burn", "leech",
+      "decrease_acc", "block_buffs", "block_active_skills", "freeze"
+    ];
+
+    const bossLookup = new Map(DATA.bosses.map((boss) => [boss.id, boss]));
+    const rarityOrder = ["all", ...new Set(DATA.champions.map((c) => c.rarity).filter(Boolean))];
+    const teamStorageKey = "raid-dashboard-team-selections";
+    const sortedChampions = [...DATA.champions].sort((a, b) => {
+      const levelDiff = Number(b.level || 0) - Number(a.level || 0);
+      if (levelDiff) return levelDiff;
+      const gradeDiff = Number(b.grade || 0) - Number(a.grade || 0);
+      if (gradeDiff) return gradeDiff;
+      return String(a.name || "").localeCompare(String(b.name || ""), "pt-BR");
+    });
+
+    function safeText(value) {
+      return String(value ?? "").replace(/[<>]/g, "");
+    }
+
+    function slugifyChampionName(value) {
+      return safeText(value)
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/['â€™.]/g, "")
+        .replace(/[^a-zA-Z0-9]+/g, "")
+        .toLowerCase();
+    }
+
+    function getChampionProfileSrc(champion) {
+      if (!champion?.name) return "";
+      return `./champ_profiles/${slugifyChampionName(champion.name)}_profile.png`;
+    }
+
+    function getChampionShortLabel(name) {
+      return safeText(name)
+        .split(/\s+/)
+        .filter(Boolean)
+        .slice(0, 2)
+        .map((part) => part[0] || "")
+        .join("")
+        .toUpperCase() || "?";
+    }
+
+    function loadSavedTeams() {
+      try {
+        const raw = window.localStorage.getItem(teamStorageKey);
+        if (!raw) return {};
+        const parsed = JSON.parse(raw);
+        return parsed && typeof parsed === "object" ? parsed : {};
+      } catch {
+        return {};
+      }
+    }
+
+    function saveTeams() {
+      try {
+        window.localStorage.setItem(teamStorageKey, JSON.stringify(state.teamSelections));
+      } catch {
+        // Ignore local storage errors so the UI still works.
+      }
+    }
+
+    function getSelectedTeamForBoss(bossId) {
+      return Array.isArray(state.teamSelections[bossId]) ? state.teamSelections[bossId] : [];
+    }
+
+    function setSelectedChampionForSlot(bossId, slotIndex, heroIdValue) {
+      const team = [...getSelectedTeamForBoss(bossId)];
+      const heroId = Number(heroIdValue || 0);
+      team[slotIndex] = heroId || null;
+      state.teamSelections[bossId] = team;
+      saveTeams();
+    }
+
+    function clearSelectedChampionForSlot(bossId, slotIndex) {
+      const team = [...getSelectedTeamForBoss(bossId)];
+      team[slotIndex] = null;
+      state.teamSelections[bossId] = team;
+      saveTeams();
+    }
+
+    function titleCase(value) {
+      return safeText(value).replace(/[_-]+/g, " ").replace(/\b\w/g, (m) => m.toUpperCase());
+    }
+
+    function formatNumber(value) {
+      const num = Number(value || 0);
+      return Number.isFinite(num) ? num.toLocaleString("pt-BR") : "-";
+    }
+
+    function formatStatLabel(key) {
+      const labels = {
+        hp: "HP",
+        atk: "ATK",
+        def: "DEF",
+        spd: "SPD",
+        acc: "ACC",
+        res: "RES",
+        c_rate: "C.RATE",
+        c_dmg: "C.DMG",
+        boss_spd: "BOSS SPD",
+        target_spd: "TARGET SPD",
+        target_acc: "TARGET ACC",
+        target_res: "TARGET RES",
+        target_def: "TARGET DEF"
+      };
+      return labels[key] || titleCase(key);
+    }
+
+    function getBossPalette(artKey) {
+      const palettes = {
+        "chimera-r1": ["#7f1424", "#d93a45", "#f3a51d"],
+        "chimera-r2": ["#3c0f55", "#8f2df1", "#ff8d2a"],
+        "chimera-r3": ["#0f4d5a", "#1db7c7", "#d7ef63"],
+        "hydra": ["#2b0e16", "#6e162b", "#f28d55"],
+        "hydra-decay": ["#10261f", "#247a66", "#d3d86a"],
+        "hydra-blight": ["#221519", "#7e2740", "#f1a54e"],
+        "hydra-wrath": ["#24150e", "#99511e", "#f5cf55"],
+        "hydra-mischief": ["#162028", "#456c8b", "#d7edff"],
+        "demon-lord": ["#280b09", "#7d1c18", "#f0a33c"],
+        "dragon": ["#14211f", "#1f6d5c", "#d9ce72"],
+        "fire-knight": ["#2a1710", "#a33c18", "#f5cb57"],
+        "spider": ["#1d1611", "#78521f", "#f7df7f"],
+        "ice-golem": ["#0c1a27", "#2f6587", "#dbefff"],
+        "minotaur": ["#26140e", "#8d4d1f", "#efd48e"],
+      };
+      return palettes[artKey] || ["#231413", "#6c2520", "#e8a33a"];
+    }
+
+    function buildBossArt(boss) {
+      const [dark, mid, glow] = getBossPalette(boss.artKey || boss.family);
+      const title = safeText(boss.label);
+      const difficulty = safeText(boss.difficulty);
+      return `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 560">
+          <defs>
+            <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="${dark}"/>
+              <stop offset="58%" stop-color="${mid}"/>
+              <stop offset="100%" stop-color="#090909"/>
+            </linearGradient>
+            <radialGradient id="glow" cx="50%" cy="22%" r="55%">
+              <stop offset="0%" stop-color="${glow}" stop-opacity="0.95"/>
+              <stop offset="45%" stop-color="${glow}" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="${glow}" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="420" height="560" fill="url(#bg)"/>
+          <circle cx="205" cy="120" r="130" fill="url(#glow)"/>
+          <path d="M65 160 C110 75, 170 65, 190 152 C145 138, 118 160, 102 214 Z" fill="${glow}" fill-opacity="0.35"/>
+          <path d="M355 160 C310 75, 250 65, 230 152 C275 138, 302 160, 318 214 Z" fill="${glow}" fill-opacity="0.35"/>
+          <path d="M110 380 C110 250, 155 170, 210 170 C265 170, 310 250, 310 380 C278 346, 249 330, 210 330 C171 330, 142 346, 110 380 Z" fill="#0f0d0d" fill-opacity="0.72"/>
+          <circle cx="170" cy="245" r="18" fill="${glow}"/>
+          <circle cx="250" cy="245" r="18" fill="${glow}"/>
+          <path d="M160 306 Q210 342 260 306" stroke="${glow}" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <text x="24" y="470" fill="#f8efe2" font-size="34" font-family="Barlow, sans-serif" font-weight="700">${title}</text>
+          <text x="24" y="510" fill="#ffcc78" font-size="26" font-family="Barlow, sans-serif">${difficulty}</text>
+        </svg>
+      `;
+    }
+
+    function renderBossPortrait(boss) {
+      const portrait = document.getElementById("bossPortraitArt");
+      portrait.innerHTML = "";
+
+      if (boss.imageUrl) {
+        const img = document.createElement("img");
+        img.src = boss.imageUrl;
+        img.alt = `${boss.displayTitle || boss.label} - ${boss.difficulty}`;
+        img.loading = "eager";
+        img.referrerPolicy = "no-referrer";
+        img.onerror = () => {
+          portrait.innerHTML = buildBossArt(boss);
+        };
+        portrait.appendChild(img);
+        return;
+      }
+
+      portrait.innerHTML = buildBossArt(boss);
+    }
+
+    function getVisibleBosses() {
+      return DATA.bosses.filter((boss) => state.bossFamily === "all" || boss.family === state.bossFamily);
+    }
+
+    function getDungeonBosses(label) {
+      return getVisibleBosses().filter((boss) => boss.label === label);
+    }
+
+    function usesSingleStageSelector(bosses) {
+      if (!bosses.length) return false;
+      const family = bosses[0].family;
+      if (["chimera", "hydra", "clanboss"].includes(family)) {
+        return true;
+      }
+      return bosses.every((boss) => {
+        const stageLabel = boss.selectorStageLabel || boss.stageLabel || "";
+        return stageLabel === (boss.difficulty || "");
+      });
+    }
+
+    function ensureBossSelection() {
+      const visible = getVisibleBosses();
+      if (!visible.length) {
+        state.selectedBossId = "";
+        state.selectedDifficulty = "";
+        state.selectedDungeon = "";
+        return;
+      }
+      const currentVisible = visible.find((boss) => boss.id === state.selectedBossId);
+      const selected = currentVisible || visible[0];
+      state.selectedDungeon = selected.label;
+      state.selectedBossId = selected.id;
+      state.selectedDifficulty = selected.difficulty;
+    }
+
+    function getSelectedBoss() {
+      return bossLookup.get(state.selectedBossId) || getVisibleBosses()[0] || null;
+    }
+
+    function renderFakeSelect(containerId, label, options, selectedValue, onSelect) {
+      const wrap = document.getElementById(containerId);
+      if (!wrap) return;
+      const selected = options.find((option) => option.value === selectedValue) || options[0];
+      const isOpen = state.openSelect === containerId;
+      wrap.className = `hh-select ${isOpen ? "open" : ""}`;
+      wrap.innerHTML = `
+        <button type="button" class="hh-select-button">${safeText(selected?.label || label)}</button>
+        <div class="hh-select-menu">
+          ${options.map((option) => `
+            <button type="button" class="hh-select-option ${option.value === selectedValue ? "active" : ""}" data-value="${safeText(option.value)}">
+              <span>${safeText(option.label)}</span>
+              <span class="hh-select-check">âœ“</span>
+            </button>
+          `).join("")}
+        </div>
+      `;
+      wrap.querySelector(".hh-select-button").addEventListener("click", (event) => {
+        event.stopPropagation();
+        state.openSelect = isOpen ? "" : containerId;
+        renderBossSelectors();
+      });
+      const menu = wrap.querySelector(".hh-select-menu");
+      if (menu) {
+        menu.addEventListener("wheel", (event) => {
+          const delta = event.deltaY;
+          const canScrollDown = menu.scrollTop + menu.clientHeight < menu.scrollHeight;
+          const canScrollUp = menu.scrollTop > 0;
+          if ((delta > 0 && canScrollDown) || (delta < 0 && canScrollUp) || menu.scrollHeight > menu.clientHeight) {
+            event.preventDefault();
+            event.stopPropagation();
+            menu.scrollTop += delta;
+          }
+        }, { passive: false });
+      }
+      wrap.querySelectorAll(".hh-select-option").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.stopPropagation();
+          state.openSelect = "";
+          onSelect(button.dataset.value);
+        });
+      });
+    }
+
+    function renderMeta() {
+      const metaRow = document.getElementById("metaRow");
+      const updated = new Date(DATA.meta.updatedOn);
+      metaRow.innerHTML = `
+        <span class="meta-chip">Conta: ${safeText(DATA.meta.accountName)}</span>
+        <span class="meta-chip">Atualizado: ${updated.toLocaleString("pt-BR")}</span>
+        <span class="meta-chip">Campeoes: ${DATA.summary.championsTotal}</span>
+        <span class="meta-chip">Itens: ${DATA.summary.itemsTotal}</span>
+      `;
+    }
+
+    function renderBossSelectors() {
+      ensureBossSelection();
+      const visible = getVisibleBosses();
+      const current = getSelectedBoss();
+      const uniqueLabels = [...new Map(visible.map((boss) => [boss.label, boss])).values()];
+      const selectedDungeon = state.selectedDungeon || current.label;
+      const related = getDungeonBosses(selectedDungeon);
+      const difficultyOptionsRaw = [...new Map(
+        related
+          .filter((boss) => boss.difficulty)
+          .map((boss) => [boss.difficulty, boss])
+      ).values()];
+      const selectedBoss = related.find((boss) => boss.id === state.selectedBossId) || related[0];
+      const activeDifficulty = selectedBoss?.difficulty || state.selectedDifficulty || difficultyOptionsRaw[0]?.difficulty || "";
+      const relatedForDifficulty = related.filter((boss) => boss.difficulty === activeDifficulty);
+      const stageLikeDifficulty = usesSingleStageSelector(related);
+
+      let showDifficulty = false;
+      let stageOptions = [];
+
+      if (stageLikeDifficulty) {
+        showDifficulty = false;
+        stageOptions = difficultyOptionsRaw.map((boss) => ({ value: boss.id, label: boss.selectorStageLabel || boss.stageLabel || boss.difficulty }));
+      } else if (difficultyOptionsRaw.length > 1) {
+        showDifficulty = true;
+        stageOptions = relatedForDifficulty.map((boss) => ({ value: boss.id, label: boss.selectorStageLabel || boss.stageLabel || boss.difficulty }));
+      } else {
+        showDifficulty = false;
+        stageOptions = related.map((boss) => ({ value: boss.id, label: boss.selectorStageLabel || boss.stageLabel || boss.difficulty }));
+      }
+
+      renderFakeSelect(
+        "bossSelectWrap",
+        "Dungeon",
+        uniqueLabels.map((boss) => ({ value: boss.label, label: boss.label })),
+        selectedDungeon,
+        (selectedLabel) => {
+          const nextBoss = visible.find((boss) => boss.label === selectedLabel);
+          state.selectedDungeon = selectedLabel;
+          state.selectedBossId = nextBoss?.id || "";
+          state.selectedDifficulty = nextBoss?.difficulty || "";
+          renderBossView();
+        }
+      );
+
+      const difficultyField = document.getElementById("bossDifficultyField");
+      if (difficultyField) {
+        difficultyField.style.display = showDifficulty ? "" : "none";
+      }
+      if (showDifficulty) {
+        renderFakeSelect(
+          "bossDifficultySelectWrap",
+          "Difficulty",
+          difficultyOptionsRaw.map((boss) => ({ value: boss.difficulty, label: boss.difficulty })),
+          activeDifficulty,
+          (difficulty) => {
+            const nextBoss = related.find((boss) => boss.difficulty === difficulty);
+            state.selectedDifficulty = difficulty;
+            state.selectedBossId = nextBoss?.id || "";
+            renderBossView();
+          }
+        );
+      } else {
+        const wrap = document.getElementById("bossDifficultySelectWrap");
+        if (wrap) wrap.innerHTML = "";
+        state.openSelect = state.openSelect === "bossDifficultySelectWrap" ? "" : state.openSelect;
+      }
+
+      renderFakeSelect(
+        "bossStageSelectWrap",
+        "Stage",
+        stageOptions,
+        state.selectedBossId,
+        (bossId) => {
+          state.selectedBossId = bossId;
+          state.selectedDifficulty = bossLookup.get(state.selectedBossId)?.difficulty || "";
+          state.selectedDungeon = bossLookup.get(state.selectedBossId)?.label || state.selectedDungeon;
+          renderBossView();
+        }
+      );
+    }
+
+    function renderBossWorkbench() {
+      const boss = getSelectedBoss();
+      if (!boss) return;
+
+      document.getElementById("bossTitle").textContent = (boss.displayTitle || boss.label).toUpperCase();
+      document.getElementById("bossLevelBadge").textContent = boss.levelBadge || (boss.family === "chimera" ? "200" : boss.family === "hydra" ? "150" : "120");
+      renderBossPortrait(boss);
+
+      const statEntries = Object.entries(boss.stats || {});
+      const statsGrid = document.getElementById("bossStatsGrid");
+      statsGrid.innerHTML = statEntries.map(([key, value]) => `
+        <div class="stat-line">
+          <b>${formatStatLabel(key)}</b>
+          <span>${safeText(value)}</span>
+        </div>
+      `).join("");
+
+      const notes = document.getElementById("bossNotes");
+      notes.innerHTML = (boss.notes || []).map((note) => `<div class="boss-note">${safeText(note)}</div>`).join("");
+    }
+
+    function renderTeamSlots() {
+      const boss = getSelectedBoss();
+      const teamSize = boss?.teamSize || (boss?.family === "hydra" ? 6 : 5);
+      const slots = Array.from({ length: teamSize }, (_, index) => index === 0 ? "Leader" : `Champion ${index + 1}`);
+      const selectedTeam = getSelectedTeamForBoss(boss?.id || "");
+      const leaderId = Number(selectedTeam[0] || 0);
+      const leader = sortedChampions.find((item) => Number(item.heroId) === leaderId) || null;
+      const leaderNote = document.getElementById("leaderNote");
+      if (leaderNote) {
+        leaderNote.textContent = leader ? `Lider: ${leader.name}` : "Nenhum lider selecionado";
+      }
+      const wrap = document.getElementById("teamSlots");
+      wrap.className = `team-slots ${teamSize > 5 ? "compact" : ""}`.trim();
+      wrap.style.gridTemplateColumns = `repeat(${teamSize}, minmax(0, 1fr))`;
+      wrap.innerHTML = slots.map((label, index) => {
+        const heroId = Number(selectedTeam[index] || 0);
+        const champion = sortedChampions.find((item) => Number(item.heroId) === heroId) || null;
+        const profileSrc = champion ? getChampionProfileSrc(champion) : "";
+        return `
+        <div class="slot-card">
+          <div class="slot-label">${index === 0 ? "Lider" : `Campeao ${index + 1}`}</div>
+          <div class="slot-frame ${champion ? "filled" : ""}">
+            ${champion ? `
+              <img
+                src="${safeText(profileSrc)}"
+                alt="${safeText(champion.name)}"
+                loading="lazy"
+                onerror="this.remove(); this.parentElement.insertAdjacentHTML('beforeend', '<div class=&quot;slot-avatar-fallback&quot;>${safeText(getChampionShortLabel(champion.name))}</div>');"
+              >
+            ` : `<span class="slot-empty-mark">+</span>`}
+          </div>
+          <div class="slot-name">${champion ? safeText(champion.name) : "Selecione um campeao"}</div>
+          <div class="slot-actions">
+            <select class="slot-picker" data-slot-index="${index}">
+              <option value="">Escolher campeao</option>
+              ${sortedChampions.map((item) => `
+                <option value="${item.heroId}" ${Number(item.heroId) === heroId ? "selected" : ""}>
+                  ${safeText(item.name)} - Nv ${item.level} / Rank ${item.grade}
+                </option>
+              `).join("")}
+            </select>
+            <button type="button" class="slot-clear" data-clear-slot="${index}" ${champion ? "" : "disabled"}>Limpar slot</button>
+          </div>
+          <label class="optimise-check"><input type="checkbox"> Otimizar</label>
+        </div>
+      `;
+      }).join("");
+
+      wrap.querySelectorAll(".slot-picker").forEach((select) => {
+        select.addEventListener("change", (event) => {
+          setSelectedChampionForSlot(boss.id, Number(event.target.dataset.slotIndex), event.target.value);
+          renderTeamSlots();
+        });
+      });
+
+      wrap.querySelectorAll("[data-clear-slot]").forEach((button) => {
+        button.addEventListener("click", () => {
+          clearSelectedChampionForSlot(boss.id, Number(button.dataset.clearSlot));
+          renderTeamSlots();
+        });
+      });
+    }
+
+    function renderBossView() {
+      renderBossSelectors();
+      renderBossWorkbench();
+      renderTeamSlots();
+    }
+
+    function setupBossReset() {
+      document.getElementById("bossResetBtn").addEventListener("click", () => {
+        state.bossFamily = "all";
+        state.activeEffects = new Set(["shield", "ignore_def", "freeze"]);
+        state.selectedBossId = DATA.bosses[0]?.id || "";
+        state.selectedDifficulty = DATA.bosses[0]?.difficulty || "";
+        state.selectedDungeon = DATA.bosses[0]?.label || "";
+        renderBossView();
+      });
+    }
+
+    function renderChampions() {
+      const raritySelect = document.getElementById("champRarityFilter");
+      raritySelect.innerHTML = rarityOrder.map((rarity) => `
+        <option value="${rarity}" ${rarity === state.champRarity ? "selected" : ""}>
+          ${rarity === "all" ? "Todas" : safeText(rarity)}
+        </option>
+      `).join("");
+
+      raritySelect.onchange = (event) => {
+        state.champRarity = event.target.value;
+        renderChampions();
+      };
+
+      const searchInput = document.getElementById("champSearch");
+      searchInput.value = state.champSearch;
+      searchInput.oninput = (event) => {
+        state.champSearch = event.target.value;
+        renderChampions();
+      };
+
+      const term = state.champSearch.trim().toLowerCase();
+      const filtered = DATA.champions.filter((champ) => {
+        const matchesSearch = !term || champ.name.toLowerCase().includes(term);
+        const matchesRarity = state.champRarity === "all" || champ.rarity === state.champRarity;
+        return matchesSearch && matchesRarity;
+      });
+
+      const wrap = document.getElementById("championGrid");
+      wrap.className = "champion-grid hh-list";
+      wrap.innerHTML = filtered.map((champ) => {
+        const profileSrc = getChampionProfileSrc(champ);
+        const sets = (champ.equippedSets || []).slice(0, 6);
+        const stats = champ.buildStats || {};
+        return `
+          <article class="champ-row">
+            <div class="champ-portrait">
+              <img
+                src="${safeText(profileSrc)}"
+                alt="${safeText(champ.name)}"
+                loading="lazy"
+                onerror="this.replaceWith(Object.assign(document.createElement('div'), { className: 'champ-portrait-fallback', textContent: '${safeText(getChampionShortLabel(champ.name))}' }))"
+              >
+              <div class="champ-level-badge">${champ.level}</div>
+            </div>
+            <div class="champ-row-body">
+              <div class="champ-row-top">
+                <div class="champ-name-block">
+                  <div class="champ-name-line">
+                    <h3 class="champ-name">${safeText(champ.name)}</h3>
+                    <span class="champ-role">${safeText(champ.role || "-")}</span>
+                  </div>
+                  <div class="champ-subline">
+                    <span>${safeText(champ.rarity)}</span>
+                    <span>Rank ${champ.grade}</span>
+                    <span>${safeText(champ.affinity || "")}</span>
+                    <span>${champ.inStorage ? "Storage" : "Ativo"}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="set-chip-row">
+                ${sets.length ? sets.map((set) => `<span class="set-chip">${safeText(set.name)} x${set.count}</span>`).join("") : `<span class="set-chip">Sem itens equipados</span>`}
+              </div>
+              <div class="champ-stats-grid">
+                <div class="champ-stat"><span class="champ-stat-label">HP Bonus</span><span class="champ-stat-value">${safeText(stats.hp ?? "-")}</span></div>
+                <div class="champ-stat"><span class="champ-stat-label">SPD</span><span class="champ-stat-value">${formatNumber(stats.spd)}</span></div>
+                <div class="champ-stat"><span class="champ-stat-label">RES</span><span class="champ-stat-value">${formatNumber(stats.res)}</span></div>
+                <div class="champ-stat"><span class="champ-stat-label">Livros</span><span class="champ-stat-value">${formatNumber(champ.booksApplied)}</span></div>
+                <div class="champ-stat"><span class="champ-stat-label">ATK Bonus</span><span class="champ-stat-value">${safeText(stats.atk ?? "-")}</span></div>
+                <div class="champ-stat"><span class="champ-stat-label">C.RATE</span><span class="champ-stat-value">${formatNumber(stats.cRate)}</span></div>
+                <div class="champ-stat"><span class="champ-stat-label">ACC</span><span class="champ-stat-value">${formatNumber(stats.acc)}</span></div>
+                <div class="champ-stat"><span class="champ-stat-label">Maestria</span><span class="champ-stat-value">${formatNumber(champ.masteryTotal)}/15</span></div>
+                <div class="champ-stat"><span class="champ-stat-label">DEF Bonus</span><span class="champ-stat-value">${safeText(stats.def ?? "-")}</span></div>
+                <div class="champ-stat"><span class="champ-stat-label">C.DMG</span><span class="champ-stat-value">${formatNumber(stats.cDmg)}</span></div>
+                <div class="champ-stat"><span class="champ-stat-label">Awaken</span><span class="champ-stat-value">${formatNumber(champ.awakenedGrade)}</span></div>
+                <div class="champ-stat"><span class="champ-stat-label">Itens</span><span class="champ-stat-value">${formatNumber(champ.equippedItemCount)}</span></div>
+              </div>
+              <div class="champ-meta-row">
+                <span class="mini-pill">Empower ${formatNumber(champ.empowerLevel)}</span>
+                <span class="mini-pill">Skills ${formatNumber(champ.skillCount)}</span>
+                <span class="mini-pill">Masteries CSV ${formatNumber(champ.masteryCount)}</span>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function renderSetCards() {
+      const grid = document.getElementById("setGrid");
+      const table = document.getElementById("setItemTable");
+      const sets = DATA.itemSets || [];
+      if (state.activeSetId === null && sets.length) {
+        state.activeSetId = sets[0].setId;
+      }
+      grid.innerHTML = sets.map((set) => `
+        <article class="set-card ${set.setId === state.activeSetId ? "active" : ""}" data-set-id="${set.setId}">
+          <h3 class="set-name">Set ${safeText(set.setId)}</h3>
+          <div class="set-sub">${set.count} itens - ${set.equipped} equipados</div>
+          <div class="set-meta">
+            ${Object.entries(set.bySlot || {}).slice(0, 4).map(([slot, qty]) => `<span class="mini-pill">${safeText(slot)}: ${qty}</span>`).join("")}
+          </div>
+        </article>
+      `).join("");
+
+      grid.querySelectorAll("[data-set-id]").forEach((card) => {
+        card.addEventListener("click", () => {
+          state.activeSetId = Number(card.dataset.setId);
+          renderSetCards();
+        });
+      });
+
+      const activeSet = sets.find((set) => set.setId === state.activeSetId) || sets[0];
+      table.innerHTML = (activeSet?.items || []).map((item) => `
+        <tr>
+          <td>${activeSet.setId}</td>
+          <td>${safeText(item.slot)}</td>
+          <td>${item.rank}</td>
+          <td>${item.rarity}</td>
+          <td>${item.level}</td>
+          <td>${item.equipped ? "Sim" : "Nao"}</td>
+          <td>${safeText(item.desc)}</td>
+        </tr>
+      `).join("");
+    }
+
+    function setupTabs() {
+      document.querySelectorAll(".tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document.querySelectorAll(".tab").forEach((item) => item.classList.remove("active"));
+          document.querySelectorAll(".view").forEach((view) => view.classList.remove("active"));
+          tab.classList.add("active");
+          document.querySelector(`.view[data-view="${tab.dataset.view}"]`).classList.add("active");
+        });
+      });
+    }
+
+    function setupGlobalClickClose() {
+      document.addEventListener("click", () => {
+        if (!state.openSelect) return;
+        state.openSelect = "";
+        renderBossSelectors();
+      });
+    }
+
+    function init() {
+      state.teamSelections = loadSavedTeams();
+      state.selectedBossId = DATA.bosses[0]?.id || "";
+      state.selectedDifficulty = DATA.bosses[0]?.difficulty || "";
+      state.selectedDungeon = DATA.bosses[0]?.label || "";
+      renderMeta();
+      renderBossView();
+      setupBossReset();
+      renderChampions();
+      renderSetCards();
+      setupTabs();
+      setupGlobalClickClose();
+    }
+
+    init();
+  </script>
+</body>
+</html>

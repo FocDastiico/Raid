@@ -1,0 +1,401 @@
+Abbess: 1
+Achak the Wendarin: 2
+Acolyte: 2
+Akemtum: 2
+Alaric the Hooded: 1
+Aleksandr the Sharpshooter: 1
+Alice the Wanderer: 1
+Alika: 1
+Alure: 2
+Anax: 4
+Anchorite: 2
+Andryssia: 1
+Anointed: 3
+Aothar: 2
+Apothecary: 1
+Arbalester: 1
+Arbiter: 1
+Arix: 1
+Armanz the Magnificent: 1
+Artak: 1
+Arwydd Quivergrass: 2
+Ashwalker: 2
+Ash’nar Dragonsoul: 1
+Assassin: 4
+Astralith: 2
+Athel: 3
+Atur: 2
+Authoratrix Lamasu: 1
+Avenger: 1
+Avir the Alchemage: 2
+Axeman: 1
+Baerdal Fellhammer: 1
+Balthus Drauglord: 1
+Banshee: 4
+Baroth the Bloodsoaked: 2
+Basher: 1
+Basileus Roanas: 1
+Belz the Reckoner: 1
+Bergoth the Malformed: 1
+Big 'Un: 1
+Bloodgorged: 1
+Bloodpainter: 2
+Bonekeeper: 2
+Boughsmith Flannan: 2
+Bovos Sharphorn: 1
+Bowf the Rancid: 1
+Branch-arm Lasair: 2
+Broodlord: 2
+Bulwark: 2
+Burangiri: 2
+Bushi: 2
+Cagebound: 3
+Cagebreaker: 1
+Candleguard: 4
+Canoness: 1
+Captain Temila: 4
+Castigator: 2
+Catacomb Councilor: 1
+Centurion: 2
+Chani: 1
+Chaplain: 1
+Chevalier: 1
+Chonoru: 2
+Chopper: 1
+Chronicler Adelyn: 2
+Cleopterix: 1
+Coldheart: 2
+Commander: 3
+Conellia: 3
+Corpse Collector: 1
+Courtier: 2
+Crimson Helm: 4
+Crossbowman: 1
+Cudgeler: 2
+Dagger: 5
+Dark Athel: 1
+Dark Elhain: 3
+Dark Kael: 1
+Daywalker: 1
+Deacon Armstrong: 2
+Deathchanter: 3
+Deathless: 2
+Deliana: 1
+Demytha: 2
+Denid the Tusk Knight: 3
+Dhukk the Pierced: 2
+Diabolist: 2
+Dilgol: 1
+Dirandil: 2
+Doompriest: 1
+Doomscreech: 3
+Duedan the Runic: 2
+Duelist: 2
+Dune Herald Zaharis: 1
+Elder: 1
+Elder Skarg: 1
+Elhain: 5
+Emic Trunkheart: 1
+Enda Moonbeam: 4
+Eolfrig: 1
+Erinyes: 1
+Eviscerator: 2
+Executioner: 1
+Ezio Auditore: 1
+Fahrakin the Fat: 2
+Fang Cleric: 2
+Fayne: 3
+Fellhound: 2
+Fenax: 1
+Fencer: 1
+Firrol the Barkhorn: 1
+Flesh-Tearer: 3
+Fleshmonger: 1
+Frostbringer: 3
+Frozen Banshee: 2
+Fylja: 3
+Gala Longbraids: 1
+Galek: 1
+Galkut: 1
+Gamuran: 1
+Geargrinder: 2
+Genbo the Dishonored: 1
+Geomancer: 2
+Gerhard the Stone: 1
+Ghostborn: 1
+Giscard the Sigiled: 3
+Gladiator: 2
+Glensage Cithrel: 2
+Gliseah Soulguide: 1
+Gloril Brutebane: 1
+Godseeker Aniri: 1
+Golden Reaper: 2
+Gorgorab: 2
+Gorlos Hellmaw: 2
+Gory: 1
+Grandmaster: 1
+Grappler: 1
+Gravechill Killer: 2
+Graybeard: 2
+Greathoof Loriaca: 1
+Guurda Bogbrew: 1
+Hakkorhn Smashlord: 1
+Hansel Witchhunter: 1
+Harrier: 2
+Haruspex: 2
+Harvest Jack: 1
+Harvester: 2
+Hellfreak: 3
+Hellhound: 1
+Hephraak: 2
+Hexia: 3
+High Khatun: 2
+Hill Nomad: 1
+Hoforees the Tusked: 1
+Holsring: 1
+Honor Guard: 1
+Hope: 2
+Hoskarul: 2
+Hotatsu: 2
+Hound Spawn: 1
+Huntress: 4
+Hurler: 2
+Husk: 1
+Incubus: 1
+Ingid Twyst-staff: 1
+Ironclad: 3
+Iudex Artor: 1
+Jareg: 3
+Jinglehunter: 1
+Jintoro: 1
+Jotunn: 1
+Judge: 1
+Judicator: 1
+Juliana: 1
+Justiciar: 3
+Kael: 2
+Kallia: 1
+Kantra the Cyclone: 1
+Keeyra the Watcher: 2
+Kellan the Shrike: 1
+Kunoichi: 2
+Kurzad Deepheart: 2
+Lady Annabelle: 1
+Lady Mikage: 1
+Lady Noelle: 1
+Lady Quilen: 3
+Lamibur: 1
+Lanakis the Chosen: 1
+Leminisi the Gold-wing: 1
+Lemure: 1
+Locwain: 1
+Loki the Deceiver: 1
+Lonatharil: 1
+Loneblade Riab: 2
+Longsword Torrux: 3
+Lord Entertainer Fabian: 1
+Lord Shazar: 1
+Lorn the Cutter: 1
+Lumberer: 2
+Lurker: 1
+Luthiea: 2
+Lydia the Deathsiren: 1
+Ma'Shalled: 2
+Mad Hatter: 1
+Madame Serris: 1
+Magister: 1
+Magnarr: 3
+Magus: 1
+Maneater: 3
+Marked: 2
+Marquis: 2
+Martyr: 1
+Masamoto: 2
+Masked Fearmonger: 1
+Maulie Tankard: 1
+Meatcarver Tolog: 4
+Medicus: 2
+Melga Steelgirdle: 2
+Merouka: 1
+Michelangelo: 1
+Michinaki: 1
+Minaya: 1
+Miscreated Monster: 4
+Missionary: 2
+Mistrider Daithi: 2
+Mithrala Lifebane: 1
+Morag Bronzelock: 1
+Mordecai: 4
+Morrigaine: 1
+Mortu-Macaab: 1
+Mountain King: 2
+Muckstalker: 3
+Myciliac Priest Orn: 2
+Myrmidon: 2
+Mystic Hand: 1
+Nari the Lucky: 1
+Narma the Returned: 1
+Neldor Rimeblade: 1
+Ninja: 1
+Nogoryo: 1
+Norog: 2
+Novitiate: 1
+Oathbound: 1
+Occult Brawler: 2
+Odachi: 2
+Oella: 1
+Ogryn Jailer: 2
+Old Ghrukkus: 2
+Opardin Clanfather: 2
+Ordinator: 1
+Ostrox Boneglaive: 1
+Ox: 1
+Pain Keeper: 4
+Paragon: 3
+Pestilus: 1
+Petrifya Rockroot: 4
+Pharsalas Gravedirt: 2
+Phranox: 2
+Pit Fighter: 1
+Pitiless One: 1
+Prince Kymar: 1
+Purgator: 4
+Pythion: 2
+Quargan the Crowned: 1
+Queen of Hearts: 1
+R. Nergigante Archer: 1
+Ragash: 1
+Ragemonger: 2
+Raglin: 1
+Ranger: 1
+Rathalos Blademaster: 1
+Razelvarg: 1
+Rearguard Sergeant: 2
+Rector Drath: 3
+Redcloak Taneko: 4
+Reliquary Tender: 4
+Renegade: 3
+Renouncer: 2
+Retainer: 1
+Rhazin Scarhide: 2
+Rian the Conjurer: 1
+Richtoff the Bold: 1
+Ripper: 1
+Rockbeast: 1
+Rocktooth: 3
+Romero: 1
+Ronda: 1
+Roshcard the Tower: 1
+Rotting Mage: 2
+Roxam: 1
+Royal Guard: 4
+Ruella: 2
+Ruffstone: 3
+Rugnor Goldgleam: 1
+Saito: 1
+Sanctum Protector: 2
+Sandlashed Survivor: 3
+Scabrius: 1
+Scrapper: 1
+Scyl of the Drakes: 1
+Seeker: 2
+Seer: 1
+Selinia Nightcloak: 3
+Seneschal: 2
+Sepulcher Sentinel: 2
+Shadowbow Tirlac: 3
+Shamrock: 1
+Shatterbones: 1
+Shemnath: 1
+Siegehulk: 4
+Sigmund the Highshield: 1
+Signy of Highshield: 1
+Sikara: 2
+Silvain the Paramour: 1
+Sinesha: 1
+Sir Artimage: 2
+Sir Nicholas: 1
+Skartorsis: 1
+Skeletor: 1
+Skeuramis: 3
+Skink: 2
+Skinner: 1
+Skirmisher: 2
+Skraank: 2
+Skullcrusher: 4
+Skytouched Shaman: 2
+Slayer: 2
+Sniper: 1
+Spider: 1
+Spikehead: 3
+Squire: 1
+Stag Knight: 3
+Steadfast Marshal: 2
+Steel Bowyer: 3
+Stitched Beast: 1
+Stokk the Broken: 1
+Sun Wukong: 1
+Supreme Galek: 1
+Suwai Firstborn: 1
+Suzerain Katonn: 1
+Swordsman: 1
+Tagoar: 2
+Tarshon: 3
+Tayrel: 3
+Teryx the Restless: 1
+Thenasil: 1
+Thor Faehammer: 1
+Thorn Golem: 1
+Tolf the Maimed: 1
+Tomb Lord: 1
+Tomoe: 2
+Toragi the Frog: 1
+Tormentor: 2
+Tormin the Cold: 1
+Torturehelm: 1
+Treeshield Knott: 2
+Truath: 1
+Trumborr: 1
+Trunda Giltmallet: 1
+Tyrant Ixlimor: 1
+Ultimate Deathknight: 1
+Ultimate Galek: 2
+Umetogi: 3
+Underpriest Brogni: 1
+Urogrim: 1
+Ursala the Mourner: 1
+Ursine Ironhide: 4
+Urticata: 1
+Uugo: 2
+Valerie: 5
+Valla: 2
+Vanguard: 1
+Vault Keeper Wixwell: 1
+Venomage: 2
+Vergis: 2
+Versulf the Grim: 2
+Veteran: 4
+Vildrax: 3
+Visionary: 1
+Visix the Unbowed: 1
+Vogoth: 4
+Vrask: 4
+Wagonbane: 2
+Walking Tomb Dreng: 1
+Warcaster: 1
+Warmaiden: 4
+Weregren Suncursed: 2
+White Dryad Nia: 1
+Woad-Painted: 2
+Wurlim Frostking: 1
+Wuzgar: 2
+Wyrennon the Silken: 2
+Xenomorph: 1
+Yaga the Insatiable: 1
+Yakarl the Scourge: 1
+Yannica: 2
+Yelagirna: 1
+Yumeko: 1
+Zargala: 1
+Zavia: 1
+Zelotah: 3
