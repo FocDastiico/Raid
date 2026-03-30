@@ -429,7 +429,11 @@ def build_champion_details(champions, snapshot):
         gh_affinity = GREAT_HALL_AFFINITY_MAP.get(affinity_id, "")
         gh_stats = great_hall.get(gh_affinity) or {}
         equipped_items = items_by_hero.get(champion["heroId"], [])
-        set_counts = Counter(to_int(item.get("set_id")) for item in equipped_items)
+        set_counts = Counter(
+            set_id
+            for set_id in (to_int(item.get("set_id")) for item in equipped_items)
+            if set_id > 0
+        )
         stat_bucket = {
             "hp": {"flat": 0.0, "pct": 0.0},
             "atk": {"flat": 0.0, "pct": 0.0},
@@ -475,6 +479,8 @@ def build_champion_details(champions, snapshot):
 def group_items_by_set(items):
     grouped = defaultdict(lambda: {"count": 0, "equipped": 0, "bySlot": Counter(), "items": []})
     for item in items:
+        if to_int(item["setId"]) <= 0:
+            continue
         bucket = grouped[item["setId"]]
         bucket["count"] += 1
         bucket["equipped"] += 1 if item["equipped"] else 0

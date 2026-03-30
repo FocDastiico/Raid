@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Raid Dashboard</title>
+  <title>Painel Raid</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
@@ -30,6 +30,7 @@
       min-height: 100vh;
       color: var(--text);
       font-family: "Barlow", sans-serif;
+      color-scheme: dark;
       background:
         radial-gradient(circle at top left, rgba(113, 40, 20, 0.22), transparent 28%),
         radial-gradient(circle at right center, rgba(100, 20, 24, 0.16), transparent 24%),
@@ -232,29 +233,82 @@
 
     .field {
       min-width: 230px;
+      border: 1px solid #3d3127;
+      border-radius: 16px;
+      padding: 12px 14px 14px;
+      background:
+        linear-gradient(180deg, rgba(34, 29, 26, 0.96), rgba(18, 16, 15, 0.98));
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 10px 24px rgba(0, 0, 0, 0.18);
     }
 
     .field-label,
     .section-heading {
       display: block;
-      margin-bottom: 8px;
-      color: var(--muted);
+      margin-bottom: 10px;
+      color: #e5d5bf;
       font-family: "Rajdhani", sans-serif;
-      font-size: 1rem;
-      letter-spacing: 0.06em;
+      font-size: 0.84rem;
+      letter-spacing: 0.09em;
       text-transform: uppercase;
     }
 
     .field input,
-    .field textarea {
+    .field textarea,
+    .field select {
       width: 100%;
-      border: 0;
-      border-bottom: 1px solid #726355;
-      background: transparent;
+      border: 1px solid #67503b;
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(10, 10, 10, 0.76), rgba(23, 19, 17, 0.92));
       color: var(--text);
-      padding: 8px 2px 10px;
+      padding: 11px 14px;
       font: inherit;
       outline: none;
+      transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    }
+
+    .field select {
+      appearance: none;
+      cursor: pointer;
+      color-scheme: dark;
+      padding-right: 42px;
+      background-image:
+        linear-gradient(45deg, transparent 50%, #f0b84f 50%),
+        linear-gradient(135deg, #f0b84f 50%, transparent 50%),
+        linear-gradient(180deg, rgba(10, 10, 10, 0.76), rgba(23, 19, 17, 0.92));
+      background-position:
+        calc(100% - 20px) calc(50% - 2px),
+        calc(100% - 14px) calc(50% - 2px),
+        0 0;
+      background-size: 6px 6px, 6px 6px, 100% 100%;
+      background-repeat: no-repeat;
+    }
+
+    .field select option,
+    .field select optgroup {
+      background: #17120f;
+      color: #f3f0ea;
+    }
+
+    .field input::placeholder {
+      color: #9f927f;
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      border-color: #f1a61b;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.03),
+        0 0 0 3px rgba(241, 166, 27, 0.12);
+    }
+
+    .field select:hover,
+    .field input:hover,
+    .field textarea:hover {
+      border-color: #8a6c4d;
     }
 
     .hh-select {
@@ -714,17 +768,20 @@
 
     .toolbar {
       display: grid;
-      grid-template-columns: minmax(240px, 280px) minmax(180px, 220px) minmax(0, 1fr);
+      grid-template-columns: minmax(240px, 280px) minmax(180px, 210px) minmax(180px, 210px) minmax(200px, 240px);
       gap: 14px;
       margin-bottom: 16px;
       align-items: start;
     }
 
     .toolbar-filters {
+      grid-column: 1 / -1;
       display: grid;
+      grid-template-columns: minmax(240px, 280px) minmax(180px, 210px) minmax(180px, 210px) minmax(200px, 240px);
       gap: 12px;
       min-width: 0;
       padding-top: 2px;
+      align-items: start;
     }
 
     .filter-pair {
@@ -737,6 +794,11 @@
     .filter-block {
       display: grid;
       gap: 8px;
+      min-width: 0;
+    }
+
+    .filter-block.span-2 {
+      grid-column: span 2;
     }
 
     .filter-title {
@@ -751,6 +813,9 @@
       color: #9f9384;
       font-size: 0.72rem;
       line-height: 1.25;
+      text-align: right;
+      justify-self: end;
+      max-width: 210px;
     }
 
     .toggle-chip-row {
@@ -1289,6 +1354,13 @@
       .team-slots { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
       .champion-grid.hh-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .toolbar { grid-template-columns: 1fr; }
+      .toolbar-filters { grid-template-columns: 1fr; }
+      .filter-block.span-2 { grid-column: auto; }
+      .filter-note {
+        text-align: left;
+        justify-self: start;
+        max-width: none;
+      }
       .filter-pair { grid-template-columns: 1fr; }
     }
 
@@ -1329,12 +1401,12 @@
       <section class="hero">
         <div class="hero-bar">
           <div class="hero-copy">
-            <h1>Raid Team Dashboard</h1>
+            <h1>Painel de Equipes do Raid</h1>
             <div class="meta-row" id="metaRow"></div>
           </div>
           <nav class="tabs">
-            <button class="tab active" data-view="bosses">Bosses</button>
-            <button class="tab" data-view="champions">Campeoes</button>
+            <button class="tab active" data-view="bosses">Chefes</button>
+            <button class="tab" data-view="champions">Campeões</button>
             <button class="tab" data-view="items">Itens</button>
           </nav>
         </div>
@@ -1345,28 +1417,28 @@
           <div class="boss-topbar">
             <div class="boss-selectors">
               <label class="field">
-                <span class="field-label">Dungeon</span>
+                <span class="field-label">Masmorra</span>
                 <div class="hh-select" id="bossSelectWrap"></div>
               </label>
               <label class="field" id="bossDifficultyField">
-                <span class="field-label">Difficulty</span>
+                <span class="field-label">Dificuldade</span>
                 <div class="hh-select" id="bossDifficultySelectWrap"></div>
               </label>
               <label class="field">
-                <span class="field-label">Stage</span>
+                <span class="field-label">Estágio</span>
                 <div class="hh-select" id="bossStageSelectWrap"></div>
               </label>
             </div>
             <div class="actions">
-              <button class="action-btn primary" type="button">Find Team</button>
-              <button class="action-btn gold" type="button">Past Builds</button>
-              <button class="action-btn danger" type="button" id="bossResetBtn">Reset</button>
+              <button class="action-btn primary" type="button">Buscar Time</button>
+              <button class="action-btn gold" type="button">Builds Anteriores</button>
+              <button class="action-btn danger" type="button" id="bossResetBtn">Limpar</button>
             </div>
           </div>
 
           <div class="boss-stage">
             <section class="boss-panel">
-              <h2 class="boss-title" id="bossTitle">Boss</h2>
+              <h2 class="boss-title" id="bossTitle">Chefe</h2>
               <div class="boss-card">
                 <div class="boss-portrait">
                   <div id="bossPortraitArt"></div>
@@ -1384,7 +1456,7 @@
 
             <section class="team-panel">
               <div class="team-header">
-                <div class="leader-note" id="leaderNote">Nenhum lider selecionado</div>
+                <div class="leader-note" id="leaderNote">Nenhum líder selecionado</div>
               </div>
               <div class="team-slots" id="teamSlots"></div>
             </section>
@@ -1397,12 +1469,20 @@
         <div class="content-card">
           <div class="toolbar">
             <label class="field" style="min-width: 260px;">
-              <span class="field-label">Buscar campeao</span>
-              <input id="champSearch" type="search" placeholder="Nome do campeao" />
+              <span class="field-label">Buscar campeão</span>
+              <input id="champSearch" type="search" placeholder="Nome do campeão" />
             </label>
             <label class="field" style="min-width: 220px;">
               <span class="field-label">Raridade</span>
               <select id="champRarityFilter"></select>
+            </label>
+            <label class="field" style="min-width: 220px;">
+              <span class="field-label">Função</span>
+              <select id="champRoleFilter"></select>
+            </label>
+            <label class="field" style="min-width: 240px;">
+              <span class="field-label">Ordenar por</span>
+              <select id="champSortFilter"></select>
             </label>
             <div class="toolbar-filters" id="championFilterToggles"></div>
           </div>
@@ -1417,13 +1497,13 @@
             <table>
               <thead>
                 <tr>
-                  <th>Set</th>
-                  <th>Slot</th>
-                  <th>Rank</th>
-                  <th>Rarity</th>
-                  <th>Level</th>
-                  <th>Equipped</th>
-                  <th>Descricao</th>
+                  <th>Conjunto</th>
+                  <th>Peça</th>
+                  <th>Grau</th>
+                  <th>Raridade</th>
+                  <th>Nível</th>
+                  <th>Equipado</th>
+                  <th>Descrição</th>
                 </tr>
               </thead>
               <tbody id="setItemTable"></tbody>
@@ -1449,6 +1529,8 @@
       mustIncludeChampion2: "none",
       champSearch: "",
       champRarity: "all",
+      champRole: "all",
+      champSort: "default",
       selectedRarities: new Set(["Mythical", "Legendary", "Epic", "Rare"]),
       filterBooks: new Set(["full", "not_full"]),
       filterMasteries: new Set(["full", "not_full"]),
@@ -1469,9 +1551,30 @@
     const availableChampionRarities = preferredChampionRarities.filter((rarity) =>
       DATA.champions.some((champion) => champion.rarity === rarity)
     );
+    const availableChampionRoles = ["Ataque", "Defesa", "HP", "Suporte"].filter((role) =>
+      DATA.champions.some((champion) => String(champion.role || "").trim() === role)
+    );
     const rarityOrder = ["all", ...availableChampionRarities];
+    const roleOrder = ["all", ...availableChampionRoles];
     const teamStorageKey = "raid-dashboard-team-selections";
     const rarityRank = Object.fromEntries(preferredChampionRarities.map((rarity, index) => [rarity, index]));
+    const championSortOptions = [
+      { value: "default", label: "Prioridade geral" },
+      { value: "status", label: "Status da conta" },
+      { value: "res", label: "Maior resistência" },
+      { value: "cDmg", label: "Maior dano crítico" },
+      { value: "cRate", label: "Maior taxa crítica" },
+      { value: "spd", label: "Maior velocidade" },
+      { value: "acc", label: "Maior precisão" },
+      { value: "hp", label: "Maior HP" },
+      { value: "atk", label: "Maior ataque" },
+      { value: "def", label: "Maior defesa" },
+      { value: "books", label: "Mais livros aplicados" },
+      { value: "masteries", label: "Mais maestrias" },
+      { value: "items", label: "Mais itens equipados" },
+      { value: "sets", label: "Mais conjuntos ativos" },
+      { value: "name", label: "Nome A-Z" }
+    ];
     const sortedChampions = [...DATA.champions].sort((a, b) => {
       const rarityDiff = (rarityRank[a.rarity] ?? 999) - (rarityRank[b.rarity] ?? 999);
       if (rarityDiff) return rarityDiff;
@@ -1481,6 +1584,87 @@
       if (gradeDiff) return gradeDiff;
       return String(a.name || "").localeCompare(String(b.name || ""), "pt-BR");
     });
+
+    function compareChampionsDefault(a, b) {
+      const rarityDiff = (rarityRank[a.rarity] ?? 999) - (rarityRank[b.rarity] ?? 999);
+      if (rarityDiff) return rarityDiff;
+      const levelDiff = Number(b.level || 0) - Number(a.level || 0);
+      if (levelDiff) return levelDiff;
+      const gradeDiff = Number(b.grade || 0) - Number(a.grade || 0);
+      if (gradeDiff) return gradeDiff;
+      return String(a.name || "").localeCompare(String(b.name || ""), "pt-BR");
+    }
+
+    function getChampionNumericStat(champ, key) {
+      return Number(champ?.buildStats?.[key] || 0);
+    }
+
+    function getChampionStatusScore(champ) {
+      return [
+        champ?.inStorage ? 0 : 1,
+        champ?.locked ? 0 : 1,
+        champ?.hydraLocked ? 0 : 1,
+        Number(champ?.equippedItemCount || 0),
+        Number(champ?.booksApplied || 0),
+        Number(champ?.masteryTotal || 0)
+      ];
+    }
+
+    function compareScoreArraysDesc(left, right) {
+      for (let index = 0; index < Math.max(left.length, right.length); index += 1) {
+        const diff = Number(right[index] || 0) - Number(left[index] || 0);
+        if (diff) return diff;
+      }
+      return 0;
+    }
+
+    function compareChampionsBySort(a, b) {
+      const sortKey = state.champSort || "default";
+      if (sortKey === "name") {
+        const nameDiff = String(a.name || "").localeCompare(String(b.name || ""), "pt-BR");
+        if (nameDiff) return nameDiff;
+        return compareChampionsDefault(a, b);
+      }
+
+      if (sortKey === "status") {
+        const statusDiff = compareScoreArraysDesc(getChampionStatusScore(a), getChampionStatusScore(b));
+        if (statusDiff) return statusDiff;
+        return compareChampionsDefault(a, b);
+      }
+
+      if (sortKey === "books") {
+        const diff = Number(b.booksApplied || 0) - Number(a.booksApplied || 0);
+        if (diff) return diff;
+        return compareChampionsDefault(a, b);
+      }
+
+      if (sortKey === "masteries") {
+        const diff = Number(b.masteryTotal || 0) - Number(a.masteryTotal || 0);
+        if (diff) return diff;
+        return compareChampionsDefault(a, b);
+      }
+
+      if (sortKey === "items") {
+        const diff = Number(b.equippedItemCount || 0) - Number(a.equippedItemCount || 0);
+        if (diff) return diff;
+        return compareChampionsDefault(a, b);
+      }
+
+      if (sortKey === "sets") {
+        const diff = Number((b.equippedSets || []).length) - Number((a.equippedSets || []).length);
+        if (diff) return diff;
+        return compareChampionsDefault(a, b);
+      }
+
+      const statKeys = new Set(["hp", "atk", "def", "spd", "acc", "res", "cRate", "cDmg"]);
+      if (statKeys.has(sortKey)) {
+        const diff = getChampionNumericStat(b, sortKey) - getChampionNumericStat(a, sortKey);
+        if (diff) return diff;
+        return compareChampionsDefault(a, b);
+      }
+
+      return compareChampionsDefault(a, b);
+    }
 
     function safeText(value) {
       return String(value ?? "").replace(/[<>]/g, "");
@@ -1606,6 +1790,145 @@
       1004: "CounterattackAccessory"
     };
 
+    const rarityLabels = {
+      Mythical: "Mítico",
+      Legendary: "Lendário",
+      Epic: "Épico",
+      Rare: "Raro",
+      Uncommon: "Incomum",
+      Common: "Comum"
+    };
+
+    const roleLabels = {
+      Ataque: "Ataque",
+      Defesa: "Defesa",
+      Suporte: "Suporte",
+      HP: "Vida"
+    };
+
+    const affinityLabels = {
+      Magic: "Magia",
+      Force: "Força",
+      Spirit: "Espírito",
+      Void: "Vazio",
+      Magia: "Magia",
+      Forca: "Força",
+      "Força": "Força",
+      Espirito: "Espírito",
+      "Espírito": "Espírito",
+      Vazio: "Vazio"
+    };
+
+    const difficultyLabels = {
+      Easy: "Fácil",
+      Normal: "Normal",
+      Hard: "Difícil",
+      Brutal: "Brutal",
+      Nightmare: "Pesadelo",
+      "Ultra-Nightmare": "Ultra Pesadelo",
+      Ultra: "Ultra"
+    };
+
+    const slotLabels = {
+      Weapon: "Arma",
+      Helmet: "Elmo",
+      Shield: "Escudo",
+      Gauntlets: "Luvas",
+      Chestplate: "Peitoral",
+      Boots: "Botas",
+      Ring: "Anel",
+      Amulet: "Amuleto",
+      Banner: "Estandarte"
+    };
+
+    const bossNameLabels = {
+      Chimera: "Quimera",
+      "Demon Lord": "Lorde Demônio",
+      Dragon: "Dragão",
+      "Fire Knight": "Cavaleiro de Fogo",
+      Spider: "Aranha",
+      "Ice Golem": "Golem de Gelo",
+      Minotaur: "Minotauro",
+      "Head of Decay": "Cabeça da Decadência",
+      "Head of Blight": "Cabeça da Praga",
+      "Head of Wrath": "Cabeça da Ira",
+      "Head of Mischief": "Cabeça da Travessura",
+      "Head of Suffering": "Cabeça do Sofrimento",
+      "Head of Torment": "Cabeça do Tormento"
+    };
+
+    const factionLabels = {
+      BannerLords: "Senhores da Bandeira",
+      HighElves: "Altos Elfos",
+      SacredOrder: "Ordem Sagrada",
+      CovenOfMagi: "Clã dos Magos",
+      OgrynTribes: "Tribos Ogryn",
+      LizardMen: "Homens-Lagarto",
+      Skinwalkers: "Metamorfos",
+      Orcs: "Orcs",
+      Demonspawn: "Demoníacos",
+      UndeadHordes: "Hordas Mortas-Vivas",
+      DarkElves: "Elfos Negros",
+      KnightsRevenant: "Cavaleiros Renascidos",
+      Barbarians: "Bárbaros",
+      SylvanWatchers: "Vigilantes Silvestres",
+      Shadowkin: "Shadowkin",
+      Dwarves: "Anões",
+      Argonites: "Argonitas"
+    };
+
+    function translateRarity(value) {
+      return rarityLabels[value] || safeText(value);
+    }
+
+    function translateRole(value) {
+      return roleLabels[value] || safeText(value || "Indefinido");
+    }
+
+    function translateAffinity(value) {
+      return affinityLabels[value] || safeText(value);
+    }
+
+    function translateDifficulty(value) {
+      return difficultyLabels[value] || safeText(value);
+    }
+
+    function translateSlot(value) {
+      return slotLabels[value] || safeText(value);
+    }
+
+    function translateBossName(value) {
+      if (!value) return "";
+      return bossNameLabels[value] || safeText(value)
+        .replace(/^Chimera Rotation (\d+)$/i, "Quimera Rotação $1")
+        .replace(/^Hydra Rotation (\d+)$/i, "Hidra Rotação $1");
+    }
+
+    function translateFaction(value) {
+      return factionLabels[value] || safeText(value);
+    }
+
+    function translateItemDescription(value) {
+      const replacements = [
+        ["Weapon", "Arma"],
+        ["Helmet", "Elmo"],
+        ["Shield", "Escudo"],
+        ["Gauntlets", "Luvas"],
+        ["Chestplate", "Peitoral"],
+        ["Boots", "Botas"],
+        ["Ring", "Anel"],
+        ["Amulet", "Amuleto"],
+        ["Banner", "Estandarte"],
+        ["Set", "Conjunto"],
+        ["Precisao", "Precisão"],
+        ["Resistencia", "Resistência"]
+      ];
+      return replacements.reduce(
+        (text, [from, to]) => text.replace(new RegExp(`\\b${from}\\b`, "g"), to),
+        safeText(value)
+      );
+    }
+
     function getChampionRemoteProfileCandidates(champion) {
       if (!champion?.name) return [];
       const factionPath = HH_FACTION_PATHS[Number(champion.factionId)];
@@ -1668,7 +1991,24 @@
     function getSetIconSrc(setId) {
       const iconName = HH_SET_ICON_PATHS[Number(setId)];
       if (!iconName) return "";
+      return `./set_icons/${iconName}.png`;
+    }
+
+    function getSetIconFallbackSrc(setId) {
+      const iconName = HH_SET_ICON_PATHS[Number(setId)];
+      if (!iconName) return "";
       return `https://raidoptimiser.hellhades.com/assets/ArtifactSetsIcons/${iconName}.png`;
+    }
+
+    function handleSetIconError(img) {
+      if (!(img instanceof HTMLImageElement)) return;
+      const fallback = img.dataset.fallbackSrc || "";
+      if (fallback && img.src !== fallback) {
+        img.src = fallback;
+        img.dataset.fallbackSrc = "";
+        return;
+      }
+      img.remove();
     }
 
     function renderChampionStatValue(value) {
@@ -1682,7 +2022,7 @@
 
     function getFactionName(champion) {
       const path = HH_FACTION_PATHS[Number(champion?.factionId)] || "";
-      return path.replace(/([a-z])([A-Z])/g, "$1 $2").replace(/\bOf\b/g, "of");
+      return translateFaction(path);
     }
 
     function loadSavedTeams() {
@@ -1735,18 +2075,18 @@
     function formatStatLabel(key) {
       const labels = {
         hp: "HP",
-        atk: "ATK",
+        atk: "ATQ",
         def: "DEF",
-        spd: "SPD",
+        spd: "VEL",
         acc: "ACC",
         res: "RES",
-        c_rate: "C.RATE",
-        c_dmg: "C.DMG",
-        boss_spd: "BOSS SPD",
-        target_spd: "TARGET SPD",
-        target_acc: "TARGET ACC",
-        target_res: "TARGET RES",
-        target_def: "TARGET DEF"
+        c_rate: "T.CRT",
+        c_dmg: "D.CRT",
+        boss_spd: "VEL CHEFE",
+        target_spd: "VEL ALVO",
+        target_acc: "ACC ALVO",
+        target_res: "RES ALVO",
+        target_def: "DEF ALVO"
       };
       return labels[key] || titleCase(key);
     }
@@ -1800,8 +2140,8 @@
 
     function buildBossArt(boss) {
       const [dark, mid, glow] = getBossPalette(boss.artKey || boss.family);
-      const title = safeText(boss.label);
-      const difficulty = safeText(boss.difficulty);
+      const title = translateBossName(boss.label);
+      const difficulty = translateDifficulty(boss.difficulty);
       return `
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 560">
           <defs>
@@ -1837,7 +2177,7 @@
       if (boss.imageUrl) {
         const img = document.createElement("img");
         img.src = boss.imageUrl;
-        img.alt = `${boss.displayTitle || boss.label} - ${boss.difficulty}`;
+        img.alt = `${translateBossName(boss.displayTitle || boss.label)} - ${translateDifficulty(boss.difficulty)}`;
         img.loading = "eager";
         img.referrerPolicy = "no-referrer";
         img.onerror = () => {
@@ -1904,7 +2244,7 @@
           ${options.map((option) => `
             <button type="button" class="hh-select-option ${option.value === selectedValue ? "active" : ""}" data-value="${safeText(option.value)}">
               <span>${safeText(option.label)}</span>
-              <span class="hh-select-check">✓</span>
+              <span class="hh-select-check">&#10003;</span>
             </button>
           `).join("")}
         </div>
@@ -1942,8 +2282,8 @@
       metaRow.innerHTML = `
         <span class="meta-chip">Conta: ${safeText(DATA.meta.accountName)}</span>
         <span class="meta-chip">Atualizado: ${updated.toLocaleString("pt-BR")}</span>
-        <span class="meta-chip">Campeoes: ${DATA.summary.championsTotal}</span>
-        <span class="meta-chip">Itens: ${DATA.summary.itemsTotal}</span>
+        <span class="meta-chip">Campeões: ${formatNumber(DATA.summary.championsTotal)}</span>
+        <span class="meta-chip">Itens: ${formatNumber(DATA.summary.itemsTotal)}</span>
       `;
     }
 
@@ -1969,19 +2309,19 @@
 
       if (stageLikeDifficulty) {
         showDifficulty = false;
-        stageOptions = difficultyOptionsRaw.map((boss) => ({ value: boss.id, label: boss.selectorStageLabel || boss.stageLabel || boss.difficulty }));
+        stageOptions = difficultyOptionsRaw.map((boss) => ({ value: boss.id, label: translateDifficulty(boss.selectorStageLabel || boss.stageLabel || boss.difficulty) }));
       } else if (difficultyOptionsRaw.length > 1) {
         showDifficulty = true;
-        stageOptions = relatedForDifficulty.map((boss) => ({ value: boss.id, label: boss.selectorStageLabel || boss.stageLabel || boss.difficulty }));
+        stageOptions = relatedForDifficulty.map((boss) => ({ value: boss.id, label: translateDifficulty(boss.selectorStageLabel || boss.stageLabel || boss.difficulty) }));
       } else {
         showDifficulty = false;
-        stageOptions = related.map((boss) => ({ value: boss.id, label: boss.selectorStageLabel || boss.stageLabel || boss.difficulty }));
+        stageOptions = related.map((boss) => ({ value: boss.id, label: translateDifficulty(boss.selectorStageLabel || boss.stageLabel || boss.difficulty) }));
       }
 
       renderFakeSelect(
         "bossSelectWrap",
-        "Dungeon",
-        uniqueLabels.map((boss) => ({ value: boss.label, label: boss.label })),
+        "Masmorra",
+        uniqueLabels.map((boss) => ({ value: boss.label, label: translateBossName(boss.label) })),
         selectedDungeon,
         (selectedLabel) => {
           const nextBoss = visible.find((boss) => boss.label === selectedLabel);
@@ -1999,8 +2339,8 @@
       if (showDifficulty) {
         renderFakeSelect(
           "bossDifficultySelectWrap",
-          "Difficulty",
-          difficultyOptionsRaw.map((boss) => ({ value: boss.difficulty, label: boss.difficulty })),
+          "Dificuldade",
+          difficultyOptionsRaw.map((boss) => ({ value: boss.difficulty, label: translateDifficulty(boss.difficulty) })),
           activeDifficulty,
           (difficulty) => {
             const nextBoss = related.find((boss) => boss.difficulty === difficulty);
@@ -2017,7 +2357,7 @@
 
       renderFakeSelect(
         "bossStageSelectWrap",
-        "Stage",
+        "Estágio",
         stageOptions,
         state.selectedBossId,
         (bossId) => {
@@ -2033,7 +2373,7 @@
       const boss = getSelectedBoss();
       if (!boss) return;
 
-      document.getElementById("bossTitle").textContent = (boss.displayTitle || boss.label).toUpperCase();
+      document.getElementById("bossTitle").textContent = translateBossName(boss.displayTitle || boss.label).toUpperCase();
       document.getElementById("bossLevelBadge").textContent = boss.levelBadge || (boss.family === "chimera" ? "200" : boss.family === "hydra" ? "150" : "120");
       renderBossPortrait(boss);
 
@@ -2059,7 +2399,7 @@
       const leader = sortedChampions.find((item) => Number(item.heroId) === leaderId) || null;
       const leaderNote = document.getElementById("leaderNote");
       if (leaderNote) {
-        leaderNote.textContent = leader ? `Lider: ${leader.name}` : "Nenhum lider selecionado";
+        leaderNote.textContent = leader ? `Líder: ${leader.name}` : "Nenhum líder selecionado";
       }
       const wrap = document.getElementById("teamSlots");
       wrap.className = `team-slots ${teamSize > 5 ? "compact" : ""}`.trim();
@@ -2071,7 +2411,7 @@
         const profileSrc = profileCandidates[0] || "";
         return `
         <div class="slot-card">
-          <div class="slot-label">${index === 0 ? "Lider" : `Campeao ${index + 1}`}</div>
+          <div class="slot-label">${index === 0 ? "Líder" : `Campeão ${index + 1}`}</div>
           <div class="slot-frame ${champion ? "filled" : ""}">
             ${champion ? `
               <img
@@ -2085,13 +2425,13 @@
               >
             ` : `<span class="slot-empty-mark">+</span>`}
           </div>
-          <div class="slot-name">${champion ? safeText(champion.name) : "Selecione um campeao"}</div>
+          <div class="slot-name">${champion ? safeText(champion.name) : "Selecione um campeão"}</div>
           <div class="slot-actions">
             <select class="slot-picker" data-slot-index="${index}">
-              <option value="">Escolher campeao</option>
+              <option value="">Escolher campeão</option>
               ${sortedChampions.map((item) => `
                 <option value="${item.heroId}" ${Number(item.heroId) === heroId ? "selected" : ""}>
-                  ${safeText(item.name)} - Nv ${item.level} / Rank ${item.grade}
+                  ${safeText(item.name)} - Nv ${item.level} / Grau ${item.grade}
                 </option>
               `).join("")}
             </select>
@@ -2138,12 +2478,36 @@
       const raritySelect = document.getElementById("champRarityFilter");
       raritySelect.innerHTML = rarityOrder.map((rarity) => `
         <option value="${rarity}" ${rarity === state.champRarity ? "selected" : ""}>
-          ${rarity === "all" ? "Todas" : safeText(rarity)}
+          ${rarity === "all" ? "Todas" : translateRarity(rarity)}
         </option>
       `).join("");
 
       raritySelect.onchange = (event) => {
         state.champRarity = event.target.value;
+        renderChampions();
+      };
+
+      const roleSelect = document.getElementById("champRoleFilter");
+      roleSelect.innerHTML = roleOrder.map((role) => `
+        <option value="${role}" ${role === state.champRole ? "selected" : ""}>
+          ${role === "all" ? "Todas" : translateRole(role)}
+        </option>
+      `).join("");
+
+      roleSelect.onchange = (event) => {
+        state.champRole = event.target.value;
+        renderChampions();
+      };
+
+      const sortSelect = document.getElementById("champSortFilter");
+      sortSelect.innerHTML = championSortOptions.map((option) => `
+        <option value="${option.value}" ${option.value === state.champSort ? "selected" : ""}>
+          ${safeText(option.label)}
+        </option>
+      `).join("");
+
+      sortSelect.onchange = (event) => {
+        state.champSort = event.target.value;
         renderChampions();
       };
 
@@ -2160,32 +2524,30 @@
         .map((rarity) => ({
           group: "rarity",
           value: rarity,
-          label: rarity,
+          label: translateRarity(rarity),
           checked: state.selectedRarities.has(rarity)
         }));
 
       toggleWrap.innerHTML = `
-        <div class="filter-block">
-          <div class="filter-title">Raridades visiveis</div>
+        <div class="filter-block span-2">
+          <div class="filter-title">Raridades visíveis</div>
           <div class="toggle-chip-row">
             ${rarityToggleOptions.map(renderToggleChip).join("")}
           </div>
         </div>
-        <div class="filter-pair">
-          <div class="filter-block">
-            <div class="filter-title">Livros</div>
-            <div class="toggle-chip-row">
-              ${renderToggleChip({ group: "books", value: "full", label: "FULL", checked: state.filterBooks.has("full") })}
-              ${renderToggleChip({ group: "books", value: "not_full", label: "NOPS", checked: state.filterBooks.has("not_full") })}
-            </div>
-            <div class="filter-note">*Estimado com base nos livros aplicados no snapshot atual.</div>
+        <div class="filter-block">
+          <div class="filter-title">Livros</div>
+          <div class="toggle-chip-row">
+            ${renderToggleChip({ group: "books", value: "full", label: "Com livros", checked: state.filterBooks.has("full") })}
+            ${renderToggleChip({ group: "books", value: "not_full", label: "Sem livros", checked: state.filterBooks.has("not_full") })}
           </div>
-          <div class="filter-block">
-            <div class="filter-title">Maestrias</div>
-            <div class="toggle-chip-row">
-              ${renderToggleChip({ group: "masteries", value: "full", label: "FULL", checked: state.filterMasteries.has("full") })}
-              ${renderToggleChip({ group: "masteries", value: "not_full", label: "NOPS", checked: state.filterMasteries.has("not_full") })}
-            </div>
+          <div class="filter-note">*Estimado com base nos livros aplicados no snapshot atual.</div>
+        </div>
+        <div class="filter-block">
+          <div class="filter-title">Maestrias</div>
+          <div class="toggle-chip-row">
+            ${renderToggleChip({ group: "masteries", value: "full", label: "Com maestrias", checked: state.filterMasteries.has("full") })}
+            ${renderToggleChip({ group: "masteries", value: "not_full", label: "Sem maestrias", checked: state.filterMasteries.has("not_full") })}
           </div>
         </div>
       `;
@@ -2215,16 +2577,17 @@
         const searchable = [champ.name, champ.shortName].filter(Boolean).join(" ").toLowerCase();
         const matchesSearch = !term || searchable.includes(term);
         const matchesRarity = state.champRarity === "all" || champ.rarity === state.champRarity;
+        const matchesRole = state.champRole === "all" || String(champ.role || "").trim() === state.champRole;
         const matchesRarityToggle = state.selectedRarities.has(champ.rarity);
         const matchesBooks = passesDualFilter(state.filterBooks, getBooksFilterStatus(champ));
         const matchesMasteries = passesDualFilter(state.filterMasteries, getMasteryFilterStatus(champ));
-        return matchesSearch && matchesRarity && matchesRarityToggle && matchesBooks && matchesMasteries;
-      });
+        return matchesSearch && matchesRarity && matchesRole && matchesRarityToggle && matchesBooks && matchesMasteries;
+      }).sort(compareChampionsBySort);
 
       const wrap = document.getElementById("championGrid");
       wrap.className = "champion-grid hh-list";
       if (!filtered.length) {
-        wrap.innerHTML = `<div class="champ-empty-state">Nenhum campeao corresponde aos filtros atuais.</div>`;
+        wrap.innerHTML = `<div class="champ-empty-state">Nenhum campeão corresponde aos filtros atuais.</div>`;
         return;
       }
       wrap.innerHTML = filtered.map((champ) => {
@@ -2238,24 +2601,25 @@
           ? safeText(champ.name)
           : "";
         const statusTags = [
-          safeText(champ.rarity),
-          `Rank ${formatNumber(champ.grade)}`,
-          safeText(champ.affinity || ""),
+          translateRarity(champ.rarity),
+          `Grau ${formatNumber(champ.grade)}`,
+          translateAffinity(champ.affinity || ""),
           safeText(factionName),
-          champ.inStorage ? "Storage" : "Ativo",
+          champ.inStorage ? "Armazenado" : "Ativo",
           champ.locked ? "Bloqueado" : "",
-          champ.hydraLocked ? "Hydra lock" : ""
+          champ.hydraLocked ? "Travado na Hidra" : ""
         ].filter(Boolean);
         const setCards = sets.map((set) => {
           const iconSrc = getSetIconSrc(set.setId);
+          const iconFallbackSrc = getSetIconFallbackSrc(set.setId);
           return `
             <div class="champ-set-card" title="${safeText(set.name)} x${set.count}">
               <div class="champ-set-icon-wrap">
-                ${iconSrc ? `<img class="champ-set-icon" src="${safeText(iconSrc)}" alt="${safeText(set.name)}" loading="lazy" onerror="this.remove()">` : ``}
+                ${iconSrc ? `<img class="champ-set-icon" src="${safeText(iconSrc)}" alt="${safeText(set.name)}" loading="lazy" data-fallback-src="${safeText(iconFallbackSrc)}" onerror="handleSetIconError(this)">` : ``}
               </div>
               <div class="champ-set-text">
                 <div class="champ-set-name">${safeText(set.name)}</div>
-                <div class="champ-set-sub">${formatNumber(set.count)} pecas equipadas</div>
+                <div class="champ-set-sub">${formatNumber(set.count)} peças equipadas</div>
               </div>
               <div class="champ-set-count">x${formatNumber(set.count)}</div>
             </div>
@@ -2263,20 +2627,20 @@
         }).join("");
         const statTiles = [
           ["HP", safeText(stats.hp ?? "-")],
-          ["ATK", safeText(stats.atk ?? "-")],
+          ["ATQ", safeText(stats.atk ?? "-")],
           ["DEF", safeText(stats.def ?? "-")],
-          ["SPD", formatNumber(stats.spd)],
+          ["VEL", formatNumber(stats.spd)],
           ["ACC", formatNumber(stats.acc)],
           ["RES", formatNumber(stats.res)],
-          ["C.RATE", formatNumber(stats.cRate)],
-          ["C.DMG", formatNumber(stats.cDmg)]
+          ["T.CRT", formatNumber(stats.cRate)],
+          ["D.CRT", formatNumber(stats.cDmg)]
         ];
         const quickFacts = [
           { label: "Livros", value: `+${formatNumber(champ.booksApplied)}` },
-          { label: "Mastery", value: `${formatNumber(champ.masteryTotal)}/15` },
+          { label: "Maestrias", value: `${formatNumber(champ.masteryTotal)}/15` },
           { label: "Itens", value: `${formatNumber(champ.equippedItemCount)}/9` },
-          Number(champ.awakenedGrade) > 0 ? { label: "Awaken", value: formatNumber(champ.awakenedGrade) } : null,
-          Number(champ.empowerLevel) > 0 ? { label: "Empower", value: `+${formatNumber(champ.empowerLevel)}` } : null
+          Number(champ.awakenedGrade) > 0 ? { label: "Despertar", value: formatNumber(champ.awakenedGrade) } : null,
+          Number(champ.empowerLevel) > 0 ? { label: "Empoderamento", value: `+${formatNumber(champ.empowerLevel)}` } : null
         ].filter(Boolean);
         return `
           <article class="champ-row">
@@ -2294,7 +2658,7 @@
             <div class="champ-row-body">
               <div class="champ-row-top">
                 <div class="champ-name-block">
-                  <div class="champ-kicker">${safeText(champ.role || "Indefinido")}${factionName ? ` - ${safeText(factionName)}` : ""}</div>
+                  <div class="champ-kicker">${translateRole(champ.role || "Indefinido")}${factionName ? ` - ${safeText(factionName)}` : ""}</div>
                   <div class="champ-name-line">
                     <div>
                       <h3 class="champ-name">${safeText(displayName)}</h3>
@@ -2305,7 +2669,7 @@
                     ${statusTags.map((tag) => `<span class="champ-tag">${safeText(tag)}</span>`).join("")}
                   </div>
                 </div>
-                <div class="champ-role-pill">${safeText(champ.role || "-")}</div>
+                <div class="champ-role-pill">${translateRole(champ.role || "-")}</div>
               </div>
               <div class="champ-summary-grid">
                 <section class="champ-panel">
@@ -2330,11 +2694,11 @@
                 <section class="champ-panel">
                   <div class="champ-panel-head">
                     <span class="champ-panel-title">Sets equipados</span>
-                    <span class="mini-note">${sets.length ? `${formatNumber(sets.length)} tipos ativos` : "Nenhum set detectado"}</span>
+                    <span class="mini-note">${sets.length ? `${formatNumber(sets.length)} tipos ativos` : "Nenhum conjunto detectado"}</span>
                   </div>
                   ${sets.length
                     ? `<div class="champ-set-grid">${setCards}</div>`
-                    : `<div class="champ-empty-note">Sem itens equipados neste campeao no snapshot atual.</div>`}
+                    : `<div class="champ-empty-note">Sem itens equipados neste campeão no snapshot atual.</div>`}
                 </section>
               </div>
             </div>
@@ -2352,10 +2716,10 @@
       }
       grid.innerHTML = sets.map((set) => `
         <article class="set-card ${set.setId === state.activeSetId ? "active" : ""}" data-set-id="${set.setId}">
-          <h3 class="set-name">Set ${safeText(set.setId)}</h3>
+          <h3 class="set-name">Conjunto ${safeText(set.setId)}</h3>
           <div class="set-sub">${set.count} itens - ${set.equipped} equipados</div>
           <div class="set-meta">
-            ${Object.entries(set.bySlot || {}).slice(0, 4).map(([slot, qty]) => `<span class="mini-pill">${safeText(slot)}: ${qty}</span>`).join("")}
+            ${Object.entries(set.bySlot || {}).slice(0, 4).map(([slot, qty]) => `<span class="mini-pill">${translateSlot(slot)}: ${qty}</span>`).join("")}
           </div>
         </article>
       `).join("");
@@ -2370,13 +2734,13 @@
       const activeSet = sets.find((set) => set.setId === state.activeSetId) || sets[0];
       table.innerHTML = (activeSet?.items || []).map((item) => `
         <tr>
-          <td>${activeSet.setId}</td>
-          <td>${safeText(item.slot)}</td>
+          <td>Conjunto ${activeSet.setId}</td>
+          <td>${translateSlot(item.slot)}</td>
           <td>${item.rank}</td>
-          <td>${item.rarity}</td>
+          <td>${translateRarity(item.rarity)}</td>
           <td>${item.level}</td>
-          <td>${item.equipped ? "Sim" : "Nao"}</td>
-          <td>${safeText(item.desc)}</td>
+          <td>${item.equipped ? "Sim" : "Não"}</td>
+          <td>${translateItemDescription(item.desc)}</td>
         </tr>
       `).join("");
     }
