@@ -1670,6 +1670,14 @@
       return String(value ?? "").replace(/[<>]/g, "");
     }
 
+    function normalizeFilterValue(value) {
+      return safeText(value)
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .trim();
+    }
+
     function stripChampionImageName(value) {
       return safeText(value)
         .normalize("NFD")
@@ -2106,6 +2114,34 @@
 
     function passesDualFilter(activeSet, status) {
       return activeSet.has(status);
+    }
+
+    function matchesChampionRarity(champion, selectedRarity) {
+      if (selectedRarity === "all") return true;
+      const rawRarity = String(champion?.rarity || "").trim();
+      return rawRarity === selectedRarity
+        || normalizeFilterValue(translateRarity(rawRarity)) === normalizeFilterValue(selectedRarity);
+    }
+
+    function matchesChampionRole(champion, selectedRole) {
+      if (selectedRole === "all") return true;
+      const rawRole = String(champion?.role || "").trim();
+      return rawRole === selectedRole
+        || normalizeFilterValue(translateRole(rawRole)) === normalizeFilterValue(selectedRole);
+    }
+
+    function getFilteredChampions() {
+      const term = state.champSearch.trim().toLowerCase();
+      return [...DATA.champions].filter((champ) => {
+        const searchable = [champ.name, champ.shortName].filter(Boolean).join(" ").toLowerCase();
+        const matchesSearch = !term || searchable.includes(term);
+        const matchesRarity = matchesChampionRarity(champ, state.champRarity);
+        const matchesRole = matchesChampionRole(champ, state.champRole);
+        const matchesRarityToggle = state.selectedRarities.has(champ.rarity);
+        const matchesBooks = passesDualFilter(state.filterBooks, getBooksFilterStatus(champ));
+        const matchesMasteries = passesDualFilter(state.filterMasteries, getMasteryFilterStatus(champ));
+        return matchesSearch && matchesRarity && matchesRole && matchesRarityToggle && matchesBooks && matchesMasteries;
+      }).sort(compareChampionsBySort);
     }
 
     function renderToggleChip({ group, value, label, checked }) {
@@ -2572,17 +2608,7 @@
         });
       });
 
-      const term = state.champSearch.trim().toLowerCase();
-      const filtered = sortedChampions.filter((champ) => {
-        const searchable = [champ.name, champ.shortName].filter(Boolean).join(" ").toLowerCase();
-        const matchesSearch = !term || searchable.includes(term);
-        const matchesRarity = state.champRarity === "all" || champ.rarity === state.champRarity;
-        const matchesRole = state.champRole === "all" || String(champ.role || "").trim() === state.champRole;
-        const matchesRarityToggle = state.selectedRarities.has(champ.rarity);
-        const matchesBooks = passesDualFilter(state.filterBooks, getBooksFilterStatus(champ));
-        const matchesMasteries = passesDualFilter(state.filterMasteries, getMasteryFilterStatus(champ));
-        return matchesSearch && matchesRarity && matchesRole && matchesRarityToggle && matchesBooks && matchesMasteries;
-      }).sort(compareChampionsBySort);
+      const filtered = getFilteredChampions();
 
       const wrap = document.getElementById("championGrid");
       wrap.className = "champion-grid hh-list";
