@@ -64,9 +64,21 @@
   }
 
   function buildPayload() {
+    let accessToken = "";
+    try {
+      accessToken = window.localStorage.getItem("access_token") || "";
+    } catch (error) {
+      accessToken = "";
+    }
+
     return {
       url: location.href,
       title: document.title,
+      hhAuth: {
+        hasAccessToken: Boolean(accessToken),
+        accessToken,
+        capturedFrom: "localStorage"
+      },
       pageSummary: {
         dungeon: valueOfSelector("mat-select[formcontrolname='dungeon'], [aria-label*='Dungeon'], [placeholder='Dungeon']"),
         stage: valueOfSelector("mat-select[formcontrolname='stage'], [aria-label*='Stage'], [placeholder='Stage']"),

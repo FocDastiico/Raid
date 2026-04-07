@@ -582,6 +582,21 @@
       align-items: center;
     }
 
+    .team-source-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border: 1px solid rgba(214, 163, 63, 0.3);
+      border-radius: 999px;
+      color: #e6d8bc;
+      background: rgba(0, 0, 0, 0.22);
+      font-family: "Rajdhani", sans-serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
     .leader-note {
       color: #81776d;
       font-family: "Rajdhani", sans-serif;
@@ -613,6 +628,165 @@
     .team-slots.compact .optimise-check {
       font-size: 0.96rem;
       gap: 6px;
+    }
+
+    .team-recommendations {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .suggestion-card {
+      border: 1px solid rgba(214, 163, 63, 0.18);
+      border-radius: 18px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.08)),
+        rgba(22, 19, 18, 0.95);
+      box-shadow: inset 0 0 0 1px rgba(255, 218, 143, 0.03);
+      padding: 16px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .suggestion-topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .suggestion-title {
+      display: grid;
+      gap: 4px;
+    }
+
+    .suggestion-kicker {
+      color: var(--accent);
+      font-family: "Rajdhani", sans-serif;
+      font-size: 1.18rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .suggestion-name {
+      font-size: 1.45rem;
+      color: #f6ecdc;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .suggestion-sub {
+      color: #9f9385;
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    .suggestion-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .suggestion-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+      gap: 10px;
+    }
+
+    .suggestion-metric {
+      border-radius: 12px;
+      border: 1px solid rgba(214, 163, 63, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 10px 12px;
+      display: grid;
+      gap: 4px;
+    }
+
+    .suggestion-metric b {
+      color: var(--accent);
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .suggestion-metric span {
+      color: #fff4e1;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .suggestion-team {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+      gap: 10px;
+    }
+
+    .suggestion-hero {
+      display: grid;
+      gap: 8px;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .suggestion-hero-frame {
+      width: 78px;
+      aspect-ratio: 0.74;
+      border-radius: 10px;
+      border: 2px solid rgba(214, 163, 63, 0.7);
+      overflow: hidden;
+      background: linear-gradient(180deg, #362918 0%, #171311 100%);
+      position: relative;
+      display: grid;
+      place-items: center;
+      color: #f1d48a;
+      font-size: 1.7rem;
+      font-weight: 700;
+    }
+
+    .suggestion-hero-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .suggestion-hero-name {
+      color: #ece0cf;
+      font-size: 0.92rem;
+      line-height: 1.2;
+      min-height: 2.2em;
+    }
+
+    .suggestion-hero-meta {
+      color: #9b8e80;
+      font-size: 0.84rem;
+      line-height: 1.2;
+    }
+
+    .suggestion-reasons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .suggestion-reason {
+      border-radius: 999px;
+      padding: 5px 10px;
+      border: 1px solid rgba(214, 163, 63, 0.22);
+      background: rgba(0, 0, 0, 0.16);
+      color: #dcc8a5;
+      font-size: 0.88rem;
+      letter-spacing: 0.02em;
+    }
+
+    .suggestion-empty {
+      border: 1px dashed rgba(214, 163, 63, 0.24);
+      border-radius: 16px;
+      padding: 18px;
+      color: #a99987;
+      line-height: 1.5;
+      background: rgba(0, 0, 0, 0.12);
     }
 
     .slot-card {
@@ -1430,8 +1604,8 @@
               </label>
             </div>
             <div class="actions">
-              <button class="action-btn primary" type="button">Buscar Time</button>
-              <button class="action-btn gold" type="button">Builds Anteriores</button>
+              <button class="action-btn primary" type="button" id="bossSuggestBtn">Buscar Time</button>
+              <button class="action-btn gold" type="button" id="bossApplyBestBtn">Aplicar Melhor</button>
               <button class="action-btn danger" type="button" id="bossResetBtn">Limpar</button>
             </div>
           </div>
@@ -1457,7 +1631,9 @@
             <section class="team-panel">
               <div class="team-header">
                 <div class="leader-note" id="leaderNote">Nenhum líder selecionado</div>
+                <div class="team-source-badge" id="teamSourceBadge">Motor local</div>
               </div>
+              <div class="team-recommendations" id="teamRecommendations"></div>
               <div class="team-slots" id="teamSlots"></div>
             </section>
           </div>
@@ -1536,7 +1712,10 @@
       filterMasteries: new Set(["full", "not_full"]),
       activeSetId: null,
       activeEffects: new Set(["shield", "ignore_def", "freeze"]),
-      teamSelections: {}
+      teamSelections: {},
+      teamSuggestionCache: {},
+      teamSuggestionMode: "local",
+      teamSuggestionVisibility: {}
     };
 
     const effectLabels = [
@@ -1664,6 +1843,559 @@
       }
 
       return compareChampionsDefault(a, b);
+    }
+
+    const rosterStatBounds = (() => {
+      const statKeys = ["hp", "atk", "def", "spd", "acc", "res", "cRate", "cDmg"];
+      const bounds = {};
+      statKeys.forEach((key) => {
+        const values = sortedChampions.map((champion) => Number(champion?.buildStats?.[key] || 0));
+        bounds[key] = {
+          min: Math.min(...values, 0),
+          max: Math.max(...values, 1)
+        };
+      });
+      return bounds;
+    })();
+
+    const BOSS_TEAM_PROFILES = [
+      { id: "balanced", label: "Time balanceado", modeLabel: "equilibrado", emphasis: "equilibrio" },
+      { id: "fast", label: "Time rapido", modeLabel: "acelerado", emphasis: "velocidade" },
+      { id: "safe", label: "Time seguro", modeLabel: "estavel", emphasis: "sobrevivencia" }
+    ];
+    const HH_BRIDGE_URL = "http://127.0.0.1:8765";
+
+    const CHAMPION_TAGS = {
+      achakthewendarin: ["freeze", "hp_burn", "spider", "fire_knight", "control"],
+      alure: ["tm_control", "fire_knight", "control"],
+      anax: ["poison", "weaken", "clan_boss", "damage"],
+      armiger: ["tm_control", "enemy_max_hp", "spider", "fire_knight", "control"],
+      artak: ["hp_burn", "hydra", "spider", "wave_clear", "damage"],
+      badelkhazar: ["poison", "heal", "dragon", "ice_golem", "support"],
+      coldheart: ["enemy_max_hp", "tm_control", "spider", "fire_knight", "damage"],
+      crohnam: ["hp_burn", "sand_devil", "damage"],
+      deaconarmstrong: ["turn_meter", "increase_speed", "dec_def", "clan_boss", "support"],
+      demytha: ["unkillable", "clan_boss", "support"],
+      dreng: ["hp_burn", "hydra", "sand_devil", "support"],
+      duchesslilitu: ["revive", "veil", "hydra", "ice_golem", "support"],
+      fahrakinthefat: ["ally_attack", "fire_knight", "clan_boss", "damage"],
+      frozenbanshee: ["poison", "clan_boss", "dragon", "damage"],
+      geomancer: ["hp_burn", "iron_twins", "clan_boss", "hydra", "damage"],
+      godseekeraniri: ["revive", "heal", "sand_devil", "support"],
+      gnut: ["enemy_max_hp", "boss_damage", "fire_knight", "spider", "ice_golem", "damage"],
+      helicath: ["block_damage", "shield", "clan_boss", "iron_twins", "support"],
+      husk: ["enemy_max_hp", "hydra", "spider", "damage"],
+      kalvalax: ["poison", "dragon", "clan_boss", "damage"],
+      lydia: ["dec_def", "weaken", "block_revive", "hydra", "dragon", "support"],
+      maneater: ["unkillable", "clan_boss", "support"],
+      michinaki: ["hex", "hp_burn", "hydra", "damage"],
+      mithrala: ["hex", "cleanse", "shield", "hydra", "iron_twins", "support"],
+      mordecai: ["hp_burn", "spider", "support"],
+      nekmothaar: ["increase_speed", "decrease_speed", "hydra", "support"],
+      ninja: ["hp_burn", "boss_damage", "clan_boss", "sand_devil", "damage"],
+      pythion: ["revive", "cleanse", "heal", "hydra", "dragon", "ice_golem", "support"],
+      rihobonespear: ["cleanse", "dec_atk", "support"],
+      royalguard: ["enemy_max_hp", "spider", "hydra", "damage"],
+      scylofthedrakes: ["revive", "heal", "dragon", "ice_golem", "support"],
+      seeker: ["increase_speed", "turn_meter", "clan_boss", "support"],
+      seer: ["wave_clear", "spider", "dragon", "fire_knight", "damage"],
+      shamael: ["hydra", "counter", "damage"],
+      siciaflametongue: ["hp_burn", "spider", "hydra", "damage"],
+      stagknight: ["dec_def", "dec_atk", "dragon", "fire_knight", "ice_golem", "support"],
+      teodorthesavant: ["poison", "dragon", "ice_golem", "damage"],
+      uugo: ["block_buffs", "dec_def", "hydra", "support"],
+      venomage: ["poison", "dec_atk", "dragon", "clan_boss", "ice_golem", "damage"],
+      visix: ["provoke", "decrease_speed", "hydra", "fire_knight", "control"],
+      yakarlthescourge: ["freeze", "fire_knight", "control"]
+    };
+
+    function normalizeChampionKey(value) {
+      return safeText(value)
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-zA-Z0-9]+/g, "")
+        .toLowerCase();
+    }
+
+    function getChampionTags(champion) {
+      const keys = new Set([
+        normalizeChampionKey(champion?.name),
+        normalizeChampionKey(champion?.shortName)
+      ]);
+      const tags = new Set();
+      keys.forEach((key) => {
+        (CHAMPION_TAGS[key] || []).forEach((tag) => tags.add(tag));
+      });
+      return [...tags];
+    }
+
+    function getBossSuggestionPlan(boss) {
+      const label = String(boss?.label || "").toLowerCase();
+      const family = String(boss?.family || "").toLowerCase();
+      const isHard = String(boss?.difficulty || "").toLowerCase().includes("hard");
+      const basePlan = {
+        teamSize: Number(boss?.teamSize || (family === "hydra" ? 6 : 5)),
+        weights: { spd: 1.1, acc: 0.9, hp: 0.8, def: 0.8, atk: 0.6, cDmg: 0.6, cRate: 0.5, res: 0.4 },
+        roleTargets: { "Suporte": 1, "Ataque": 2 },
+        desiredTags: [],
+        requiredTags: [],
+        note: "Motor local: usa o seu roster, stats e sinergias conhecidas para ranquear as melhores opcoes."
+      };
+
+      if (label.includes("spider")) {
+        return {
+          ...basePlan,
+          weights: { spd: 1.0, acc: isHard ? 1.15 : 0.95, hp: 0.7, def: 0.65, atk: 0.9, cDmg: 1.0, cRate: 0.75, res: 0.3 },
+          desiredTags: ["enemy_max_hp", "tm_control", "hp_burn", "wave_clear", "spider"],
+          requiredTags: ["enemy_max_hp", "tm_control"],
+          note: "Para Aranha, o algoritmo prioriza controle de turno, dano por Max HP e HP Burn."
+        };
+      }
+
+      if (label.includes("dragon")) {
+        return {
+          ...basePlan,
+          weights: { spd: 1.0, acc: 1.05, hp: 0.9, def: 0.85, atk: 0.65, cDmg: 0.6, cRate: 0.45, res: 0.35 },
+          desiredTags: ["poison", "wave_clear", "dec_atk", "dragon", "revive", "cleanse"],
+          requiredTags: ["poison"],
+          note: "Para Dragao, o algoritmo prioriza venenos, consistencia nas waves e sobrevivencia."
+        };
+      }
+
+      if (label.includes("fire knight")) {
+        return {
+          ...basePlan,
+          weights: { spd: 1.1, acc: 1.1, hp: 0.75, def: 0.75, atk: 0.75, cDmg: 0.85, cRate: 0.65, res: 0.3 },
+          desiredTags: ["tm_control", "enemy_max_hp", "ally_attack", "freeze", "fire_knight", "control"],
+          requiredTags: ["tm_control"],
+          note: "Para Cavaleiro de Fogo, o algoritmo puxa controle de TM, multi-hit indireto e dano de boss."
+        };
+      }
+
+      if (label.includes("ice golem")) {
+        return {
+          ...basePlan,
+          weights: { spd: 0.95, acc: 1.0, hp: 1.0, def: 1.0, atk: 0.55, cDmg: 0.55, cRate: 0.4, res: 0.45 },
+          desiredTags: ["revive", "cleanse", "dec_atk", "poison", "ice_golem"],
+          requiredTags: ["revive"],
+          note: "Para Golem de Gelo, o algoritmo pesa mais seguranca, revive e controle do dano."
+        };
+      }
+
+      if (label.includes("sand devil")) {
+        return {
+          ...basePlan,
+          weights: { spd: 0.9, acc: 0.8, hp: 1.0, def: 1.0, atk: 0.7, cDmg: 0.85, cRate: 0.7, res: 0.4 },
+          roleTargets: { "Suporte": 2, "Ataque": 1 },
+          desiredTags: ["sand_devil", "revive", "heal", "hp_burn", "boss_damage"],
+          requiredTags: ["revive"],
+          note: "Para Sand Devil, o algoritmo valoriza revive, sustain e um finalizador forte."
+        };
+      }
+
+      if (label.includes("iron twins")) {
+        return {
+          ...basePlan,
+          weights: { spd: 0.95, acc: 1.0, hp: 1.0, def: 1.0, atk: 0.6, cDmg: 0.55, cRate: 0.35, res: 0.65 },
+          roleTargets: { "Suporte": 2, "Ataque": 1 },
+          desiredTags: ["iron_twins", "block_damage", "shield", "hp_burn", "cleanse"],
+          requiredTags: ["block_damage", "shield"],
+          note: "Para Iron Twins, o algoritmo prioriza sustain, protecao e dano consistente de boss."
+        };
+      }
+
+      if (family === "clanboss" || label.includes("demon lord")) {
+        return {
+          ...basePlan,
+          weights: { spd: 1.15, acc: 1.15, hp: 0.9, def: 0.95, atk: 0.7, cDmg: 0.7, cRate: 0.45, res: 0.25 },
+          roleTargets: { "Suporte": 2, "Ataque": 2 },
+          desiredTags: ["clan_boss", "poison", "unkillable", "ally_attack", "increase_speed", "boss_damage"],
+          requiredTags: ["clan_boss"],
+          note: "Para Clan Boss, o algoritmo pesa speed tune, precisao, venenos e ferramentas de sobrevivencia."
+        };
+      }
+
+      if (family === "hydra" || label.includes("hydra")) {
+        return {
+          ...basePlan,
+          teamSize: 6,
+          weights: { spd: 1.15, acc: 1.15, hp: 0.95, def: 0.95, atk: 0.65, cDmg: 0.65, cRate: 0.5, res: 0.75 },
+          roleTargets: { "Suporte": 2, "Ataque": 2 },
+          desiredTags: ["hydra", "block_buffs", "provoke", "hex", "hp_burn", "cleanse", "revive"],
+          requiredTags: ["block_buffs", "provoke"],
+          note: "Para Hydra, o algoritmo busca cobricao de provoke, block buffs, hex, limpeza e sustain."
+        };
+      }
+
+      if (family === "chimera" || label.includes("chimera")) {
+        return {
+          ...basePlan,
+          teamSize: 5,
+          weights: { spd: 1.1, acc: 1.0, hp: 0.95, def: 0.95, atk: 0.75, cDmg: 0.75, cRate: 0.55, res: 0.5 },
+          roleTargets: { "Suporte": 2, "Ataque": 2 },
+          desiredTags: ["boss_damage", "cleanse", "revive", "increase_speed", "block_buffs"],
+          requiredTags: ["revive"],
+          note: "Para Chimera, o algoritmo prioriza estabilidade longa, utilidade e dano de boss."
+        };
+      }
+
+      return basePlan;
+    }
+
+    function getStagePressureMultiplier(boss) {
+      const stageText = `${boss?.difficulty || ""} ${boss?.stageLabel || ""}`.toLowerCase();
+      if (stageText.includes("ultra")) return 1.35;
+      if (stageText.includes("nightmare")) return 1.28;
+      if (stageText.includes("brutal")) return 1.22;
+      if (stageText.includes("hard")) return 1.15;
+      const numberMatch = stageText.match(/\d+/);
+      const stageNumber = numberMatch ? Number(numberMatch[0]) : 0;
+      if (stageNumber >= 10) return 1.12;
+      if (stageNumber >= 7) return 1.06;
+      return 1;
+    }
+
+    function getNormalizedRosterStat(value, key) {
+      const bounds = rosterStatBounds[key] || { min: 0, max: 1 };
+      const span = Math.max(1, bounds.max - bounds.min);
+      return (Number(value || 0) - bounds.min) / span;
+    }
+
+    function getChampionReadinessScore(champion) {
+      const equipped = Math.min(1, Number(champion?.equippedItemCount || 0) / 9);
+      const books = Math.min(1, Number(champion?.booksApplied || 0) / 16);
+      const masteries = Math.min(1, Number(champion?.masteryTotal || 0) / 15);
+      const extras = Math.min(1, (Number(champion?.awakenedGrade || 0) + Number(champion?.empowerLevel || 0) + Number(champion?.relicCount || 0)) / 15);
+      const storagePenalty = champion?.inStorage ? 0.88 : 1;
+      return (equipped * 0.42 + books * 0.23 + masteries * 0.25 + extras * 0.10) * 100 * storagePenalty;
+    }
+
+    function getChampionTagScore(tags, plan) {
+      const tagSet = new Set(tags);
+      let score = 0;
+      (plan.desiredTags || []).forEach((tag, index) => {
+        if (tagSet.has(tag)) {
+          score += Math.max(5, 16 - index * 1.25);
+        }
+      });
+      (plan.requiredTags || []).forEach((tag) => {
+        if (tagSet.has(tag)) {
+          score += 12;
+        }
+      });
+      return score;
+    }
+
+    function scoreChampionForBoss(champion, boss, profileId) {
+      const plan = getBossSuggestionPlan(boss);
+      const pressure = getStagePressureMultiplier(boss);
+      const tags = getChampionTags(champion);
+      const stats = champion?.buildStats || {};
+      const profileBoosts = {
+        balanced: { spd: 1, hp: 1, def: 1, atk: 1, cDmg: 1, acc: 1, res: 1, cRate: 1, tag: 1, ready: 1 },
+        fast: { spd: 1.24, hp: 0.9, def: 0.9, atk: 1.08, cDmg: 1.12, acc: 1.05, res: 0.88, cRate: 1.05, tag: 1.05, ready: 1 },
+        safe: { spd: 0.96, hp: 1.18, def: 1.18, atk: 0.92, cDmg: 0.9, acc: 1.02, res: 1.18, cRate: 0.94, tag: 1.04, ready: 1.02 }
+      }[profileId] || { spd: 1, hp: 1, def: 1, atk: 1, cDmg: 1, acc: 1, res: 1, cRate: 1, tag: 1, ready: 1 };
+
+      const weightedStats = Object.entries(plan.weights).reduce((total, [key, weight]) => (
+        total + getNormalizedRosterStat(stats[key], key) * Number(weight || 0) * Number(profileBoosts[key] || 1)
+      ), 0);
+      const readiness = getChampionReadinessScore(champion) / 100;
+      const roleBonus = champion?.role === "Suporte" && (plan.roleTargets?.["Suporte"] || 0) ? 0.12 : 0;
+      const lockBonus = champion?.locked ? 0.05 : 0;
+      const hydraPenalty = boss?.family === "hydra" && champion?.hydraLocked ? -0.18 : 0;
+      const tagScore = getChampionTagScore(tags, plan) / 100;
+      const score = ((weightedStats * 0.62) + (readiness * 0.2 * profileBoosts.ready) + (tagScore * 0.18 * profileBoosts.tag) + roleBonus + lockBonus + hydraPenalty) * 100 * pressure;
+
+      return {
+        champion,
+        tags,
+        score,
+        readiness: getChampionReadinessScore(champion),
+        stats
+      };
+    }
+
+    function pickSuggestionsByNeed(scoredEntries, teamSize, plan) {
+      const team = [];
+      const usedHeroIds = new Set();
+      const roleCounts = new Map();
+      const missingRequired = new Set(plan.requiredTags || []);
+
+      function addEntry(entry) {
+        if (!entry || usedHeroIds.has(entry.champion.heroId)) return false;
+        team.push(entry);
+        usedHeroIds.add(entry.champion.heroId);
+        const role = entry.champion.role || "Indefinido";
+        roleCounts.set(role, Number(roleCounts.get(role) || 0) + 1);
+        entry.tags.forEach((tag) => missingRequired.delete(tag));
+        return true;
+      }
+
+      for (const tag of missingRequired) {
+        addEntry(scoredEntries.find((entry) => entry.tags.includes(tag) && !usedHeroIds.has(entry.champion.heroId)));
+      }
+
+      Object.entries(plan.roleTargets || {}).forEach(([role, target]) => {
+        while (Number(roleCounts.get(role) || 0) < Number(target || 0) && team.length < teamSize) {
+          const nextEntry = scoredEntries.find((entry) => (
+            (entry.champion.role || "Indefinido") === role &&
+            !usedHeroIds.has(entry.champion.heroId)
+          ));
+          if (!nextEntry) break;
+          addEntry(nextEntry);
+        }
+      });
+
+      scoredEntries.forEach((entry) => {
+        if (team.length >= teamSize) return;
+        addEntry(entry);
+      });
+
+      return team.slice(0, teamSize);
+    }
+
+    function summarizeSuggestionTeam(entries, boss, profile) {
+      const team = entries.map((entry) => entry.champion);
+      const fitScore = entries.length
+        ? Math.min(99, Math.round(entries.reduce((sum, entry) => sum + entry.score, 0) / entries.length))
+        : 0;
+      const readiness = entries.length
+        ? Math.round(entries.reduce((sum, entry) => sum + entry.readiness, 0) / entries.length)
+        : 0;
+      const avgSpd = team.length
+        ? Math.round(team.reduce((sum, champion) => sum + Number(champion?.buildStats?.spd || 0), 0) / team.length)
+        : 0;
+      const avgAcc = team.length
+        ? Math.round(team.reduce((sum, champion) => sum + Number(champion?.buildStats?.acc || 0), 0) / team.length)
+        : 0;
+      const avgSurvival = team.length
+        ? Math.round(team.reduce((sum, champion) => sum + Number(champion?.buildStats?.hp || 0) + (Number(champion?.buildStats?.def || 0) * 12), 0) / team.length)
+        : 0;
+      const tags = new Set();
+      entries.forEach((entry) => entry.tags.forEach((tag) => tags.add(tag)));
+      const plan = getBossSuggestionPlan(boss);
+      const matchingReasons = (plan.desiredTags || []).filter((tag) => tags.has(tag)).slice(0, 5);
+
+      return {
+        id: `${boss.id}-${profile.id}-${team.map((champion) => champion.heroId).join("-")}`,
+        label: profile.label,
+        modeLabel: profile.modeLabel,
+        source: "local",
+        note: plan.note,
+        team,
+        fitScore,
+        readiness,
+        avgSpd,
+        avgAcc,
+        avgSurvival,
+        reasons: matchingReasons.length ? matchingReasons : ["roster", "stats", "readiness"]
+      };
+    }
+
+    function buildBossSuggestions(boss) {
+      const plan = getBossSuggestionPlan(boss);
+      const profiles = BOSS_TEAM_PROFILES.map((profile) => {
+        const scoredEntries = sortedChampions
+          .map((champion) => scoreChampionForBoss(champion, boss, profile.id))
+          .sort((left, right) => right.score - left.score || right.readiness - left.readiness || compareChampionsDefault(left.champion, right.champion));
+        const teamEntries = pickSuggestionsByNeed(scoredEntries, plan.teamSize, plan);
+        return summarizeSuggestionTeam(teamEntries, boss, profile);
+      });
+
+      const unique = [];
+      const seen = new Set();
+      profiles.forEach((suggestion) => {
+        const key = suggestion.team.map((champion) => champion.heroId).join("-");
+        if (!key || seen.has(key)) return;
+        seen.add(key);
+        unique.push(suggestion);
+      });
+      return unique;
+    }
+
+    function normalizeHeroTypeId(typeId) {
+      const value = Number(typeId || 0);
+      return value - (value % 10);
+    }
+
+    function matchOwnedChampionForTypeId(typeId, usedHeroIds = new Set()) {
+      const normalizedTypeId = normalizeHeroTypeId(typeId);
+      return sortedChampions
+        .filter((champion) => normalizeHeroTypeId(champion?.typeId) === normalizedTypeId && !usedHeroIds.has(champion.heroId))
+        .sort((left, right) => (
+          Number(right.equippedItemCount || 0) - Number(left.equippedItemCount || 0) ||
+          getChampionReadinessScore(right) - getChampionReadinessScore(left) ||
+          compareChampionsDefault(left, right)
+        ))[0] || null;
+    }
+
+    async function fetchBridgeJson(path, method = "GET", body = null) {
+      const response = await fetch(`${HH_BRIDGE_URL}${path}`, {
+        method,
+        headers: body ? { "Content-Type": "application/json" } : {},
+        body: body ? JSON.stringify(body) : null
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok || payload?.ok === false) {
+        throw new Error(payload?.error || `Bridge respondeu ${response.status}`);
+      }
+      return payload;
+    }
+
+    function buildHellHadesFilter(boss, overrides = {}) {
+      return {
+        stageId: Number(boss?.floorId || 0),
+        minimumNumberOfBattles: 2,
+        winRate: 0.75,
+        typeIds: [],
+        minimumCompletedChallenges: 0,
+        minimumBossDamage: 0,
+        minimumStars: 0,
+        maximumDuration: null,
+        teamSetupId: null,
+        autoOnly: false,
+        minimumNumberOfVictories: 0,
+        lastSeenOn: null,
+        lastBossDamage: 0,
+        giveUp: false,
+        requiredTypeIds: [],
+        maximumTurns: null,
+        soloTeams: false,
+        ...overrides
+      };
+    }
+
+    function pickBestHellHadesVariation(variations) {
+      return [...variations].sort((left, right) => {
+        const leftBattles = Number(left.numberOfVictories || 0) + Number(left.numberOfDefeats || 0);
+        const rightBattles = Number(right.numberOfVictories || 0) + Number(right.numberOfDefeats || 0);
+        const leftWinRate = leftBattles ? Number(left.numberOfVictories || 0) / leftBattles : 0;
+        const rightWinRate = rightBattles ? Number(right.numberOfVictories || 0) / rightBattles : 0;
+        const leftDuration = (Number(left.victoryDurationInSeconds || 0) * Number(left.numberOfVictories || 0)) + (Number(left.defeatDurationInSeconds || 0) * Number(left.numberOfDefeats || 0));
+        const rightDuration = (Number(right.victoryDurationInSeconds || 0) * Number(right.numberOfVictories || 0)) + (Number(right.defeatDurationInSeconds || 0) * Number(right.numberOfDefeats || 0));
+        return rightWinRate - leftWinRate || leftDuration - rightDuration || rightBattles - leftBattles;
+      })[0] || null;
+    }
+
+    function mapHellHadesMembersToRoster(members, fallbackTypeIds = []) {
+      const usedHeroIds = new Set();
+      const sourceMembers = Array.isArray(members) && members.length
+        ? members
+        : fallbackTypeIds.map((typeId) => ({ typeId, stats: {} }));
+
+      return sourceMembers.map((member) => {
+        const champion = matchOwnedChampionForTypeId(member?.typeId, usedHeroIds);
+        if (champion) {
+          usedHeroIds.add(champion.heroId);
+          return champion;
+        }
+        return null;
+      }).filter(Boolean);
+    }
+
+    async function fetchHellHadesSuggestionsFromBridge(boss) {
+      const authStatus = await fetchBridgeJson("/hh/auth-status");
+      if (!authStatus?.hasToken) {
+        throw new Error("Token do HellHades ainda nao capturado pelo bridge");
+      }
+
+      const baseFilter = buildHellHadesFilter(boss);
+      const summaryPayload = await fetchBridgeJson("/hh/team-suggestions", "POST", baseFilter);
+      const summaries = Array.isArray(summaryPayload?.data) ? summaryPayload.data : [];
+      const hydrated = [];
+
+      for (const summary of summaries.slice(0, 3)) {
+        const teamFilter = buildHellHadesFilter(boss, {
+          typeIds: Array.isArray(summary.typeIds) ? summary.typeIds : [],
+          teamSetupId: summary.id
+        });
+        const teamPayload = await fetchBridgeJson("/hh/team-teams", "POST", teamFilter);
+        const variations = Array.isArray(teamPayload?.data) ? teamPayload.data : [];
+        const bestVariation = pickBestHellHadesVariation(variations);
+        const mappedTeam = mapHellHadesMembersToRoster(bestVariation?.members, summary.typeIds || []);
+        const battles = Number(summary.numberOfBattles || 0);
+        const avgSpd = mappedTeam.length
+          ? Math.round(mappedTeam.reduce((sum, champion) => sum + Number(champion?.buildStats?.spd || 0), 0) / mappedTeam.length)
+          : Math.round(((bestVariation?.members || []).reduce((sum, member) => sum + Number(member?.stats?.Speed || 0), 0)) / Math.max(1, (bestVariation?.members || []).length));
+        const avgAcc = mappedTeam.length
+          ? Math.round(mappedTeam.reduce((sum, champion) => sum + Number(champion?.buildStats?.acc || 0), 0) / mappedTeam.length)
+          : Math.round(((bestVariation?.members || []).reduce((sum, member) => sum + Number(member?.stats?.Accuracy || 0), 0)) / Math.max(1, (bestVariation?.members || []).length));
+        const avgSurvival = mappedTeam.length
+          ? Math.round(mappedTeam.reduce((sum, champion) => sum + Number(champion?.buildStats?.hp || 0) + Number(champion?.buildStats?.def || 0) * 12, 0) / mappedTeam.length)
+          : Math.round(((bestVariation?.members || []).reduce((sum, member) => sum + Number(member?.stats?.Health || 0) + Number(member?.stats?.Defense || 0) * 12, 0)) / Math.max(1, (bestVariation?.members || []).length));
+
+        hydrated.push({
+          id: `hh-${boss.id}-${summary.id}`,
+          label: `HellHades ${hydrated.length + 1}`,
+          modeLabel: "backend oficial",
+          source: "hellhades",
+          note: "Sugestao retornada pelo Team Suggestion oficial do HellHades.",
+          team: mappedTeam,
+          fitScore: Math.round(Number(summary.winRate || 0) * 100),
+          readiness: mappedTeam.length
+            ? Math.round(mappedTeam.reduce((sum, champion) => sum + getChampionReadinessScore(champion), 0) / mappedTeam.length)
+            : 0,
+          avgSpd,
+          avgAcc,
+          avgSurvival,
+          reasons: [
+            `${Number(summary.numberOfTeams || 0)} variacoes`,
+            `${battles} batalhas`,
+            `${Math.round(Number(summary.winRate || 0) * 100)}% win rate`,
+            `${Math.round(Number(summary.duration || 0))}s media`
+          ],
+          hhTeamSetupId: summary.id,
+          hhTypeIds: Array.isArray(summary.typeIds) ? summary.typeIds : [],
+          hhVariation: bestVariation
+        });
+      }
+
+      return hydrated.filter((suggestion) => suggestion.team.length);
+    }
+
+    function getBossSuggestions(boss, forceRefresh = false) {
+      if (!boss) return [];
+      if (!forceRefresh && Array.isArray(state.teamSuggestionCache[boss.id])) {
+        return state.teamSuggestionCache[boss.id];
+      }
+      const suggestions = buildBossSuggestions(boss);
+      state.teamSuggestionCache[boss.id] = suggestions;
+      return suggestions;
+    }
+
+    async function loadBossSuggestions(boss, forceRefresh = false) {
+      if (!boss) return [];
+      if (!forceRefresh && Array.isArray(state.teamSuggestionCache[boss.id])) {
+        return state.teamSuggestionCache[boss.id];
+      }
+
+      try {
+        const remoteSuggestions = await fetchHellHadesSuggestionsFromBridge(boss);
+        if (remoteSuggestions.length) {
+          state.teamSuggestionCache[boss.id] = remoteSuggestions;
+          state.teamSuggestionMode = "HellHades oficial";
+          return remoteSuggestions;
+        }
+        throw new Error("O HellHades nao retornou sugestoes para este chefe");
+      } catch (error) {
+        console.warn("Fallback para motor local de times:", error);
+        const localSuggestions = buildBossSuggestions(boss);
+        state.teamSuggestionCache[boss.id] = localSuggestions;
+        state.teamSuggestionMode = "Motor local";
+        return localSuggestions;
+      }
+    }
+
+    function applySuggestedTeam(bossId, team) {
+      state.teamSelections[bossId] = team.map((champion) => champion.heroId);
+      saveTeams();
+      renderTeamSlots();
+    }
+
+    function areBossSuggestionsVisible(bossId) {
+      return Boolean(state.teamSuggestionVisibility[bossId]);
     }
 
     function safeText(value) {
@@ -1849,6 +2581,80 @@
       Banner: "Estandarte"
     };
 
+    const setNameLabels = {
+      0: "Quebrado",
+      1: "Vida",
+      2: "Ataque",
+      3: "Defesa",
+      4: "Velocidade",
+      5: "Taxa Crítica",
+      6: "Dano Crítico",
+      7: "Precisão",
+      8: "Resistência",
+      9: "Roubo de Vida",
+      10: "Fúria",
+      11: "Sonolência",
+      12: "Amaldiçoado",
+      13: "Gelo",
+      14: "Frenesi",
+      15: "Regeneração",
+      16: "Imunidade",
+      17: "Escudo",
+      18: "Incansável",
+      19: "Selvagem",
+      20: "Destruição",
+      21: "Atordoamento",
+      22: "Tóxico",
+      23: "Provocação",
+      24: "Retaliação",
+      25: "Vingança",
+      26: "Firme",
+      27: "Reflexo",
+      28: "Cura",
+      29: "Cruel",
+      30: "Imortal",
+      31: "Ataque Divino",
+      32: "Crítico Divino",
+      33: "Vida Divina",
+      34: "Velocidade Divina",
+      35: "Parada Rápida",
+      36: "Deflexão",
+      37: "Resiliência",
+      38: "Percepção",
+      39: "Quebra Afinidade",
+      40: "Intocável",
+      41: "Fatal",
+      42: "Congelante",
+      43: "Sede de Sangue",
+      44: "Guardião",
+      45: "Fortitude",
+      46: "Letal",
+      47: "Proteção",
+      48: "Pele de Pedra",
+      49: "Killstroke",
+      50: "Instinto",
+      51: "Baluarte",
+      52: "Desafiante",
+      53: "Impulso",
+      54: "Zelo",
+      55: "Energia e Velocidade",
+      56: "Crítico Penetrante",
+      57: "Justo",
+      58: "Supersônico",
+      59: "Implacável",
+      60: "Caçador de Monstros",
+      61: "Feral",
+      62: "Pinpoint",
+      63: "Stonecleaver",
+      64: "Renascimento",
+      65: "Chronophage",
+      66: "Mercurial",
+      1001: "Limpeza",
+      1002: "Escudo de Sangue",
+      1003: "Reação",
+      1004: "Vingança"
+    };
+
     const bossNameLabels = {
       Chimera: "Quimera",
       "Demon Lord": "Lorde Demônio",
@@ -1903,6 +2709,13 @@
 
     function translateSlot(value) {
       return slotLabels[value] || safeText(value);
+    }
+
+    function getSetDisplayName(setLike) {
+      const setId = Number(setLike?.setId ?? setLike);
+      const explicitName = safeText(setLike?.setName || setLike?.name || "");
+      if (explicitName) return explicitName;
+      return setNameLabels[setId] || `Conjunto ${safeText(setId)}`;
     }
 
     function translateBossName(value) {
@@ -2426,6 +3239,92 @@
       notes.innerHTML = (boss.notes || []).map((note) => `<div class="boss-note">${safeText(note)}</div>`).join("");
     }
 
+    function renderBossSuggestions(forceRefresh = false) {
+      const boss = getSelectedBoss();
+      const wrap = document.getElementById("teamRecommendations");
+      const sourceBadge = document.getElementById("teamSourceBadge");
+      if (!boss || !wrap) return;
+
+      if (!areBossSuggestionsVisible(boss.id)) {
+        wrap.innerHTML = "";
+        wrap.style.display = "none";
+        if (sourceBadge) {
+          sourceBadge.style.display = "none";
+        }
+        return;
+      }
+
+      const suggestions = getBossSuggestions(boss, forceRefresh);
+      wrap.style.display = "grid";
+      if (sourceBadge) {
+        sourceBadge.style.display = "inline-flex";
+        sourceBadge.textContent = state.teamSuggestionMode === "local" ? "Motor local" : safeText(state.teamSuggestionMode);
+      }
+
+      if (!suggestions.length) {
+        wrap.innerHTML = `<div class="suggestion-empty">Nao encontrei um time forte o bastante com os dados atuais do roster para este chefe. Tente ajustar os slots manualmente.</div>`;
+        return;
+      }
+
+      wrap.innerHTML = suggestions.map((suggestion, suggestionIndex) => `
+        <article class="suggestion-card">
+          <div class="suggestion-topbar">
+            <div class="suggestion-title">
+              <div class="suggestion-kicker">Sugestao ${suggestionIndex + 1}</div>
+              <div class="suggestion-name">${safeText(suggestion.label)}</div>
+              <div class="suggestion-sub">${safeText(suggestion.note)} Perfil ${safeText(suggestion.modeLabel)}.</div>
+            </div>
+            <div class="suggestion-actions">
+              <button type="button" class="action-btn gold" data-apply-suggestion="${safeText(suggestion.id)}">Aplicar time</button>
+            </div>
+          </div>
+          <div class="suggestion-metrics">
+            <div class="suggestion-metric"><b>Aderencia</b><span>${suggestion.fitScore}%</span></div>
+            <div class="suggestion-metric"><b>Prontidao</b><span>${suggestion.readiness}%</span></div>
+            <div class="suggestion-metric"><b>VEL media</b><span>${suggestion.avgSpd}</span></div>
+            <div class="suggestion-metric"><b>ACC media</b><span>${suggestion.avgAcc}</span></div>
+            <div class="suggestion-metric"><b>Solidez</b><span>${formatNumber(suggestion.avgSurvival)}</span></div>
+          </div>
+          <div class="suggestion-team">
+            ${suggestion.team.map((champion) => {
+              const profileCandidates = getChampionProfileCandidates(champion);
+              const profileSrc = profileCandidates[0] || "";
+              return `
+                <div class="suggestion-hero">
+                  <div class="suggestion-hero-frame">
+                    ${profileSrc
+                      ? `<img
+                          src="${safeText(profileSrc)}"
+                          alt="${safeText(champion.name)}"
+                          loading="lazy"
+                          data-fallback-srcs="${safeText(profileCandidates.slice(1).join("|"))}"
+                          data-fallback-label="${safeText(getChampionShortLabel(champion.name))}"
+                          data-fallback-class="slot-avatar-fallback"
+                          onerror="handleChampionPortraitError(this)"
+                        >`
+                      : `<span>${safeText(getChampionShortLabel(champion.name))}</span>`}
+                  </div>
+                  <div class="suggestion-hero-name">${safeText(champion.name)}</div>
+                  <div class="suggestion-hero-meta">VEL ${Number(champion?.buildStats?.spd || 0)} | ACC ${Number(champion?.buildStats?.acc || 0)}</div>
+                </div>
+              `;
+            }).join("")}
+          </div>
+          <div class="suggestion-reasons">
+            ${suggestion.reasons.map((reason) => `<span class="suggestion-reason">${safeText(reason.replace(/_/g, " "))}</span>`).join("")}
+          </div>
+        </article>
+      `).join("");
+
+      wrap.querySelectorAll("[data-apply-suggestion]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const selectedSuggestion = suggestions.find((suggestion) => suggestion.id === button.dataset.applySuggestion);
+          if (!selectedSuggestion) return;
+          applySuggestedTeam(boss.id, selectedSuggestion.team);
+        });
+      });
+    }
+
     function renderTeamSlots() {
       const boss = getSelectedBoss();
       const teamSize = boss?.teamSize || (boss?.family === "hydra" ? 6 : 5);
@@ -2496,6 +3395,7 @@
     function renderBossView() {
       renderBossSelectors();
       renderBossWorkbench();
+      renderBossSuggestions();
       renderTeamSlots();
     }
 
@@ -2507,6 +3407,24 @@
         state.selectedDifficulty = DATA.bosses[0]?.difficulty || "";
         state.selectedDungeon = DATA.bosses[0]?.label || "";
         renderBossView();
+      });
+    }
+
+    function setupBossActions() {
+      document.getElementById("bossSuggestBtn")?.addEventListener("click", async () => {
+        const boss = getSelectedBoss();
+        if (!boss) return;
+        state.teamSuggestionVisibility[boss.id] = true;
+        await loadBossSuggestions(boss, true);
+        renderBossSuggestions(true);
+      });
+
+      document.getElementById("bossApplyBestBtn")?.addEventListener("click", async () => {
+        const boss = getSelectedBoss();
+        if (!boss) return;
+        const [bestSuggestion] = await loadBossSuggestions(boss, false);
+        if (!bestSuggestion) return;
+        applySuggestedTeam(boss.id, bestSuggestion.team);
       });
     }
 
@@ -2621,6 +3539,8 @@
         const profileSrc = profileCandidates[0] || "";
         const sets = (champ.equippedSets || []).slice(0, 6);
         const stats = champ.buildStats || {};
+        const baseStats = champ.baseStats || {};
+        const bonusStats = champ.bonusStats || {};
         const factionName = getFactionName(champ);
         const displayName = getChampionDisplayName(champ);
         const secondaryName = champ.shortName && safeText(champ.shortName) !== safeText(champ.name)
@@ -2651,15 +3571,22 @@
             </div>
           `;
         }).join("");
+        const renderGameStyleStat = (key) => {
+          const total = Number(stats[key] ?? 0);
+          const base = Number(baseStats[key] ?? 0);
+          const bonus = Number(bonusStats[key] ?? Math.max(0, total - base));
+          const suffix = key === "cRate" || key === "cDmg" ? "%" : "";
+          return `${formatNumber(total)}${suffix} | ${formatNumber(base)}${suffix} + ${formatNumber(bonus)}${suffix}`;
+        };
         const statTiles = [
-          ["HP", safeText(stats.hp ?? "-")],
-          ["ATQ", safeText(stats.atk ?? "-")],
-          ["DEF", safeText(stats.def ?? "-")],
-          ["VEL", formatNumber(stats.spd)],
-          ["ACC", formatNumber(stats.acc)],
-          ["RES", formatNumber(stats.res)],
-          ["T.CRT", formatNumber(stats.cRate)],
-          ["D.CRT", formatNumber(stats.cDmg)]
+          ["HP", renderGameStyleStat("hp")],
+          ["ATQ", renderGameStyleStat("atk")],
+          ["DEF", renderGameStyleStat("def")],
+          ["VEL", renderGameStyleStat("spd")],
+          ["ACC", renderGameStyleStat("acc")],
+          ["RES", renderGameStyleStat("res")],
+          ["T.CRT", renderGameStyleStat("cRate")],
+          ["D.CRT", renderGameStyleStat("cDmg")]
         ];
         const quickFacts = [
           { label: "Livros", value: `+${formatNumber(champ.booksApplied)}` },
@@ -2742,7 +3669,7 @@
       }
       grid.innerHTML = sets.map((set) => `
         <article class="set-card ${set.setId === state.activeSetId ? "active" : ""}" data-set-id="${set.setId}">
-          <h3 class="set-name">Conjunto ${safeText(set.setId)}</h3>
+          <h3 class="set-name">${safeText(getSetDisplayName(set))}</h3>
           <div class="set-sub">${set.count} itens - ${set.equipped} equipados</div>
           <div class="set-meta">
             ${Object.entries(set.bySlot || {}).slice(0, 4).map(([slot, qty]) => `<span class="mini-pill">${translateSlot(slot)}: ${qty}</span>`).join("")}
@@ -2760,8 +3687,8 @@
       const activeSet = sets.find((set) => set.setId === state.activeSetId) || sets[0];
       table.innerHTML = (activeSet?.items || []).map((item) => `
         <tr>
-          <td>Conjunto ${activeSet.setId}</td>
-          <td>${translateSlot(item.slot)}</td>
+          <td>${safeText(getSetDisplayName(item.setName ? item : activeSet))}</td>
+          <td>${safeText(item.slotName || translateSlot(item.slot))}</td>
           <td>${item.rank}</td>
           <td>${translateRarity(item.rarity)}</td>
           <td>${item.level}</td>
@@ -2798,6 +3725,7 @@
       renderMeta();
       renderBossView();
       setupBossReset();
+      setupBossActions();
       renderChampions();
       renderSetCards();
       setupTabs();
